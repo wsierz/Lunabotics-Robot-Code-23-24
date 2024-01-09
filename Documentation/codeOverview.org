@@ -1,0 +1,25 @@
+#+title:2023-2024 NASA Lunabotics Code overview
+#+author: Will Sierzputowski
+#+OPTIONS: H:1 num:nil
+
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+#+LATEX_HEADER: \usepackage{xcolor}
+#+OPTIONS: toc:nil
+#+DATE:{{{time(%m-%d-%Y)}}}
+
+
+* Architecture overview
+
+* Main robot code
+
+* Sub-processor for actuation
+
+* Control modes
+
+** Autonomous
+
+** Manual
+
+* Communication with driver station
+
+* 
