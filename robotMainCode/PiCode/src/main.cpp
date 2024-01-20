@@ -1,8 +1,7 @@
 #include <iostream>
 #include "../include/robotControlSM.h"
-#include "serial.h"
+#include "../include/serial.h"
 #include <unistd.h>
-using namespace std;
 
 int main() {
     Serial serial("/dev/ttyACM0", 115200);
@@ -15,7 +14,7 @@ int main() {
       usleep(100000);
     }
 
-    cout << "finished";
+    std::cout << "finished";
 
     return 0;
 }
