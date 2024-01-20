@@ -1,0 +1,53 @@
+* Send to robot
+
+| Control      | Type        | Size |
+|--------------+-------------+------|
+| MessageCount | u 32 int    |   32 |
+| LStickV      | -128 to 127 |    8 |
+| LStickH      | -128 to 127 |    8 |
+| LStickPress  | bool        |    1 |
+| RStickV      | -128 to 127 |    8 |
+| RStickH      | -128 to 127 |    8 |
+| RStickPress  | bool        |    1 |
+| DPadUp       | bool        |    1 |
+| DPadDown     | bool        |    1 |
+| DPadLeft     | bool        |    1 |
+| DPadRight    | bool        |    1 |
+| A            | bool        |    1 |
+| B            | bool        |    1 |
+| X            | bool        |    1 |
+| Y            | bool        |    1 |
+| LeftTrigger  | bool        |    1 |
+| RightTrigger | bool        |    1 |
+| LeftBumper   | bool        |    1 |
+| RightBumper  | bool        |    1 |
+| Start        | bool        |    1 |
+| Select       | bool        |    1 |
+| RemoteKill   | bool        |    1 |
+| RemoteStart  | bool        |    1 |
+
+
+* Send back
+| Category        | Type     | Size |
+|-----------------+----------+------|
+| messageCount    | u 32 int |   32 |
+| LeftFrontDrive  | unsigned |    8 |
+| LeftBackDrive   | unsigned |    8 |
+| RightFrontDrive | unsigned |    8 |
+| RightBackDrive  | unsigned |    8 |
+| IntakeMotor     | unsigned |    8 |
+| DumpMotor       | unsigned |    8 |
+| lIntakeIndexer  | unsigned |    8 |
+| RIntakeIndexer  | unsigned |    8 |
+| lIndex          |          |      |
+| RIndex          |          |      |
+| BatteryVoltage  |          |      |
+| SandHeld?       |          |      |
+| CurrentState    |          |      |
+| SandHeight      | unsigned |    4 |
+| Image1          |          |      |
+| Image2          |          |      |
+| Image3          |          |      |
+|                 |          |      |
+
+* 
