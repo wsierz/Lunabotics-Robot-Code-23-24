@@ -4,7 +4,7 @@
 #include <string>
 
 
-class  serial
+class  Serial
 {
 
 public:
@@ -13,8 +13,8 @@ public:
   std::string  deviceName;
   int baud;
 
-  serial(std::string deviceName, int baud);
-  ~serial();
+  Serial(std::string deviceName, int baud);
+  ~Serial();
 
   bool Send( unsigned char  * data,int len);
   bool Send(unsigned char value);

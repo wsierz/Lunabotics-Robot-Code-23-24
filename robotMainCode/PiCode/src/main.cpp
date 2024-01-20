@@ -1,14 +1,22 @@
 #include <iostream>
 #include "../include/robotControlSM.h"
+#include "serial.h"
+#include <stdio.h>
+#include <stdint.h>
+using namespace std;
 
+int main() {
+    Serial serial("/dev/ttyACM0", 115200);
 
-int main(int argc, char *argv[])
-{
+    // send info as a byte
+    uint8_t motorAmt = 0;
+    while (true) {
+      scanf(" %d", &motorAmt);
+      serial.Send(motorAmt);
+      cout<<motorAmt;
+    }
 
+    cout << "finished";
 
-
-  // Start code
-
-  // Always communicate with DS, listen to recive new value. If in teleop state change state. If in auto change state based on auto. If in null state, sit but still run both tele and auto
-
+    return 0;
 }

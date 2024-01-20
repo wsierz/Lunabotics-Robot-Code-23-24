@@ -9,19 +9,19 @@ using namespace std;
 
 #include "serial.h"
 
-serial::serial(string deviceName, int baud)
+Serial::Serial(string deviceName, int baud)
 {
    handle=-1;
    Open(deviceName,baud);
 }
 
-serial::~serial()
+Serial::~Serial()
 {
   if(handle >=0)
       Close();
 }
 
-void serial::Close(void)
+void Serial::Close(void)
 {
    if(handle >=0)
       close(handle);
@@ -29,7 +29,7 @@ void serial::Close(void)
 }
 
 
-bool serial::Open(string deviceName , int baud)
+bool Serial::Open(string deviceName , int baud)
 {
     struct termios tio;
     struct termios2 tio2;
@@ -59,26 +59,26 @@ bool serial::Open(string deviceName , int baud)
     return true;
 }
 
-bool serial::IsOpen(void)
+bool Serial::IsOpen(void)
 {
    return( handle >=0);
 }
 
-bool serial::Send( unsigned char  * data,int len)
+bool Serial::Send( unsigned char  * data,int len)
 {
    if(!IsOpen()) return false;
    int rlen= write(handle,data,len); 
    return(rlen == len);
 }
 
-bool serial::Send( unsigned char value)
+bool Serial::Send( unsigned char value)
 {
    if(!IsOpen()) return false;
    int rlen= write(handle,&value,1);
    return(rlen == 1);
 }
 
-bool serial::Send(std::string value)
+bool Serial::Send(std::string value)
 {
    if(!IsOpen()) return false;
    int rlen= write(handle,value.c_str(),value.size()); 
@@ -86,7 +86,7 @@ bool serial::Send(std::string value)
 }
 
 
-int  serial::Receive( unsigned char  * data, int len)
+int Serial::Receive( unsigned char  * data, int len)
 {
    if(!IsOpen()) return -1;
 
@@ -100,7 +100,7 @@ int  serial::Receive( unsigned char  * data, int len)
    return  lenRCV;
 }
 
-bool serial::NumberByteRcv(int &bytelen)
+bool Serial::NumberByteRcv(int &bytelen)
 {
    if(!IsOpen()) return false;
    ioctl(handle, FIONREAD, &bytelen);

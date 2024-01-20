@@ -6,7 +6,7 @@ add_global_arguments('-DSOME_TOKEN=value', language : 'cpp')
 
 inc = include_directories('include')
 
-proj_sources = ['src/main.cpp', 'src/robotState.cpp', 'src/robotControlSM.cpp', 'src/serial.cpp', 'src/serialtest.cpp']
+proj_sources = ['src/main.cpp', 'src/robotState.cpp', 'src/robotControlSM.cpp', 'src/serial.cpp']
 proj_headers = ['include/robotControlSM.h', 'include/robotControlSM.h', 'include/serial.h']
 install_headers(proj_headers)
 
