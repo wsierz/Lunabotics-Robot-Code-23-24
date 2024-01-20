@@ -26,30 +26,30 @@ void RobotState::setBatteryVoltage(double val)
     batteryVoltage = val;
 }
 
-void RobotState::setflMotor(int8_t val)
+void RobotState::setflMotor(uint8_t val)
 {
     std::lock_guard<std::mutex> lk(classMutex);
     *flMotor = val;
 }
 
-void RobotState::setfrMotor(int8_t val)
+void RobotState::setfrMotor(uint8_t val)
 {
     std::lock_guard<std::mutex> lk(classMutex);
     *frMotor = val;
 }
 
-void RobotState::setblMotor(int8_t val)
+void RobotState::setblMotor(uint8_t val)
 {
     std::lock_guard<std::mutex> lk(classMutex);
     *blMotor = val;
 }
 
-void RobotState::setbrMotor(int8_t val)
+void RobotState::setbrMotor(uint8_t val)
 {
     std::lock_guard<std::mutex> lk(classMutex);
     *brMotor = val;
 }
-void RobotState::setMotors(int8_t flVal, int8_t frVal, int8_t blVal, int8_t brVal)
+void RobotState::setMotors(uint8_t flVal, uint8_t frVal, uint8_t blVal, uint8_t brVal)
 {
     std::lock_guard<std::mutex> lk(classMutex);
     *flMotor = flVal;
@@ -57,7 +57,7 @@ void RobotState::setMotors(int8_t flVal, int8_t frVal, int8_t blVal, int8_t brVa
     *blMotor = blVal;
     *brMotor = brVal;
 }
-void RobotState::setMotors(int8_t lVal, int8_t rVal)
+void RobotState::setMotors(uint8_t lVal, uint8_t rVal)
 {
     std::lock_guard<std::mutex> lk(classMutex);
     *flMotor = lVal;
@@ -65,7 +65,7 @@ void RobotState::setMotors(int8_t lVal, int8_t rVal)
     *blMotor = lVal;
     *brMotor = rVal;
 }
-void RobotState::setMotors(int8_t val)
+void RobotState::setMotors(uint8_t val)
 {
     std::lock_guard<std::mutex> lk(classMutex);
     *flMotor = val;
@@ -74,30 +74,30 @@ void RobotState::setMotors(int8_t val)
     *brMotor = val;
 }
 
-void RobotState::setIntakeMotor(int8_t val)
+void RobotState::setIntakeMotor(uint8_t val)
 {
     std::lock_guard<std::mutex> lk(classMutex);
     *intakeMotor = val;
 }
-void RobotState::setDumpMotor(int8_t val)
+void RobotState::setDumpMotor(uint8_t val)
 {
     std::lock_guard<std::mutex> lk(classMutex);
     *dumpMotor = val;
 }
 
-void RobotState::setLIntakeIndexer(int8_t val)
+void RobotState::setLIntakeIndexer(uint8_t val)
 {
     std::lock_guard<std::mutex> lk(classMutex);
     *lIntakeIndexer = val;
 }
-void RobotState::setRIntakeIndexer(int8_t val)
+void RobotState::setRIntakeIndexer(uint8_t val)
 {
     std::lock_guard<std::mutex> lk(classMutex);
     *rIntakeIndexer= val;
 }
 
 // Returns 1 byte int array of all motor values to be sent
-int8_t* RobotState::getRobotState()
+uint8_t* RobotState::getRobotState()
 {
     std::lock_guard<std::mutex> lk(classMutex);
     return motorStates;
@@ -106,12 +106,12 @@ int8_t* RobotState::getRobotState()
 void RobotState::killAllMotion()
 {
     std::lock_guard<std::mutex> lk(classMutex);
-    *flMotor = 0;
-    *frMotor = 0;
-    *blMotor = 0;
-    *brMotor = 0;
-    *intakeMotor = 0;
-    *dumpMotor = 0;
-    *lIntakeIndexer = 0;
-    *rIntakeIndexer = 0;
+    *flMotor = 128;
+    *frMotor = 128;
+    *blMotor = 128;
+    *brMotor = 128;
+    *intakeMotor = 128;
+    *dumpMotor = 128;
+    *lIntakeIndexer = 128;
+    *rIntakeIndexer = 128;
 }

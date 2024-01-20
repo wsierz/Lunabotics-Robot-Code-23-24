@@ -10,21 +10,21 @@ class RobotState
 
    double batteryVoltage;
 
-   int8_t motorStates[8];
+   uint8_t motorStates[8];
 
-   // All motor values in speed from -128 to 127 (8 bits)
+   // Forward motor values are 0, 256 with 128 being no motion
 
    // Driver motors
-   int8_t* flMotor;
-   int8_t* frMotor;
-   int8_t* brMotor;
-   int8_t* blMotor;
+   uint8_t* flMotor;
+   uint8_t* frMotor;
+   uint8_t* brMotor;
+   uint8_t* blMotor;
 
-   int8_t* intakeMotor;
-   int8_t* dumpMotor;
+   uint8_t* intakeMotor;
+   uint8_t* dumpMotor;
 
-   int8_t* lIntakeIndexer;
-   int8_t* rIntakeIndexer;
+   uint8_t* lIntakeIndexer;
+   uint8_t* rIntakeIndexer;
 
    int leftIntakeLoc;
 
@@ -35,23 +35,23 @@ class RobotState
    double getBatteryVoltage();
    void setBatteryVoltage(double val);
 
-   void setflMotor(int8_t val);
-   void setfrMotor(int8_t val);
-   void setblMotor(int8_t val);
-   void setbrMotor(int8_t val);
-   void setMotors(int8_t flVal, int8_t frVal, int8_t blVal, int8_t brVal);
-   void setMotors(int8_t lVal, int8_t rVal);
-   void setMotors(int8_t val);
+   void setflMotor(uint8_t val);
+   void setfrMotor(uint8_t val);
+   void setblMotor(uint8_t val);
+   void setbrMotor(uint8_t val);
+   void setMotors(uint8_t flVal, uint8_t frVal, uint8_t blVal, uint8_t brVal);
+   void setMotors(uint8_t lVal, uint8_t rVal);
+   void setMotors(uint8_t val);
 
-   void setIntakeMotor(int8_t val);
-   void setDumpMotor(int8_t val);
+   void setIntakeMotor(uint8_t val);
+   void setDumpMotor(uint8_t val);
 
-   void setLIntakeIndexer(int8_t val);
-   void setRIntakeIndexer(int8_t val);
+   void setLIntakeIndexer(uint8_t val);
+   void setRIntakeIndexer(uint8_t val);
 
 
   // Returns all motor status
-   int8_t*  getRobotState();
+   uint8_t*  getRobotState();
 
    void killAllMotion();
 };
