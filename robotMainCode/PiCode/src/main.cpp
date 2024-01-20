@@ -1,19 +1,18 @@
 #include <iostream>
 #include "../include/robotControlSM.h"
 #include "serial.h"
-#include <stdio.h>
-#include <stdint.h>
+#include <unistd.h>
 using namespace std;
 
 int main() {
     Serial serial("/dev/ttyACM0", 115200);
 
     // send info as a byte
-    uint8_t motorAmt = 0;
-    while (true) {
-      scanf(" %d", &motorAmt);
+    int motorAmt = 0;
+    while (motorAmt < 256) {
       serial.Send(motorAmt);
-      cout<<motorAmt;
+      motorAmt++;
+      usleep(100000);
     }
 
     cout << "finished";
