@@ -1,7 +1,10 @@
 #pragma once
 #include "robotState.h"
-#include <iostream>
+#include "communicator.h"
+#include "robotActuation.h"
+#include <chrono>
 
+#include <iostream>
 
 class RobotControlSM
  {
@@ -10,6 +13,10 @@ class RobotControlSM
    bool running;
    int state;
    RobotState* rbState;
+   Communicator* communicator;
+   RobotActuation* robotAcuator;
+   uint64_t lastStatusSentTime;
+   const int heartBeatInterval = 500; // In millis
 
    // Initilazation state
    void state0();
@@ -26,6 +33,9 @@ class RobotControlSM
    // Panic state
    void state4();
 
+   uint64_t getTime();
+
+   void sendStatus();
 
  public:
    void runStateMachine();

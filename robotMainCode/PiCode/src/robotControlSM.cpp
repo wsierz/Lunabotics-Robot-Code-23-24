@@ -29,11 +29,38 @@ void RobotControlSM::runStateMachine()
 
 }
 
+uint64_t RobotControlSM::getTime()
+{
+    return duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+
+}
+
+
 // Startup state
 void RobotControlSM::state0()
 {
     // Start up needed values
-    rbState = new RobotState;
+    rbState = new RobotState();
+    communicator = new Communicator();
+
+    lastStatusSentTime = getTime();
+
+    if (communicator->isDriverStationStatusRecived())
+    {
+        // Processes state, is ignored.
+    }
+
+    if (communicator->isDriverStationMessageRecived())
+    {
+        // Process Message, respond as needed
+    }
+
+    // If time to send heart beat, do so
+    if (getTime() < lastStatusSentTime + heartBeatInterval)
+    {
+        // Send status
+    }
+
 
 
     // move on to state 1
@@ -45,6 +72,22 @@ void RobotControlSM::state1()
 {
     rbState->killAllMotion();
 
+    if (communicator->isDriverStationStatusRecived())
+    {
+        // Processes state, is ignored.
+    }
+
+    if (communicator->isDriverStationMessageRecived())
+    {
+        // Process Message, respond as needed
+    }
+
+    // If time to send heart beat, do so
+    if (true)
+    {
+
+    }
+
     // Wait until signal recivied to enter next state
 }
 
@@ -52,6 +95,21 @@ void RobotControlSM::state1()
 void RobotControlSM::state2()
 {
     // connect comm protocol to the rb state
+    if (communicator->isDriverStationStatusRecived())
+    {
+        // Processes state, is ignored.
+    }
+
+    if (communicator->isDriverStationMessageRecived())
+    {
+        // Process Message, respond as needed
+    }
+
+    // If time to send heart beat, do so
+    if (true)
+    {
+
+    }
 }
 
 // Auto state
