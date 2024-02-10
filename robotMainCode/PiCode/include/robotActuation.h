@@ -6,5 +6,5 @@
 class RobotActuation{
 public:
 private:
-    RobotState rbState;
+    RobotState* rbState;
 };

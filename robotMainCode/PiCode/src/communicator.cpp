@@ -17,13 +17,10 @@ bool Communicator::isDriverStationStatusRecived()
 
 std::bitset<DS_MESSAGE_LEN> Communicator::readDriverStationMessage()
 {
-    std::bitset<DS_MESSAGE_LEN> * messPointer = &dsMessageBuff[currDSMessageBuffPos%2];
-    dsMessageRecived--;
-    if (dsMessageRecived)
-    {
-        currDSMessageBuffPos++;
-    }
-    return *messPointer;
+    std::bitset<DS_MESSAGE_LEN> mess = dsMessageBuff.front();
+    dsMessageBuff.pop();
+    dsMessageRecived = !dsMessageBuff.empty();
+    return mess;
 }
 
 std::bitset<DS_STAT_LEN> Communicator::readDriverStationStatus()
@@ -66,19 +63,5 @@ void Communicator::loadDSStatus(std::bitset<DS_STAT_LEN> * mess)
 
 void Communicator::loadDSMessage(std::bitset<DS_MESSAGE_LEN> * mess)
 {
-    if (dsMessageRecived == 2)
-    {
-        currDSMessageBuffPos++;
-        dsMessageBuff[currDSMessageBuffPos-1] = *mess;
-
-    }
-    else if (dsMessageRecived == 1)
-    {
-        dsMessageBuff[currDSMessageBuffPos-1] = *mess;
-    }
-    else
-    {
-        dsMessageBuff[currDSMessageBuffPos] = *mess;
-        dsMessageRecived = true;
-    }
+    dsMessageBuff.push(*mess);
 }

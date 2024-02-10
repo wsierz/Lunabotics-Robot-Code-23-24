@@ -1,6 +1,7 @@
 #pragma once
 #include <bitset>
 #include <mutex>
+#include <queue>
 
 // Defines driver station status length
 #define DS_STAT_LEN 32
@@ -8,19 +9,19 @@
 #define DS_MESSAGE_LEN 32
 // Defines robot status message length
 #define ROB_STAT_LEN 32
+#define MAX_QUEUE_LEN 15
 
 class Communicator
 {
 private:
-    int dsMessageRecived;
+    bool dsMessageRecived;
     int dsStatusRecived;
 
     std::bitset<DS_STAT_LEN> dsStatusBuff[2];
-    std::bitset<DS_MESSAGE_LEN> dsMessageBuff[2];
+    std::queue<std::bitset<DS_MESSAGE_LEN>> dsMessageBuff;
     std::bitset<ROB_STAT_LEN> robStatusBuff[2];
 
     int currDSStatusBuffPos;
-    int currDSMessageBuffPos;
     int currRobStatusBuffPos;
 
     void loadDSStatus(std::bitset<DS_STAT_LEN> * mess);

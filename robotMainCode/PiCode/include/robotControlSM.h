@@ -37,6 +37,8 @@ class RobotControlSM
 
    void sendStatus();
 
+   void processMessage();
+
  public:
-   void runStateMachine();
+   void runStateMachine(RobotState* _rbState, Communicator* _communicator);
 };

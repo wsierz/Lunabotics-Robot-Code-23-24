@@ -1,8 +1,11 @@
 #include "../include/robotControlSM.h"
 #include <iostream>
 
-void RobotControlSM::runStateMachine()
+void RobotControlSM::runStateMachine(RobotState* _rbState, Communicator* _communicator)
 {
+    rbState = _rbState;
+    communicator = _communicator;
+
     running = true;
     state = 0;
     while (running)
@@ -32,8 +35,18 @@ void RobotControlSM::runStateMachine()
 uint64_t RobotControlSM::getTime()
 {
     return duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+}
+
+void RobotControlSM::processMessage()
+{
 
 }
+
+void RobotControlSM::sendStatus()
+{
+    communicator->sendRobotState(rbState->getRobotState());
+}
+
 
 
 // Startup state
@@ -58,7 +71,7 @@ void RobotControlSM::state0()
     // If time to send heart beat, do so
     if (getTime() < lastStatusSentTime + heartBeatInterval)
     {
-        // Send status
+        sendStatus();
     }
 
 

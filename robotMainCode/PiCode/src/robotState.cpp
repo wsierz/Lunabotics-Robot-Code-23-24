@@ -103,6 +103,7 @@ uint8_t* RobotState::getRobotState()
     return motorStates;
 }
 
+
 void RobotState::killAllMotion()
 {
     std::lock_guard<std::mutex> lk(classMutex);
