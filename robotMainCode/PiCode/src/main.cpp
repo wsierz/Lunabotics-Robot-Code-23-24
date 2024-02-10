@@ -1,10 +1,7 @@
 #include <iostream>
-<<<<<<< HEAD
-=======
 #include "../include/robotControlSM.h"
 #include "../include/communicatorSM.h"
 #include "../include/serial.h"
->>>>>>> 8a15b4c2fe104e341fe6387a8cfe61d1fd246b7b
 #include <unistd.h>
 
 #include "../include/robotControlSM.h"
@@ -14,41 +11,20 @@
 
 
 int main() {
-<<<<<<< HEAD
+  Serial serial("/dev/ttyACM0", 115200);
 
-  Communicator* com = new Communicator();
-
-
-
-
-    // Serial serial("/dev/ttyACM0", 115200);
-    //
-    // // send info as a byte
-    // int motorAmt = 0;
-    // while (motorAmt < 256) {
-    //   serial.Send(motorAmt);
-    //   motorAmt++;
-    //   usleep(100000);
-    // }
-    //
-    // std::cout << "finished";
-=======
-  /*Serial serial("/dev/ttyACM0", 115200);
-
-  // send info as a byte
-  int motorAmt = 0;
-  while (motorAmt < 256) {
-    serial.Send(motorAmt);
-    motorAmt++;
+  // send info as a string
+  std::string data = "m255m255";
+  while (true) {
+    serial.Send(data);
     usleep(100000);
   }
 
-  std::cout << "finished";*/
->>>>>>> 8a15b4c2fe104e341fe6387a8cfe61d1fd246b7b
+  std::cout << "finished";
 
-  CommunicatorSM robotComs;
+  /*CommunicatorSM robotComs;
   while (true) {
     robotComs.runStateMachine();
-  }
+  }*/
   return 0;
 }
