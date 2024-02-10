@@ -44,12 +44,11 @@ void RobotControlSM::processMessage()
 
 void RobotControlSM::sendStatus()
 {
-    communicator->sendRobotState(rbState->getRobotState());
+    // Convert robot state into bitset for transmission
 }
 
 
 
-// Startup state
 void RobotControlSM::state0()
 {
     // Start up needed values
