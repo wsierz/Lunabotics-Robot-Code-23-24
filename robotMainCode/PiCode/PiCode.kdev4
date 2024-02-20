@@ -1,4 +1,4 @@
 [Project]
-CreatedFrom=
-Manager=KDevGenericManager
+CreatedFrom=meson.build
+Manager=KDevMesonManager
 Name=PiCode

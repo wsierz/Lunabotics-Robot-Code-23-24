@@ -5,6 +5,7 @@ Communicator::Communicator()
 
 }
 
+
 bool Communicator::isDriverStationMessageRecived()
 {
     return dsMessageRecived;

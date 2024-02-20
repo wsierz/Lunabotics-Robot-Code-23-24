@@ -1,4 +1,5 @@
-#include <zmq.hpp>
+#include <sys/types.h>
+// #include <zmq.hpp>
 #pragma once
 
 struct robotMessage_t {
@@ -20,15 +21,15 @@ public:
 
 private:
     robotMessage_t robotMessage;
-    int state = 0;
-
-    // Initilaize
-    void state0(zmq::context_t* ctx, zmq::socket_t* sock);
-
-    // Read
-    void state1(zmq::socket_t* sock);
-
-    // Write
-    void state2(zmq::socket_t* sock);
-
+//     int state = 0;
+//
+//     // Initilaize
+//     void state0(zmq::context_t* ctx, zmq::socket_t* sock);
+//
+//     // Read
+//     void state1(zmq::socket_t* sock);
+//
+//     // Write
+//     void state2(zmq::socket_t* sock);
+//
 };

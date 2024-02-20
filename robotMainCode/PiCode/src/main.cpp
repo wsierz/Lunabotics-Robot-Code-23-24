@@ -1,30 +1,31 @@
+#include "communicatorSM.h"
+#include "robotActuation.h"
+
 #include <iostream>
-#include "../include/robotControlSM.h"
-#include "../include/communicatorSM.h"
-#include "../include/serial.h"
-#include <unistd.h>
-
-#include "../include/robotControlSM.h"
-#include "../include/serial.h"
-#include "../include/communicatorSM.h"
+#include <string>
 
 
+void handler(  const asio::error_code& error, std::size_t bytes_transferred)
+{
+    std::cout << "sIt worked!";
+}
 
 int main() {
-  Serial serial("/dev/ttyACM0", 115200);
+  std::cout << "Robot starting up...\n";
 
-  // send info as a string
-  std::string data = "m255m255";
-  while (true) {
-    serial.Send(data);
-    usleep(100000);
-  }
 
-  std::cout << "finished";
+  asio::io_service io;
 
-  /*CommunicatorSM robotComs;
-  while (true) {
-    robotComs.runStateMachine();
-  }*/
+  asio::serial_port serial(io);
+
+  serial.open("/dev/pts/6");
+
+  //asio::write(serial, asio::buffer("TestTestTest"));
+
+  asio::async_write(serial, asio::buffer("TestTestTest\n"), handler);
+
+  while(true);
   return 0;
 }
+
+
