@@ -1,30 +1,21 @@
-#include "communicatorSM.h"
 #include "robotActuation.h"
 
 #include <iostream>
 #include <string>
 
 
-void handler(  const asio::error_code& error, std::size_t bytes_transferred)
-{
-    std::cout << "sIt worked!";
-}
-
 int main() {
-  std::cout << "Robot starting up...\n";
 
+  RobotActuation * rbActuator = new RobotActuation("/dev/ttyACM0", 115200);
 
-  asio::io_service io;
+  rbActuator->sendDriveMotors(-100, -100, -100, -100);
 
-  asio::serial_port serial(io);
+  while(true)
+  {
+    rbActuator->sendCurrentQueue();
+    rbActuator->run();
+  }
 
-  serial.open("/dev/pts/6");
-
-  //asio::write(serial, asio::buffer("TestTestTest"));
-
-  asio::async_write(serial, asio::buffer("TestTestTest\n"), handler);
-
-  while(true);
   return 0;
 }
 

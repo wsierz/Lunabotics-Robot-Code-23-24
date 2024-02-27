@@ -2,29 +2,55 @@
 
 #include "asio.hpp"
 #include <queue>
+#include <cstdint>
+
+#define SERIAL_MES_LEN 13
 
  // This class will use the Adafruit feather to acutaly control the robot based on Robot state. This is TBD
 
-class RobotActuation{
-
-struct OutgoingMessage
+union SerialPacket
 {
+    uint8_t packet[SERIAL_MES_LEN];
+    struct {
+        private: const uint16_t syncBytes = 0xBEEF;
+        public:
+        uint8_t messageType = 0x00;
+        uint8_t data[8] = {0};
+        uint16_t checksum = 0x0000;
+    } portions;
+
 
 };
 
+class RobotActuation{
+
 public:
     RobotActuation(std::string port, unsigned int baud_rate);
-    void enqueueMessage();
     void readNextMessage();
+    void sendDriveMotors(int8_t frontLeftMotor, int8_t frontRightMotor, int8_t backLeftMotor, int8_t backRightMotor);
+
+    int sendCurrentQueue();
+    void run();
 
 private:
 
     asio::io_service io;
     asio::serial_port serial;
 
-    std::queue<OutgoingMessage> outgoingQueue;
+    std::queue<SerialPacket> outgoingQueue;
+    uint8_t outgoingBytes[13];
+    int positonOfNextOutgoingByte;
+    bool byteQueueFull= false;
+    bool serialTransmit = false;
 
-    void sendMessageHandler();
+    void sendBytesHandler(const asio::error_code& error, std::size_t bytes_transferred);
+    
     void reciveMessageHandler();
+
+    void enqueueMessage(SerialPacket * mess);
+
+    void addChecksum(SerialPacket * packet);
+
+    uint16_t fletcher16(const uint8_t *data, size_t len);
 
 };

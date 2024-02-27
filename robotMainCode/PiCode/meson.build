@@ -10,8 +10,8 @@ add_global_arguments('-DSOME_TOKEN=value', language : 'cpp')
 
 inc = include_directories('include')
 
-proj_sources = ['src/main.cpp', 'src/communicatorSM.cpp', 'src/communicator.cpp']
-proj_headers = ['include/robotControlSM.h', 'include/communicatorSM.h', 'include/communicator.h']
+proj_sources = ['src/main.cpp', 'src/communicatorSM.cpp', 'src/communicator.cpp', 'src/robotActuation.cpp']
+proj_headers = ['include/robotControlSM.h', 'include/communicatorSM.h', 'include/communicator.h', 'include/robotActuation.h']
 install_headers(proj_headers)
 
 asio = subproject('asio')
