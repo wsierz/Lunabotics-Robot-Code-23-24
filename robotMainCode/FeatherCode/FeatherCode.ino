@@ -59,7 +59,7 @@ void update() {
   if (!Serial.available()) {
     return;
   }
-  //is data abailable
+  //is data available
   uint8_t incomingByte = Serial.read();
   //check if we are reading a packet
   if (currentIndex == INDEX_NO_PACKET) {
@@ -80,7 +80,7 @@ void update() {
     packet[currentIndex++] = incomingByte;
     if (currentIndex >= PACKET_SIZE) {
       //do something with that packet
-      processPacket;
+      processPacket();
       Serial.print("Packet Received");
       currentIndex = 0;
     }
@@ -92,9 +92,6 @@ void update() {
 
 void processPacket()
 {
-  uint16_t correctChecksum = fletcher16(packet, PACKET_SIZE);
-  uint8_t lowChecksumByte = correctChecksum & 0xff;
-  uint8_t highChecksumByte = correctChecksum >> 8;
 
   // Ensure matching checksum, else return from function call. 
   if (!verifyChecksum)
@@ -122,9 +119,9 @@ inline bool verifyChecksum()
 {
   uint16_t correctChecksum = fletcher16(packet, PACKET_SIZE-2);
   uint8_t lowChecksumByte = correctChecksum & 0xff;
-  uint8_t highChecksumByte = correctChecksum>> 8;
+  uint8_t highChecksumByte = (correctChecksum>> 8) & 0xff;
 
-  return  lowChecksumByte == packet[1] && highChecksumByte == packet[0];
+  return  lowChecksumByte == packet[12] && highChecksumByte == packet[11];
 }
 
 uint16_t fletcher16(const uint8_t *data, size_t len) {

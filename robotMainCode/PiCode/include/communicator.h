@@ -29,6 +29,10 @@ private:
 
     std::mutex classMutex;
 
+
+
+    
+
 public:
     Communicator();
 

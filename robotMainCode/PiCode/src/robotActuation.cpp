@@ -30,6 +30,39 @@ void RobotActuation::sendDriveMotors(int8_t frontLeftMotor, int8_t frontRightMot
     enqueueMessage(&packet);
 }
 
+void RobotActuation::sendIntakeMotor(int8_t intakeMotorSpeed)
+{
+    SerialPacket packet = {0xBE, 0xEF};
+
+    packet.portions.messageType = 0x83;
+
+    packet.portions.data[0] = intakeMotorSpeed;
+
+    enqueueMessage(&packet);
+}
+
+void RobotActuation::sendDumpMotor(int8_t dumpMotorSpeed)
+{
+    SerialPacket packet = {0xBE, 0xEF};
+
+    packet.portions.messageType = 0x84;
+
+    packet.portions.data[0] = dumpMotorSpeed;
+
+    enqueueMessage(&packet);
+}
+
+void RobotActuation::sendIntakePosition(int8_t angle)
+{
+    SerialPacket packet = {0xBE, 0xEF};
+
+    packet.portions.messageType = 0x82;
+
+    packet.portions.data[0] = angle;
+
+    enqueueMessage(&packet);
+}
+
 int RobotActuation::sendCurrentQueue()
 {
     if (byteQueueFull && !serialTransmit)
@@ -48,9 +81,23 @@ int RobotActuation::sendCurrentQueue()
         SerialPacket * packet = &outgoingQueue.front();
         addChecksum(packet);
 
+            
+        for (int i = 0; i < 13; i++)
+        {
+            std::cout << +packet->packet[i] << " ";
+        }
+        std::cout << std::endl;
+
+
         std::copy(std::begin(packet->packet), std::end(packet->packet), outgoingBytes);
+
+        for (int i = 0; i < 13; i++)
+        {
+            std::cout << +outgoingBytes[i] << " ";
+        }
+        std::cout << std::endl;
+
         outgoingQueue.pop();
-        std::cout << outgoingQueue.front().portions.messageType;
         byteQueueFull = true;
     }
     return 0;
@@ -87,9 +134,10 @@ void RobotActuation::enqueueMessage(SerialPacket *mess)
 void RobotActuation::addChecksum(SerialPacket * packet)
 {
     uint8_t * ptr = packet->packet;
-    packet->portions.checksum = fletcher16(ptr, SERIAL_MES_LEN-2);
+    uint16_t checksum= fletcher16(ptr, SERIAL_MES_LEN-2);
+    packet->portions.checksumHigh = (checksum >> 8) & 0xff;
+    packet->portions.checksumLow = checksum & 0xff; 
 }
-
 
 uint16_t RobotActuation::fletcher16(const uint8_t *data, size_t len) {
 	uint32_t c0, c1;

@@ -16,24 +16,27 @@ union SerialPacket
         public:
         uint8_t messageType = 0x00;
         uint8_t data[8] = {0};
-        uint16_t checksum = 0x0000;
+        uint8_t checksumHigh;
+        uint8_t checksumLow;
     } portions;
-
-
 };
 
-class RobotActuation{
+class RobotActuation 
+{
 
 public:
     RobotActuation(std::string port, unsigned int baud_rate);
     void readNextMessage();
     void sendDriveMotors(int8_t frontLeftMotor, int8_t frontRightMotor, int8_t backLeftMotor, int8_t backRightMotor);
+    void sendIntakeMotor(int8_t intakeMotorSpeed);
+    void sendDumpMotor(int8_t dumpMotorSpeed);
+    void sendIntakePosition(int8_t angle);
+
 
     int sendCurrentQueue();
     void run();
 
 private:
-
     asio::io_service io;
     asio::serial_port serial;
 

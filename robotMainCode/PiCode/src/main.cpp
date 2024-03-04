@@ -4,11 +4,12 @@
 #include <string>
 
 
-int main() {
+int main() 
+{
 
-  RobotActuation * rbActuator = new RobotActuation("/dev/ttyACM0", 115200);
+  RobotActuation * rbActuator = new RobotActuation("/dev/ttyACM1", 115200);
 
-  rbActuator->sendDriveMotors(-100, -100, -100, -100);
+  rbActuator->sendDriveMotors(100, 0, 0, 0);
 
   while(true)
   {
