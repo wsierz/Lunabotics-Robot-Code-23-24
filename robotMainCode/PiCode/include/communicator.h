@@ -1,49 +1,35 @@
 #pragma once
-#include <bitset>
 #include <mutex>
 #include <queue>
+#include "asio.hpp"
+#include <string>
+#include <iostream>
+#include "structs.h"
 
-// Defines driver station status length
-#define DS_STAT_LEN 32
-// Defines driver station message length
-#define DS_MESSAGE_LEN 32
-// Defines robot status message length
-#define ROB_STAT_LEN 32
-#define MAX_QUEUE_LEN 15
+// Defines length for each packet type
+#define MESS_0x01_LEN 11
+
 
 class Communicator
 {
-private:
-    bool dsMessageRecived;
-    int dsStatusRecived;
-
-    std::bitset<DS_STAT_LEN> dsStatusBuff[2];
-    std::queue<std::bitset<DS_MESSAGE_LEN>> dsMessageBuff;
-    std::bitset<ROB_STAT_LEN> robStatusBuff[2];
-
-    int currDSStatusBuffPos;
-    int currRobStatusBuffPos;
-
-    void loadDSStatus(std::bitset<DS_STAT_LEN> * mess);
-    void loadDSMessage(std::bitset<DS_MESSAGE_LEN> * mess);
-
-    std::mutex classMutex;
-
-
-
-    
-
 public:
     Communicator();
+    void readIncomingPacket();
+    void send(asio::ip::tcp::socket & socket, const std::string& message);
+    RobotState getRobotState();
+    
 
-    // Sends the robot status message to the driver station. Defined in documentation
-    bool sendRobotState(std::bitset<ROB_STAT_LEN> message);
+private:
+    asio::io_service io;
+    asio::ip::tcp::socket socket;
+    asio::ip::tcp::acceptor acceptor;
+    asio::streambuf incomingBuffer;
+    uint8_t data[MESS_0x01_LEN];
+    std::mutex mutex;
+    RobotState rbState;
 
-    // Used to send direct robot messages outside of controller status
-    bool isDriverStationMessageRecived();
-    std::bitset<DS_MESSAGE_LEN> readDriverStationMessage();
+    void proccesMessage();
+    
+    void processControllerState(uint8_t* data);
 
-    // Used to flag and to read from driver station message. Only the last message is read. If another packet arrices before this one is handled, it is replaced by the new one.
-    bool isDriverStationStatusRecived();
-    std::bitset<DS_STAT_LEN> readDriverStationStatus();
 };

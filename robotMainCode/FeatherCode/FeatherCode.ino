@@ -23,7 +23,7 @@
 
 #include <stdint.h>
 
-const int FRONT_LEFT_MOTOR_PIN = 4;
+const int FRONT_LEFT_MOTOR_PIN = 6;
 const int BACK_LEFT_MOTOR_PIN = 8;
 const int FRONT_RIGHT_MOTOR_PIN = 8;
 const int BACK_RIGHT_MOTOR_PIN = 8;
@@ -109,10 +109,10 @@ void processPacket()
 
 inline void setDriveMotors()
 {
-    frontLeftMotor.writeMicroseconds(map(packet[3], -100, 100, 1500, 2000));
-    frontRightMotor.writeMicroseconds(map(packet[4], -100, 100, 1500, 2000));
-    backLeftMotor.writeMicroseconds(map(packet[5], -100, 100, 1500, 2000));
-    backRightMotor.writeMicroseconds(map(packet[6], -100, 100, 1500, 2000));
+    frontLeftMotor.writeMicroseconds(map((int8_t)packet[3], -100, 100, 1000, 2000));
+    frontRightMotor.writeMicroseconds(map((int8_t)packet[4], -100, 100, 1000, 2000));
+    backLeftMotor.writeMicroseconds(map((int8_t)packet[5], -100, 100, 1000, 2000));
+    backRightMotor.writeMicroseconds(map((int8_t)packet[6], -100, 100, 1000, 2000));
 }
 
 inline bool verifyChecksum()

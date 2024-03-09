@@ -1,4 +1,4 @@
-#include "../include/robotControl.h"
+#include "robotControl.h"
 
 int RobotControl::robotRunStateMachine()
 {
@@ -69,4 +69,24 @@ int RobotControl::runPanicState()
     currentState = -1;
 
     return -1;
+}
+
+int RobotControl::setDumpSpeed(int8_t val)
+{
+    return 0;
+}
+
+int RobotControl::setIntakePosition(int8_t val)
+{
+    return 0;
+}
+
+int RobotControl::setIntakeSpeed(int8_t val)
+{
+    return 0;
+}
+
+int RobotControl::setDriveValues(int8_t flVal, int8_t frVal, int8_t blVal, int8_t brVal)
+{
+    return 0;
 }

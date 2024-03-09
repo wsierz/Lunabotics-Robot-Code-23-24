@@ -1,68 +1,68 @@
-#include "../include/communicator.h"
+#include "communicator.h"
 
-Communicator::Communicator()
+
+Communicator::Communicator(): io(), socket(io),
+    acceptor(io, asio::ip::tcp::endpoint(asio::ip::tcp::v4(), 2000))
 {
+    acceptor.accept(socket);
 
 }
 
-
-bool Communicator::isDriverStationMessageRecived()
+void Communicator::readIncomingPacket()
 {
-    return dsMessageRecived;
+    asio::read(socket, asio::buffer(data, MESS_0x01_LEN));
+    //asio::read_until( socket, incomingBuffer, "/n" );
+    proccesMessage();
+    
 }
 
-bool Communicator::isDriverStationStatusRecived()
+void Communicator::send(asio::ip::tcp::socket &socket, const std::string &message)
 {
-    return dsStatusRecived;
+    const std::string msg = message + "\n";
+    asio::write( socket, asio::buffer(message) );
 }
 
-std::bitset<DS_MESSAGE_LEN> Communicator::readDriverStationMessage()
+RobotState Communicator::getRobotState()
 {
-    std::bitset<DS_MESSAGE_LEN> mess = dsMessageBuff.front();
-    dsMessageBuff.pop();
-    dsMessageRecived = !dsMessageBuff.empty();
-    return mess;
+    const std::lock_guard<std::mutex> lock(mutex);
+    return rbState;
 }
 
-std::bitset<DS_STAT_LEN> Communicator::readDriverStationStatus()
+void Communicator::proccesMessage()
 {
-    std::bitset<DS_STAT_LEN> * messPointer = &dsStatusBuff[currDSStatusBuffPos%2];
-    dsStatusRecived--;
-    if (dsMessageRecived)
+    // //const std::lock_guard<std::mutex> lock(mutex);
+
+    // incomingBuffer.commit(MESS_0x01_LEN);
+
+    // std::istream is(&incomingBuffer);
+    // std::string s;
+    // is >> s;
+
+    // uint8_t data[s.length() + 1];
+	// strcpy((char*)data, s.c_str()); 
+
+    
+    for (int i = 0; i < MESS_0x01_LEN; i++)
     {
-        currDSStatusBuffPos++;
+        std::cout <<std::hex<< unsigned(data[i]);
     }
-    return *messPointer;
-}
+    std::cout << std::endl;
 
-
-//TBD
-bool Communicator::sendRobotState(std::bitset<ROB_STAT_LEN> message)
-{
-    return true;
-}
-
-void Communicator::loadDSStatus(std::bitset<DS_STAT_LEN> * mess)
-{
-    if (dsStatusRecived == 2)
+    if(data[0] == 0x01)
     {
-        currDSStatusBuffPos++;
-        dsStatusBuff[currDSStatusBuffPos-1] = *mess;
-
-    }
-    else if (dsStatusRecived == 1)
-    {
-        dsStatusBuff[currDSStatusBuffPos-1] = *mess;
-    }
-    else
-    {
-        dsStatusBuff[currDSStatusBuffPos] = *mess;
-        dsStatusRecived = true;
+        std::cout << "Correct Packet Type" << std::endl;
+        processControllerState(data);
+        incomingBuffer.consume(MESS_0x01_LEN);
     }
 
+    
 }
 
-void Communicator::loadDSMessage(std::bitset<DS_MESSAGE_LEN> * mess)
+void Communicator::processControllerState(uint8_t* data)
 {
-    dsMessageBuff.push(*mess);
+    rbState.flMotor = data[1];
+    rbState.blMotor = data[1];
+
+    rbState.frMotor = data[3];
+    rbState.brMotor = data[3];
 }
