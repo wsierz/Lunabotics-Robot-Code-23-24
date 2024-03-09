@@ -1,5 +1,5 @@
-RobotMainCode/PiCode/subproject/
-!RobotMainCode/PiCode/subproject/asio.wrap
+RobotMainCode/PiCode/subprojects/
+!RobotMainCode/PiCode/subprojects/asio.wrap
 RobotMainCode/PiCode/.kdev4
 RobotMainCode/PiCode/PiCode.kdev4
 
