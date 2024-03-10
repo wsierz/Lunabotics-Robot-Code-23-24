@@ -41,7 +41,7 @@ int currentIndex = 0;
 
 const int INDEX_NO_PACKET = -1;
 
-void setup() {
+void _setup() {
   Serial.begin(115200);
 
   frontLeftMotor.attach(FRONT_LEFT_MOTOR_PIN);
@@ -50,7 +50,7 @@ void setup() {
   backRightMotor.attach(BACK_RIGHT_MOTOR_PIN);
 }
 
-void loop() {
+void _loop() {
   update();
 }
 
