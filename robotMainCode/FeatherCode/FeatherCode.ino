@@ -1,4 +1,8 @@
 #include <Servo.h>
+#include <Adafruit_MCP2515.h>
+extern "C" {
+#include "pico/bootrom.h"
+}
 
 // const int BUFFER_SIZE = 1;
 // char buf[BUFFER_SIZE];
@@ -23,10 +27,27 @@
 
 #include <stdint.h>
 
-const int FRONT_LEFT_MOTOR_PIN = 6;
-const int BACK_LEFT_MOTOR_PIN = 8;
-const int FRONT_RIGHT_MOTOR_PIN = 8;
-const int BACK_RIGHT_MOTOR_PIN = 8;
+#define CAN_ID_MANUFACTURER_REV 5
+#define CAN_ID_DEVICE_TYPE_MOTOR_CONTROLLER 2
+
+#define SPARK_MAX_API_CLASS_DUTY_CYCLE 0
+#define SPARK_MAX_API_CLASS_HEARTBEAT 9
+
+#define SPARK_MAX_API_INDEX_DUTY_CYCLE 2
+#define SPARK_MAX_API_INDEX_HEARTBEAT 2
+
+#define SPARK_MAX_ID_MAX 31
+
+#define ROBOT_TIMEOUT_MS (2 * 1000)
+
+// Set CAN bus baud rate
+#define CAN_BAUDRATE (1000000)
+Adafruit_MCP2515 mcp(PIN_CAN_CS);
+
+const int FRONT_LEFT_MOTOR_PIN = 10;
+const int BACK_LEFT_MOTOR_PIN =  12;
+const int FRONT_RIGHT_MOTOR_PIN = 6;
+const int BACK_RIGHT_MOTOR_PIN = 13;
 
 Servo frontLeftMotor;
 Servo backLeftMotor;
@@ -41,21 +62,90 @@ int currentIndex = 0;
 
 const int INDEX_NO_PACKET = -1;
 
-void _setup() {
+bool SparkMaxEnabled[SPARK_MAX_ID_MAX];
+float intakeSpeed = 0.0;
+float dumpSpeed = 0.0;
+
+unsigned long lastPacket;
+
+void setup() {
   Serial.begin(115200);
+  while(!Serial) delay(10);
+
+  Serial.println("MCP2515 Sender test setup!");
+  if (!mcp.begin(CAN_BAUDRATE)) {
+    Serial.println("Error initializing MCP2515.");
+    while(1) delay(10);
+  }
+  Serial.println("MCP2515 chip found");
 
   frontLeftMotor.attach(FRONT_LEFT_MOTOR_PIN);
   backLeftMotor.attach(BACK_LEFT_MOTOR_PIN);
   frontRightMotor.attach(FRONT_RIGHT_MOTOR_PIN);
   backRightMotor.attach(BACK_RIGHT_MOTOR_PIN);
+
+  for(int i = 0; i < SPARK_MAX_ID_MAX; i++) {
+    SetSparkMaxEnabled(i, false);
+  }
+
+  Serial.println("Setup complete");
 }
 
-void _loop() {
-  update();
+void loop() {
+  updateSerial();
+
+  int pins[6] = {15, 25, 9, 11, 27, 29};
+  for(int i = 0; i < 6; i++) {
+    int pin = pins[i];
+    Servo servo;
+    Serial.printf("Servo %d\n", pin);
+    if(servo.attach(pin)) {
+      servo.writeMicroseconds(1800);
+      delay(2500);
+      servo.writeMicroseconds(1500);
+    } else {
+      Serial.println("Attach failed!");
+    }
+
+    updateSerial();
+  }
+
+  // Serial.println("Front left");
+  // setDriveMotors(50, 0, 0, 0);
+  // updateSerial();
+  // delay(1000);
+
+  // Serial.println("Front right");
+  // setDriveMotors(0, 50, 0, 0);
+  // updateSerial();
+  // delay(1000);
+
+  // Serial.println("back left");
+  // setDriveMotors(0, 0, 50, 0);
+  // updateSerial();
+  // delay(1000);
+
+  // Serial.println("back right");
+  // setDriveMotors(0, 0, 0, 50);
+  // updateSerial();
+  // delay(1000);
+
+
+  // if(millis() - lastPacket > ROBOT_TIMEOUT_MS) {
+  //   intakeSpeed = 0.0;
+  //   SendSparkMaxSpeed(9, 0.0);
+  //   setDriveMotors(1, 0, 0, 0);
+    
+  //   for(int i = 0; i < SPARK_MAX_ID_MAX; i++) {
+  //     SetSparkMaxEnabled(i, false);
+  //   }
+  // }
+
+  // delay(1); // Note: we need a delay in between CAN packets
+  // SendSparkMaxHeartbeat();
 }
 
-void update() {
-
+void updateSerial() {
   if (!Serial.available()) {
     return;
   }
@@ -80,44 +170,64 @@ void update() {
     packet[currentIndex++] = incomingByte;
     if (currentIndex >= PACKET_SIZE) {
       //do something with that packet
+      Serial.println("Packet Received");
       processPacket();
-      Serial.print("Packet Received");
       currentIndex = 0;
     }
   }
-  // Update motors and send motor ack if needed
-  // Send heartbeat if needed
-  // Send telemetry data
-} 
+}
 
 void processPacket()
 {
-
   // Ensure matching checksum, else return from function call. 
   if (!verifyChecksum)
   {
+    Serial.println("Bad checksum");
     return;
   }
+
+  lastPacket = millis();
 
   // Packet has a valid checksum, now process
 
   switch (packet[2]) {
     case 0x81:
-      setDriveMotors();
+      handleSetDriverMotorPacket();
+      break;
+    case 0x83:
+      handleSetIntakeSpeedPacket();
+      break;
+    case 0xA0:
+      Serial.println("Enter bootloader Mode"); 
+      reset_usb_boot(1 << LED_BUILTIN, 0);
+      break;
   }
 }
 
-inline void setDriveMotors()
+void handleSetIntakeSpeedPacket() {
+  uint8_t speed = packet[3];
+
+  intakeSpeed = ((float) speed) / 100.0;
+  Serial.println("Set intake speed");
+  SendSparkMaxSpeed(9, intakeSpeed);
+  SetSparkMaxEnabled(9, true);
+}
+
+void handleSetDriverMotorPacket()
 {
-    frontLeftMotor.writeMicroseconds(map((int8_t)packet[3], -100, 100, 1000, 2000));
-    frontRightMotor.writeMicroseconds(map((int8_t)packet[4], -100, 100, 1000, 2000));
-    backLeftMotor.writeMicroseconds(map((int8_t)packet[5], -100, 100, 1000, 2000));
-    backRightMotor.writeMicroseconds(map((int8_t)packet[6], -100, 100, 1000, 2000));
+  setDriveMotors((int8_t)packet[3], (int8_t)packet[4], (int8_t)packet[5], (int8_t)packet[6]);
+}
+
+void setDriveMotors(int8_t frontLeft, int8_t frontRight, int8_t backLeft, int8_t backRight) {
+  frontLeftMotor.writeMicroseconds(map(frontLeft, -100, 100, 1000, 2000));
+  frontRightMotor.writeMicroseconds(map(frontRight, -100, 100, 1000, 2000));
+  backLeftMotor.writeMicroseconds(map(backLeft, -100, 100, 1000, 2000));
+  backRightMotor.writeMicroseconds(map(backRight, -100, 100, 1000, 2000));
 }
 
 inline bool verifyChecksum()
 {
-  uint16_t correctChecksum = fletcher16(packet, PACKET_SIZE-2);
+   uint16_t correctChecksum = fletcher16(packet, PACKET_SIZE-2);
   uint8_t lowChecksumByte = correctChecksum & 0xff;
   uint8_t highChecksumByte = (correctChecksum>> 8) & 0xff;
 
@@ -143,4 +253,62 @@ uint16_t fletcher16(const uint8_t *data, size_t len) {
 		c1 = c1 % 255;
    }
    return (c1 << 8 | c0);
+}
+
+typedef union
+{
+  float number;
+  uint8_t bytes[4];
+} float_union_t;
+
+uint32_t CreateSparkMaxID(int api_class, int api_index, int device_id) {
+  uint32_t device_id_bits = device_id & 0x3F; // Bits [0-5] are the device ID
+  uint32_t api_index_bits = (api_index & 0x0F) << 6; // Bits [6-9] are the API index
+  uint32_t api_class_bits = (api_class & 0x3F) << 10; // Bits [10-15] are the API class
+  uint32_t manufacturer_id_bits = (CAN_ID_MANUFACTURER_REV & 0xFF) << 16;
+  uint32_t device_type_bits  = (CAN_ID_DEVICE_TYPE_MOTOR_CONTROLLER & 0x1F) << 24;
+  uint32_t id = device_id_bits | api_index_bits | api_class_bits | manufacturer_id_bits | device_type_bits;
+
+  return id;
+}
+
+void SendSparkMaxSpeed(int motorID, float speed) {
+  float_union_t speed_bytes;
+  speed_bytes.number = speed;
+
+  uint32_t packetID = CreateSparkMaxID(SPARK_MAX_API_CLASS_DUTY_CYCLE, SPARK_MAX_API_INDEX_DUTY_CYCLE, motorID);
+  mcp.beginExtendedPacket(packetID);
+  mcp.write(speed_bytes.bytes[0]);
+  mcp.write(speed_bytes.bytes[1]);
+  mcp.write(speed_bytes.bytes[2]);
+  mcp.write(speed_bytes.bytes[3]);
+  mcp.write(0x00);
+  mcp.write(0x00);
+  mcp.write(0x00);
+  mcp.write(0x00);
+  mcp.endPacket();
+}
+
+void SendSparkMaxHeartbeat() {
+  uint32_t packetID = CreateSparkMaxID(SPARK_MAX_API_CLASS_HEARTBEAT, SPARK_MAX_API_INDEX_HEARTBEAT, 0); 
+  uint8_t bytes[8] = {0, 0};
+
+  for(int i = 0; i < SPARK_MAX_ID_MAX; i++) {
+    int byte = i / 8;
+    int bit = i % 8;
+
+    if(SparkMaxEnabled[i]) {
+      bytes[byte] |= (0x01 << bit);
+    }
+  }
+
+  mcp.beginExtendedPacket(packetID);
+  for(int i = 0; i < 8; i++) {
+    mcp.write(bytes[i]);
+  }
+  mcp.endPacket();
+}
+
+void SetSparkMaxEnabled(int device_id, bool enabled) {
+  SparkMaxEnabled[device_id] = enabled;
 }
