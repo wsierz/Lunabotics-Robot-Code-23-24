@@ -1,0 +1,9471 @@
+# callgrind format
+version: 1
+creator: callgrind-3.22.0
+pid: 398524
+cmd:  ./build/botCode
+part: 1
+
+
+desc: I1 cache: 
+desc: D1 cache: 
+desc: LL cache: 
+
+desc: Timerange: Basic block 0 - 486320
+desc: Trigger: Program termination
+
+positions: line
+events: Ir
+summary: 2740563
+
+
+ob=(3) /usr/lib/libm.so.6
+fl=(3) ???
+fn=(3358) fma
+0 6
+
+fn=(3368) __pow_finite
+0 8
+
+fn=(4066) 0x0000000000010770
+0 12
+
+fn=(3352) __atan2_finite
+0 9
+
+fn=(3362) __acos_finite
+0 8
+
+fn=(3382) cosf
+0 9
+
+fn=(3374) logf
+0 9
+
+fn=(3348) sincos
+0 8
+
+fn=(3370) powf
+0 9
+
+fn=(3376) cos
+0 9
+
+fn=(3354) exp2f
+0 9
+
+fn=(3364) __log_finite
+0 9
+
+fn=(3372) sincosf
+0 9
+
+fn=(3356) __asin_finite
+0 8
+
+fn=(3378) expf
+0 9
+
+fn=(3350) sin
+0 9
+
+fn=(3366) log2f
+0 9
+
+fn=(3380) __exp_finite
+0 9
+
+fn=(3360) sinf
+0 9
+
+ob=(8) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/botCode
+fl=(95) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/basic_stream_socket.hpp
+fn=(4884) asio::basic_stream_socket<asio::ip::tcp, asio::any_io_executor>::basic_stream_socket<asio::io_context>(asio::io_context&, asio::constraint<std::is_convertible<asio::io_context&, asio::execution_context&>::value, int>::type)
+118 6
++4 6
+cfi=(96) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/basic_socket.hpp
+cfn=(4886) asio::basic_socket<asio::ip::tcp, asio::any_io_executor>::basic_socket<asio::io_context>(asio::io_context&, asio::constraint<std::is_convertible<asio::io_context&, asio::execution_context&>::value, int>::type)
+calls=1 +14 
+* 9748
++2 3
+
+fl=(103) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/impl/epoll_reactor.ipp
+fn=(5018) asio::detail::epoll_reactor::init_task()
+147 4
++1 4
+cfi=(81) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/impl/scheduler.ipp
+cfn=(5020) asio::detail::scheduler::init_task()
+calls=1 +35 
+* 659
++1 3
+
+fn=(5148) asio::detail::epoll_reactor::register_descriptor(int, asio::detail::epoll_reactor::descriptor_state*&)
+153 9
++1 3
+cfn=(5150) asio::detail::epoll_reactor::allocate_descriptor_state()
+calls=1 664 
+* 750
+* 2
++7 7
+cfi=(82) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/conditionally_enabled_mutex.hpp
+cfn=(5022) asio::detail::conditionally_enabled_mutex::scoped_lock::scoped_lock(asio::detail::conditionally_enabled_mutex&)
+calls=1 49 
+* 78
++2 4
++1 4
++1 3
++1 2
++1 15
+-1 11
++2 3
+cfi=(82)
+cfn=(5042) asio::detail::conditionally_enabled_mutex::scoped_lock::~scoped_lock()
+calls=1 62 
+* 63
++2 2
++1 1
++1 4
++1 3
++1 7
+cob=(2) /usr/lib/libc.so.6
+cfi=(2) ???
+cfn=(4994) epoll_ctl
+calls=1 0 
+* 7
+* 1
+* 1
++1 2
++14 1
++1 5
+
+fn=(5156) asio::detail::epoll_reactor::descriptor_state::descriptor_state(bool)
+759 8
++2 5
+cfi=(86) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/scheduler_operation.hpp
+cfn=(4818) asio::detail::scheduler_operation::scheduler_operation(void (*)(void*, asio::detail::scheduler_operation*, std::error_code const&, unsigned long))
+calls=1 52 
+* 14
+* 6
+cfi=(82)
+cfn=(4786) asio::detail::conditionally_enabled_mutex::conditionally_enabled_mutex(bool)
+calls=1 107 
+* 162
+* 11
+cfi=(89) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/op_queue.hpp
+cfn=(5158) asio::detail::op_queue<asio::detail::reactor_op>::op_queue()
+calls=3 68 
+* 60
+* 14
++2 6
+
+fn=(4944) asio::detail::epoll_reactor::epoll_reactor(asio::execution_context&)
+38 9
++9 5
+cfi=(70) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/execution_context.hpp
+cfn=(4946) asio::detail::execution_context_service_base<asio::detail::epoll_reactor>::execution_context_service_base(asio::execution_context&)
+calls=1 393 
+* 55
+* 4
+cfi=(104) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/scheduler_task.hpp
+cfn=(4948) asio::detail::scheduler_task::scheduler_task()
+calls=1 -19 
+* 9
+* 6
+-7 3
+cfi=(91) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/impl/execution_context.hpp
+cfn=(4950) asio::detail::scheduler& asio::use_service<asio::detail::scheduler>(asio::execution_context&)
+calls=1 -11 
+* 310
+* 2
++1 6
+cfi=(85) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/scheduler.hpp
+cfn=(4954) asio::detail::scheduler::concurrency_hint() const
+calls=1 +98 
+* 7
+* 7
+cfi=(82)
+cfn=(4786)
+calls=1 +66 
+* 162
++2 4
+cfi=(105) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/impl/eventfd_select_interrupter.ipp
+cfn=(4956) asio::detail::eventfd_select_interrupter::eventfd_select_interrupter()
+calls=1 -2 
+* 856
++1 1
+cfn=(4966) asio::detail::epoll_reactor::do_epoll_create()
+calls=1 615 
+* 790
+* 2
++1 1
+cfn=(4974) asio::detail::epoll_reactor::do_timerfd_create()
+calls=1 641 
+* 816
+* 2
++2 4
+cfi=(106) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/impl/timer_queue_set.ipp
+cfn=(4982) asio::detail::timer_queue_set::timer_queue_set()
+calls=1 -21 
+* 8
+-1 2
++1 6
+cfi=(82)
+cfn=(4984) asio::detail::conditionally_enabled_mutex::enabled() const
+calls=1 +71 
+* 7
+* 4
+cfi=(82)
+cfn=(4786)
+calls=1 +60 
+* 162
+* 4
+cfi=(107) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/object_pool.hpp
+cfn=(4986) asio::detail::object_pool<asio::detail::epoll_reactor::descriptor_state>::object_pool()
+calls=1 +21 
+* 20
++3 2
++1 1
++1 3
++1 4
+cfi=(108) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/eventfd_select_interrupter.hpp
+cfn=(4988) asio::detail::eventfd_select_interrupter::read_descriptor() const
+calls=1 -6 
+* 7
+* 9
+cob=(1) /usr/lib/ld-linux-x86-64.so.2
+cfi=(1) ???
+cfn=(4626) 0x0000000000012a10
+calls=1 -53 
+* 879
+* 5
++1 4
+cfi=(105)
+cfn=(4996) asio::detail::eventfd_select_interrupter::interrupt()
+calls=1 +65 
+* 760
++3 4
++2 1
++1 3
++1 8
+cob=(2)
+cfi=(2)
+cfn=(4994)
+calls=1 -61 
+* 7
+* 1
++2 8
+
+fn=(4974)
+641 3
++3 3
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 0 
+* 799
+* 5
+* 1
++6 2
++7 1
++4 2
+
+fn=(4966)
+615 7
++2 2
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 0 
+* 764
+* 5
+* 1
++6 2
++7 2
++7 1
++1 6
+
+fn=(5150)
+664 8
++1 6
+cfi=(82)
+cfn=(5022)
+calls=1 49 
+* 78
++1 6
+cfi=(85)
+cfn=(4954)
+calls=1 139 
+* 7
+* 7
+cfi=(107)
+cfn=(5152) asio::detail::epoll_reactor::descriptor_state* asio::detail::object_pool<asio::detail::epoll_reactor::descriptor_state>::alloc<bool>(bool)
+calls=1 107 
+* 563
+* 1
++1 1
++1 3
+cfi=(82)
+cfn=(5042)
+calls=1 62 
+* 63
+-1 1
++1 6
+
+fl=(124) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/socket_option.hpp
+fn=(5178) int asio::detail::socket_option::boolean<1, 2>::level<asio::ip::tcp>(asio::ip::tcp const&) const
+74 4
++2 1
++1 2
+
+fn=(5172) unsigned long asio::detail::socket_option::boolean<1, 2>::size<asio::ip::tcp>(asio::ip::tcp const&) const
+102 4
++2 1
++1 2
+
+fn=(5174) int const* asio::detail::socket_option::boolean<1, 2>::data<asio::ip::tcp>(asio::ip::tcp const&) const
+95 4
++2 1
++1 2
+
+fn=(5176) int asio::detail::socket_option::boolean<1, 2>::name<asio::ip::tcp>(asio::ip::tcp const&) const
+81 4
++2 1
++1 2
+
+fn=(5168) asio::detail::socket_option::boolean<1, 2>::boolean(bool)
+42 5
++1 6
++2 3
+
+fl=(62) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/impl/error_code.ipp
+fn=(4618) asio::system_category()
+197 20
++1 53
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 0 
+* 843
+* 5
+* 11
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 0 
+* 917
+* 5
+* 3
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 0 
+* 802
+* 5
++1 10
++1 20
+
+fl=(66) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/tss_ptr.hpp
+fn=(4686) asio::detail::tss_ptr<asio::detail::call_stack<asio::detail::thread_context, asio::detail::thread_info_base>::context>::tss_ptr()
+38 7
+cfi=(67) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/keyword_tss_ptr.hpp
+cfn=(4688) asio::detail::keyword_tss_ptr<asio::detail::call_stack<asio::detail::thread_context, asio::detail::thread_info_base>::context>::keyword_tss_ptr()
+calls=1 -3 
+* 16
+* 3
+
+fn=(4702) asio::detail::tss_ptr<asio::detail::call_stack<asio::detail::strand_executor_service::strand_impl, unsigned char>::context>::tss_ptr()
+38 7
+cfi=(67)
+cfn=(4704) asio::detail::keyword_tss_ptr<asio::detail::call_stack<asio::detail::strand_executor_service::strand_impl, unsigned char>::context>::keyword_tss_ptr()
+calls=1 -3 
+* 16
+* 3
+
+fn=(4692) asio::detail::tss_ptr<asio::detail::call_stack<asio::detail::strand_service::strand_impl, unsigned char>::context>::tss_ptr()
+38 7
+cfi=(67)
+cfn=(4694) asio::detail::keyword_tss_ptr<asio::detail::call_stack<asio::detail::strand_service::strand_impl, unsigned char>::context>::keyword_tss_ptr()
+calls=1 -3 
+* 16
+* 3
+
+fl=(83) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/conditionally_enabled_event.hpp
+fn=(4788) asio::detail::conditionally_enabled_event::conditionally_enabled_event()
+36 5
++1 3
+cfi=(68) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/noncopyable.hpp
+cfn=(4690) asio::detail::noncopyable::noncopyable()
+calls=1 -9 
+* 6
+* 4
+cfi=(84) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/impl/posix_event.ipp
+cfn=(4790) asio::detail::posix_event::posix_event()
+calls=1 -6 
+* 4127
++1 4
+
+fn=(5032) asio::detail::conditionally_enabled_event::maybe_unlock_and_signal_one(asio::detail::conditionally_enabled_mutex::scoped_lock&)
+76 5
++3 5
++1 6
+cfi=(110) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/posix_event.hpp
+cfn=(5034) bool asio::detail::posix_event::maybe_unlock_and_signal_one<asio::detail::conditionally_enabled_mutex::scoped_lock>(asio::detail::conditionally_enabled_mutex::scoped_lock&)
+calls=1 +8 
+* 30
+* 1
++3 2
+
+fl=(109) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/service_registry.hpp
+fn=(5006) asio::detail::service_registry::auto_service_ptr::~auto_service_ptr()
+124 16
+cfi=(77) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/impl/service_registry.ipp
+cfn=(5008) asio::detail::service_registry::destroy(asio::execution_context::service*)
+calls=2 -16 
+* 20
+* 6
+
+fl=(108)
+fn=(4988)
+47 3
++2 2
++1 2
+
+fl=(98) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/impl/io_context.hpp
+fn=(4890) asio::detail::reactive_socket_service<asio::ip::tcp>& asio::use_service<asio::detail::reactive_socket_service<asio::ip::tcp> >(asio::io_context&)
+34 8
++6 12
+cfi=(92) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/impl/service_registry.hpp
+cfn=(4892) asio::detail::reactive_socket_service<asio::ip::tcp>& asio::detail::service_registry::use_service<asio::detail::reactive_socket_service<asio::ip::tcp> >(asio::io_context&)
+calls=2 -7 
+* 9545
++1 4
+
+fn=(5058) asio::io_context::get_executor()
+54 10
++1 10
+cfi=(69) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/io_context.hpp
+cfn=(5060) asio::io_context::basic_executor_type<std::allocator<void>, 0ul>::basic_executor_type(asio::io_context&)
+calls=2 1095 
+* 20
++1 6
+
+fl=(99) /usr/include/c++/13.2.1/typeinfo
+fn=(4906) std::type_info::name() const
+103 15
++1 45
+
+fn=(4902) std::type_info::operator==(std::type_info const&) const
+194 40
++1 8
+cfi=(100) /usr/include/c++/13.2.1/x86_64-pc-linux-gnu/bits/c++config.h
+cfn=(4904) std::__is_constant_evaluated()
+calls=8 541 
+* 40
+* 16
++3 48
++1 6
++7 40
+cfn=(4906)
+calls=5 103 
+* 60
+* 30
+cob=(2)
+cfi=(2)
+cfn=(4916) 0x000000000015a710
+calls=4 0 
+* 108
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 0 
+* 779
+* 9
+* 20
++4 16
+
+fl=(119) /usr/include/c++/13.2.1/new
+fn=(5090) operator new(unsigned long, void*)
+175 21
+
+fl=(135) /usr/include/c++/13.2.1/bits/stl_construct.h
+fn=(5272) void std::_Construct<char>(char*)
+109 4
++10 4
+cfi=(119)
+cfn=(5090)
+calls=1 +56 
+* 7
+* 1
++1 3
+
+fl=(113) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/ip/detail/endpoint.hpp
+fn=(5194) asio::ip::detail::endpoint::size() const
+72 4
++2 3
+cfn=(5052) asio::ip::detail::endpoint::is_v4() const
+calls=1 +37 
+* 9
+* 2
++1 2
++3 2
+
+fn=(5198) asio::ip::detail::endpoint::data() const
+66 3
++2 1
++1 2
+
+fn=(5052)
+111 12
++2 16
++1 8
+
+fl=(80) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/throw_error.hpp
+fn=(4774) asio::detail::throw_error(std::error_code const&, char const*)
+48 50
++1 30
+cfi=(79) /usr/include/c++/13.2.1/system_error
+cfn=(4776) std::error_code::operator bool() const
+calls=10 281 
+* 90
+* 20
++2 30
+
+fl=(130) /usr/include/c++/13.2.1/bits/vector.tcc
+fn=(5246) std::vector<char, std::allocator<char> >::_M_default_append(unsigned long)
+634 6
++3 2
++2 3
+cfi=(128) /usr/include/c++/13.2.1/bits/stl_vector.h
+cfn=(5244) std::vector<char, std::allocator<char> >::size() const
+calls=1 989 
+* 11
+* 1
++1 2
++1 3
+-1 1
++3 3
+cfi=(128)
+cfn=(5248) std::vector<char, std::allocator<char> >::max_size() const
+calls=1 995 
+* 60
+* 5
+cfi=(128)
+cfn=(5248)
+calls=1 995 
+* 60
+* 5
++3 3
++12 3
++1 3
++3 6
+cfi=(128)
+cfn=(5254) std::vector<char, std::allocator<char> >::_M_check_len(unsigned long, char const*) const
+calls=1 1893 
+* 235
+* 1
++1 5
+cfi=(128)
+cfn=(5256) std::_Vector_base<char, std::allocator<char> >::_M_allocate(unsigned long)
+calls=1 375 
+* 245
+* 1
++6 3
+cfi=(128)
+cfn=(5262) std::_Vector_base<char, std::allocator<char> >::_M_get_Tp_allocator()
+calls=1 298 
+* 6
+* 1
+-1 7
+cfi=(133) /usr/include/c++/13.2.1/bits/stl_uninitialized.h
+cfn=(5264) char* std::__uninitialized_default_n_a<char*, unsigned long, char>(char*, unsigned long, std::allocator<char>&)
+calls=1 777 
+* 1008
++9 3
+cfi=(128)
+cfn=(5262)
+calls=1 298 
+* 6
+* 1
+-1 5
+cfi=(128)
+cfn=(5298) std::vector<char, std::allocator<char> >::_S_relocate(char*, char*, char*, std::allocator<char>&)
+calls=1 501 
+* 81
++27 1
++1 3
+-1 4
+cfi=(128)
+cfn=(5306) std::_Vector_base<char, std::allocator<char> >::_M_deallocate(char*, unsigned long)
+calls=1 383 
+* 11
++2 3
++1 7
++1 5
++3 5
+
+fl=(131) /usr/include/c++/13.2.1/bits/new_allocator.h
+fn=(5258) std::__new_allocator<char>::allocate(unsigned long, void const*)
+122 8
+229 1
+-99 7
++17 3
+cob=(7) /usr/lib/libstdc++.so.6.0.32
+cfi=(74) /usr/src/debug/gcc/gcc/libstdc++-v3/libsupc++/new_op.cc
+cfn=(4750) operator new(unsigned long)
+calls=1 43 
+* 201
+* 1
+* 1
++1 2
+
+fn=(5324) std::__new_allocator<char>::~__new_allocator()
+100 6
+
+fl=(67)
+fn=(4694)
+35 4
++1 3
+cfi=(68)
+cfn=(4690)
+calls=1 -8 
+* 6
++1 3
+
+fn=(4704)
+35 4
++1 3
+cfi=(68)
+cfn=(4690)
+calls=1 -8 
+* 6
++1 3
+
+fn=(4688)
+35 4
++1 3
+cfi=(68)
+cfn=(4690)
+calls=1 -8 
+* 6
++1 3
+
+fl=(100)
+fn=(4904)
+541 16
++6 8
++4 16
+
+fl=(84)
+fn=(4790)
+31 8
++1 3
+cfi=(68)
+cfn=(4690)
+calls=1 -4 
+* 6
+* 2
++8 3
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 -40 
+* 927
+* 5
+* 1
++1 2
++2 4
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 -43 
+* 1138
+* 5
+* 1
++1 2
++1 5
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 -45 
+* 1049
+* 5
+* 1
++1 3
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 -46 
+* 882
+* 5
++6 1
+cfi=(61) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/error.hpp
+cfn=(4616) asio::error::get_system_category()
+calls=1 262 
+* 15
+* 6
+cfi=(79)
+cfn=(4772) std::error_code::error_code(int, std::_V2::error_category const&)
+calls=1 233 
+* 14
++1 5
+cfi=(80)
+cfn=(4774)
+calls=1 -5 
+* 22
++1 7
+
+fl=(78) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/impl/posix_mutex.ipp
+fn=(4764) asio::detail::posix_mutex::posix_mutex()
+31 55
+cfi=(68)
+cfn=(4690)
+calls=5 -3 
+* 30
++2 20
+cob=(2)
+cfi=(2)
+cfn=(4770) pthread_mutex_init
+calls=4 -33 
+* 168
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 -33 
+* 871
+* 9
+* 5
++2 5
+cfi=(61)
+cfn=(4616)
+calls=5 262 
+* 75
+* 30
+cfi=(79)
+cfn=(4772)
+calls=5 233 
+* 70
++1 25
+cfi=(80)
+cfn=(4774)
+calls=5 +12 
+* 110
++1 35
+
+fl=(85)
+fn=(4816) asio::detail::scheduler::task_operation::task_operation()
+207 8
+cfi=(86)
+cfn=(4818)
+calls=1 52 
+* 14
+* 3
+
+fn=(4954)
+139 6
++2 4
++1 4
+
+fl=(107)
+fn=(5160) asio::detail::epoll_reactor::descriptor_state*& asio::detail::object_pool_access::next<asio::detail::epoll_reactor::descriptor_state>(asio::detail::epoll_reactor::descriptor_state*)
+50 3
++2 2
++1 2
+
+fn=(5154) asio::detail::epoll_reactor::descriptor_state* asio::detail::object_pool_access::create<asio::detail::epoll_reactor::descriptor_state, bool>(bool)
+38 8
++2 2
+cob=(7)
+cfi=(74)
+cfn=(4750)
+calls=1 +3 
+* 201
+* 1
+* 6
+cfi=(103)
+cfn=(5156)
+calls=1 759 
+* 286
+* 2
++1 6
+
+fn=(4986)
+68 4
++2 3
+cfi=(68)
+cfn=(4690)
+calls=1 -42 
+* 6
+-1 2
++1 2
++2 3
+
+fn=(5152)
+107 7
++2 3
++1 2
++3 3
+cfn=(5154)
+calls=1 -75 
+* 512
+* 1
++2 5
+cfn=(5160)
+calls=1 -65 
+* 7
+* 1
++1 3
+cfn=(5162) asio::detail::epoll_reactor::descriptor_state*& asio::detail::object_pool_access::prev<asio::detail::epoll_reactor::descriptor_state>(asio::detail::epoll_reactor::descriptor_state*)
+calls=1 -60 
+* 7
+* 1
++1 4
++2 3
++2 1
++1 3
+
+fn=(5162)
+56 3
++2 2
++1 2
+
+fl=(112) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/ip/detail/impl/endpoint.ipp
+fn=(5102) asio::ip::detail::endpoint::endpoint(int, unsigned short)
+42 7
++1 4
++3 2
++2 2
++2 3
+cfi=(120) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/impl/socket_ops.ipp
+cfn=(5104) asio::detail::socket_ops::host_to_network_short(unsigned short)
+calls=1 3959 
+* 729
+-1 2
++2 2
++18 4
+
+fn=(5048) asio::ip::detail::endpoint::endpoint()
+34 6
++1 8
++2 4
++1 4
++1 4
++1 6
+
+fl=(88) /usr/include/c++/13.2.1/bits/atomic_base.h
+fn=(4822) std::__atomic_base<long>::__atomic_base(long)
+362 10
+
+fl=(111) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/ip/basic_endpoint.hpp
+fn=(5192) asio::ip::basic_endpoint<asio::ip::tcp>::size() const
+154 4
++2 3
+cfi=(113)
+cfn=(5194)
+calls=1 -84 
+* 22
++1 2
+
+fn=(5196) asio::ip::basic_endpoint<asio::ip::tcp>::data() const
+148 4
++2 3
+cfi=(113)
+cfn=(5198)
+calls=1 -84 
+* 6
++1 2
+
+fn=(5098) asio::ip::basic_endpoint<asio::ip::tcp>::basic_endpoint(asio::ip::tcp const&, unsigned short)
+88 9
++2 5
+cfi=(114) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/ip/tcp.hpp
+cfn=(5100) asio::ip::tcp::family() const
+calls=1 -14 
+* 7
+* 4
+cfi=(112)
+cfn=(5102)
+calls=1 -48 
+* 755
++2 6
+
+fn=(5050) asio::ip::basic_endpoint<asio::ip::tcp>::protocol() const
+134 12
++2 9
+cfi=(113)
+cfn=(5052)
+calls=3 -25 
+* 27
+* 6
++1 3
+cfi=(114)
+cfn=(5054) asio::ip::tcp::v4()
+calls=3 -85 
+* 78
+* 3
++2 6
+
+fn=(5046) asio::ip::basic_endpoint<asio::ip::tcp>::basic_endpoint()
+67 8
++1 6
+cfi=(112)
+cfn=(5048)
+calls=2 -34 
+* 32
++2 6
+
+fl=(116) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/execution/any_executor.hpp
+fn=(5068) asio::execution::detail::any_executor_base::any_executor_base<asio::io_context::basic_executor_type<std::allocator<void>, 0ul> >(asio::io_context::basic_executor_type<std::allocator<void>, 0ul>, std::integral_constant<bool, false>)
+599 16
++4 6
+cfi=(117) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/execution/blocking.hpp
+cfn=(5070) asio::execution::detail::blocking_t<0>::blocking_t(asio::execution::detail::blocking::always_t<0>)
+calls=2 254 
+* 16
+-2 6
+cfn=(5072) asio::execution::detail::blocking_t<0> asio::execution::detail::any_executor_base::query_blocking<asio::io_context::basic_executor_type<std::allocator<void>, 0ul> >(asio::io_context::basic_executor_type<std::allocator<void>, 0ul> const&, std::integral_constant<bool, true>)
+calls=2 1260 
+* 130
+* 2
++2 10
+cfi=(117)
+cfn=(5082) asio::execution::detail::operator==(asio::execution::detail::blocking_t<0> const&, asio::execution::detail::blocking_t<0> const&)
+calls=2 400 
+* 24
+-3 8
+cfn=(5084) asio::execution::detail::any_executor_base::target_fns const* asio::execution::detail::any_executor_base::target_fns_table<asio::io_context::basic_executor_type<std::allocator<void>, 0ul> >(bool, std::enable_if<!std::is_same<asio::io_context::basic_executor_type<std::allocator<void>, 0ul>, void>::value, void>::type*)
+calls=2 1027 
+* 20
+* 4
++5 10
+cfn=(5086) void asio::execution::detail::any_executor_base::construct_object<asio::io_context::basic_executor_type<std::allocator<void>, 0ul> >(asio::io_context::basic_executor_type<std::allocator<void>, 0ul>&, std::integral_constant<bool, true>)
+calls=2 1272 
+* 98
++5 12
+
+fn=(5072)
+1260 8
++2 12
+cfi=(118) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/query.hpp
+cfn=(5074) std::enable_if<asio_query_fn::call_traits<asio_query_fn::impl, asio::io_context::basic_executor_type<std::allocator<void>, 0ul> const&, void (asio::execution::detail::blocking_t<0> const&), void, void, void, void>::overload==((asio_query_fn::overload_type)1), asio_query_fn::call_traits<asio_query_fn::impl, asio::io_context::basic_executor_type<std::allocator<void>, 0ul> const&, void (asio::execution::detail::blocking_t<0> const&), void, void, void, void>::result_type>::type asio_query_fn::impl::operator()<asio::io_context::basic_executor_type<std::allocator<void>, 0ul> const&, asio::execution::detail::blocking_t<0> const&>(asio::io_context::basic_executor_type<std::allocator<void>, 0ul> const&, asio::execution::detail::blocking_t<0> const&) const
+calls=2 236 
+* 106
++1 4
+
+fn=(5088) asio::execution::detail::any_executor_base::object_fns const* asio::execution::detail::any_executor_base::object_fns_table<asio::io_context::basic_executor_type<std::allocator<void>, 0ul> >(std::enable_if<(!std::is_same<asio::io_context::basic_executor_type<std::allocator<void>, 0ul>, void>::value)&&(!std::is_same<asio::io_context::basic_executor_type<std::allocator<void>, 0ul>, asio::execution::detail::shared_target_executor>::value), void>::type*)
+945 6
++13 2
++1 4
+
+fn=(5086)
+1272 12
++2 4
+cfn=(5088)
+calls=2 945 
+* 12
+* 4
++1 8
+cfi=(119)
+cfn=(5090)
+calls=2 175 
+* 14
+* 10
+cfi=(69)
+cfn=(5064) asio::io_context::basic_executor_type<std::allocator<void>, 0ul>::basic_executor_type(asio::io_context::basic_executor_type<std::allocator<void>, 0ul>&&)
+calls=2 677 
+* 22
+* 4
++1 8
+
+fn=(5094) asio::execution::detail::any_executor_base::prop_fns<asio::execution::any_executor<asio::execution::context_as_t<asio::execution_context&>, asio::execution::detail::blocking::never_t<0>, asio::execution::prefer_only<asio::execution::detail::blocking::possibly_t<0> >, asio::execution::prefer_only<asio::execution::detail::outstanding_work::tracked_t<0> >, asio::execution::prefer_only<asio::execution::detail::outstanding_work::untracked_t<0> >, asio::execution::prefer_only<asio::execution::detail::relationship::fork_t<0> >, asio::execution::prefer_only<asio::execution::detail::relationship::continuation_t<0> > > > const* asio::execution::any_executor<asio::execution::context_as_t<asio::execution_context&>, asio::execution::detail::blocking::never_t<0>, asio::execution::prefer_only<asio::execution::detail::blocking::possibly_t<0> >, asio::execution::prefer_only<asio::execution::detail::outstanding_work::tracked_t<0> >, asio::execution::prefer_only<asio::execution::detail::outstanding_work::untracked_t<0> >, asio::execution::prefer_only<asio::execution::detail::relationship::fork_t<0> >, asio::execution::prefer_only<asio::execution::detail::relationship::continuation_t<0> > >::prop_fns_table<asio::io_context::basic_executor_type<std::allocator<void>, 0ul> >()
+1966 4
++13 2
++1 4
+
+fn=(5066) asio::execution::any_executor<asio::execution::context_as_t<asio::execution_context&>, asio::execution::detail::blocking::never_t<0>, asio::execution::prefer_only<asio::execution::detail::blocking::possibly_t<0> >, asio::execution::prefer_only<asio::execution::detail::outstanding_work::tracked_t<0> >, asio::execution::prefer_only<asio::execution::detail::outstanding_work::untracked_t<0> >, asio::execution::prefer_only<asio::execution::detail::relationship::fork_t<0> >, asio::execution::prefer_only<asio::execution::detail::relationship::continuation_t<0> > >::any_executor<asio::io_context::basic_executor_type<std::allocator<void>, 0ul> >(asio::io_context::basic_executor_type<std::allocator<void>, 0ul>, std::enable_if<std::conditional<(!std::is_same<asio::io_context::basic_executor_type<std::allocator<void>, 0ul>, asio::execution::any_executor<asio::execution::context_as_t<asio::execution_context&>, asio::execution::detail::blocking::never_t<0>, asio::execution::prefer_only<asio::execution::detail::blocking::possibly_t<0> >, asio::execution::prefer_only<asio::execution::detail::outstanding_work::tracked_t<0> >, asio::execution::prefer_only<asio::execution::detail::outstanding_work::untracked_t<0> >, asio::execution::prefer_only<asio::execution::detail::relationship::fork_t<0> >, asio::execution::prefer_only<asio::execution::detail::relationship::continuation_t<0> > > >::value)&&(!std::is_base_of<asio::execution::detail::any_executor_base, asio::io_context::basic_executor_type<std::allocator<void>, 0ul> >::value), asio::execution::detail::is_valid_target_executor<asio::io_context::basic_executor_type<std::allocator<void>, 0ul>, void (asio::execution::context_as_t<asio::execution_context&>, asio::execution::detail::blocking::never_t<0>, asio::execution::prefer_only<asio::execution::detail::blocking::possibly_t<0> >, asio::execution::prefer_only<asio::execution::detail::outstanding_work::tracked_t<0> >, asio::execution::prefer_only<asio::execution::detail::outstanding_work::untracked_t<0> >, asio::execution::prefer_only<asio::execution::detail::relationship::fork_t<0> >, asio::execution::prefer_only<asio::execution::detail::relationship::continuation_t<0> >)>, std::integral_constant<bool, false> >::type::value, void>::type*)
+1586 20
++12 12
+cfi=(69)
+cfn=(5064)
+calls=2 677 
+* 22
+* 8
+cfn=(5068)
+calls=2 599 
+* 362
+* 6
+cfi=(69)
+cfn=(5092) asio::io_context::basic_executor_type<std::allocator<void>, 0ul>::~basic_executor_type()
+calls=2 687 
+* 12
+* 2
+cfn=(5094)
+calls=2 1966 
+* 10
+* 4
++2 14
+
+fn=(5084)
+1027 10
++21 6
++1 4
+
+fl=(128)
+fn=(5232) std::_Vector_base<char, std::allocator<char> >::_Vector_base(std::allocator<char> const&)
+318 5
++1 5
+cfn=(5234) std::_Vector_base<char, std::allocator<char> >::_Vector_impl::_Vector_impl(std::allocator<char> const&)
+calls=1 143 
+* 33
+* 3
+
+fn=(5252) std::vector<char, std::allocator<char> >::_S_max_size(std::allocator<char> const&)
+1913 28
++5 32
+fi=(131)
+229 4
+-50 4
+fi=(132) /usr/include/c++/13.2.1/bits/alloc_traits.h
+573 4
+fe=(128)
+1920 4
++1 20
+cfi=(129) /usr/include/c++/13.2.1/bits/stl_algobase.h
+cfn=(5238) unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)
+calls=4 233 
+* 52
+* 4
++1 20
+
+fn=(5256)
+375 5
++3 6
+fi=(132)
+482 6
+cfi=(131)
+cfn=(5258)
+calls=1 122 
+* 224
+* 2
+fe=(128)
+379 2
+
+fn=(5298)
+501 7
++5 6
+cfi=(133)
+cfn=(5300) char* std::__relocate_a<char*, char*, std::allocator<char> >(char*, char*, char*, std::allocator<char>&)
+calls=1 1142 
+* 66
++5 2
+
+fn=(5236) std::_Vector_base<char, std::allocator<char> >::_Vector_impl_data::_Vector_impl_data()
+99 3
++1 6
++1 3
+
+fn=(5262)
+298 6
++1 6
+
+fn=(5248)
+995 16
++1 12
+cfn=(5250) std::_Vector_base<char, std::allocator<char> >::_M_get_Tp_allocator() const
+calls=4 303 
+* 24
+* 8
+cfn=(5252)
+calls=4 1913 
+* 172
+* 8
+
+fn=(5250)
+303 12
++1 12
+
+fn=(5254)
+1893 10
++2 3
+cfn=(5248)
+calls=1 995 
+* 60
+* 4
+cfn=(5244)
+calls=1 989 
+* 11
+* 7
++3 3
+cfn=(5244)
+calls=1 989 
+* 11
+* 4
+cfn=(5244)
+calls=1 989 
+* 11
+* 6
+cfi=(129)
+cfn=(5240) unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&)
+calls=1 257 
+* 14
+* 3
++1 3
+cfn=(5244)
+calls=1 989 
+* 11
+* 5
+cfn=(5248)
+calls=1 995 
+* 60
+* 3
++1 6
+
+fn=(5242) std::vector<char, std::allocator<char> >::resize(unsigned long)
+1010 5
++2 3
+cfn=(5244)
+calls=1 -23 
+* 11
+* 4
++1 3
+cfn=(5244)
+calls=1 -24 
+* 11
+* 6
+cfi=(130)
+cfn=(5246)
+calls=1 634 
+* 1824
++3 4
+
+fn=(5244)
+989 21
++1 56
+
+fn=(5306)
+383 6
++3 2
++2 3
+
+fn=(5308) std::vector<char, std::allocator<char> >::operator[](unsigned long)
+1123 20
++3 20
++1 10
+
+fn=(5230) std::vector<char, std::allocator<char> >::vector(std::allocator<char> const&)
+539 5
++1 5
+cfn=(5232)
+calls=1 318 
+* 46
+* 3
+
+fn=(5234)
+143 13
+fi=(131)
+-51 1
+fi=(136) /usr/include/c++/13.2.1/bits/allocator.h
++76 1
+fe=(128)
+-24 3
+cfn=(5236)
+calls=1 -45 
+* 12
++1 3
+
+fl=(134) /usr/include/c++/13.2.1/bits/move.h
+fn=(5270) char* std::__addressof<char>(char&)
+51 3
++1 3
+
+fl=(86)
+fn=(4818)
+52 8
++1 4
++1 6
++1 4
++2 6
+
+fl=(68)
+fn=(4878) asio::detail::noncopyable::~noncopyable()
+29 60
+
+fn=(4690)
+28 240
+
+fl=(79)
+fn=(4776)
+281 33
++1 66
+
+fn=(4772)
+233 30
++1 54
+
+fn=(5142) std::error_code::assign(int, std::_V2::error_category const&)
+249 20
++2 12
++1 12
++1 12
+
+fn=(5010) std::error_code::error_code()
+230 16
++1 12
+cob=(7)
+cfi=(55) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++11/system_error.cc
+cfn=(5016) std::_V2::system_category()
+calls=3 541 
+* 9
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 0 
+* 828
+* 8
+* 20
+
+fn=(5140) std::error_code::category() const
+267 28
+
+fl=(97) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/io_object_impl.hpp
+fn=(5114) asio::detail::io_object_impl<asio::detail::reactive_socket_service<asio::ip::tcp>, asio::any_io_executor>::get_service()
+122 15
++2 10
++1 10
+
+fn=(5338) asio::detail::io_object_impl<asio::detail::reactive_socket_service<asio::ip::tcp>, asio::any_io_executor>::get_implementation() const
+140 3
++2 2
++1 2
+
+fn=(4888) asio::detail::io_object_impl<asio::detail::reactive_socket_service<asio::ip::tcp>, asio::any_io_executor>::io_object_impl<asio::io_context>(int, int, asio::io_context&)
+56 22
++1 6
+cfi=(98)
+cfn=(4890)
+calls=2 -23 
+* 9569
+* 4
++1 8
+cfi=(101) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/reactive_socket_service.hpp
+cfn=(5044) asio::detail::reactive_socket_service<asio::ip::tcp>::implementation_type::implementation_type()
+calls=2 +9 
+* 194
+* 14
+cfi=(98)
+cfn=(5058)
+calls=2 -4 
+* 46
+* 10
+cfi=(115) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/any_io_executor.hpp
+cfn=(5062) asio::any_io_executor::any_io_executor<asio::io_context::basic_executor_type<std::allocator<void>, 0ul> >(asio::io_context::basic_executor_type<std::allocator<void>, 0ul>, asio::constraint<std::conditional<(!std::is_same<asio::io_context::basic_executor_type<std::allocator<void>, 0ul>, asio::any_io_executor>::value)&&(!std::is_base_of<asio::execution::detail::any_executor_base, asio::io_context::basic_executor_type<std::allocator<void>, 0ul> >::value), asio::execution::detail::is_valid_target_executor<asio::io_context::basic_executor_type<std::allocator<void>, 0ul>, void (asio::execution::context_as_t<asio::execution_context&>, asio::execution::detail::blocking::never_t<0>, asio::execution::prefer_only<asio::execution::detail::blocking::possibly_t<0> >, asio::execution::prefer_only<asio::execution::detail::outstanding_work::tracked_t<0> >, asio::execution::prefer_only<asio::execution::detail::outstanding_work::untracked_t<0> >, asio::execution::prefer_only<asio::execution::detail::relationship::fork_t<0> >, asio::execution::prefer_only<asio::execution::detail::relationship::continuation_t<0> >)>, std::integral_constant<bool, false> >::type::value, int>::type)
+calls=2 166 
+* 568
+* 6
+cfi=(69)
+cfn=(5092)
+calls=2 687 
+* 12
++2 16
+cfi=(102) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/impl/reactive_socket_service_base.ipp
+cfn=(5096) asio::detail::reactive_socket_service_base::construct(asio::detail::reactive_socket_service_base::base_implementation_type&)
+calls=2 -16 
+* 26
++1 14
+
+fn=(5336) asio::detail::io_object_impl<asio::detail::reactive_socket_service<asio::ip::tcp>, asio::any_io_executor>::get_service() const
+128 3
++2 2
++1 2
+
+fn=(5116) asio::detail::io_object_impl<asio::detail::reactive_socket_service<asio::ip::tcp>, asio::any_io_executor>::get_implementation()
+134 15
++2 10
++1 10
+
+fl=(114)
+fn=(5056) asio::ip::tcp::tcp(int)
+142 16
++1 12
++2 12
+
+fn=(5120) asio::ip::tcp::protocol() const
+70 3
++2 1
++1 2
+
+fn=(5054)
+52 24
++2 16
+cfn=(5056)
+calls=4 +88 
+* 40
+* 4
++1 20
+
+fn=(5100)
+76 6
++2 4
++1 4
+
+fn=(5122) asio::ip::tcp::type() const
+64 3
++2 1
++1 2
+
+fl=(73) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../src/robotControl.cpp
+fn=(4726) __static_initialization_and_destruction_0()
+92 2
+fi=(61)
+293 1
+cfn=(4616)
+calls=1 -31 
+* 15
+* 1
++3 1
+cfi=(64) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/impl/error.ipp
+cfn=(4678) asio::error::get_netdb_category()
+calls=1 56 
+* 10
+* 1
++3 1
+cfi=(64)
+cfn=(4680) asio::error::get_addrinfo_category()
+calls=1 84 
+* 10
+* 1
++3 1
+cfi=(64)
+cfn=(4682) asio::error::get_misc_category()
+calls=1 118 
+* 10
+* 1
+fi=(65) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/call_stack.hpp
+118 8
+fi=(69)
+1246 4
+fi=(65)
+118 4
+fi=(70)
+400 8
+fe=(73)
+92 3
+
+fn=(4724) _GLOBAL__sub_I__ZN12RobotControl20robotRunStateMachineEv
+92 3
+cfn=(4726)
+calls=1 * 
+* 82
+* 2
+
+fl=(106)
+fn=(4982)
+26 3
++1 2
++2 3
+
+fl=(105)
+fn=(4958) asio::detail::eventfd_select_interrupter::open_descriptors()
+47 8
++11 3
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 -58 
+* 809
+* 5
+-1 6
++6 4
++11 4
++19 7
+
+fn=(4996)
+119 7
++1 1
++1 7
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 0 
+* 733
+* 5
+* 1
++2 6
+
+fn=(4956)
+41 4
++2 3
+cfn=(4958)
+calls=1 +4 
+* 846
++1 3
+
+fl=(121) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/basic_socket_acceptor.hpp
+fn=(5330) void asio::basic_socket_acceptor<asio::ip::tcp, asio::any_io_executor>::accept<asio::ip::tcp, asio::any_io_executor>(asio::basic_socket<asio::ip::tcp, asio::any_io_executor>&, asio::constraint<std::is_convertible<asio::ip::tcp, asio::ip::tcp>::value, int>::type)
+1291 10
++5 3
+cfi=(79)
+cfn=(5010)
+calls=1 230 
+* 16
++1 3
+cfi=(97)
+cfn=(5114)
+calls=1 122 
+* 7
+* 4
+cfi=(97)
+cfn=(5116)
+calls=1 134 
+* 7
+* 8
+cfi=(101)
+cfn=(5332) std::error_code asio::detail::reactive_socket_service<asio::ip::tcp>::accept<asio::basic_socket<asio::ip::tcp, asio::any_io_executor> >(asio::detail::reactive_socket_service<asio::ip::tcp>::implementation_type&, asio::basic_socket<asio::ip::tcp, asio::any_io_executor>&, asio::ip::basic_endpoint<asio::ip::tcp>*, std::error_code&)
+calls=1 480 
+* 876
+
+fn=(5112) asio::basic_socket_acceptor<asio::ip::tcp, asio::any_io_executor>::basic_socket_acceptor<asio::io_context>(asio::io_context&, asio::ip::basic_endpoint<asio::ip::tcp> const&, bool, asio::constraint<std::is_convertible<asio::io_context&, asio::execution_context&>::value, int>::type)
+283 13
++5 7
+cfi=(97)
+cfn=(4888)
+calls=1 56 
+* 785
++2 3
+cfi=(79)
+cfn=(5010)
+calls=1 -60 
+* 16
++1 3
+cfi=(111)
+cfn=(5050)
+calls=1 134 
+* 48
+* 1
++1 3
+cfi=(97)
+cfn=(5114)
+calls=1 122 
+* 7
+* 4
+cfi=(97)
+cfn=(5116)
+calls=1 134 
+* 7
+* 7
+cfi=(101)
+cfn=(5118) asio::detail::reactive_socket_service<asio::ip::tcp>::open(asio::detail::reactive_socket_service<asio::ip::tcp>::implementation_type&, asio::ip::tcp const&, std::error_code&)
+calls=1 125 
+* 2138
+* 3
++1 5
+cfi=(80)
+cfn=(4774)
+calls=1 48 
+* 22
++1 2
++2 3
+cfi=(97)
+cfn=(5114)
+calls=1 122 
+* 7
+* 1
++1 4
+cfi=(124)
+cfn=(5168)
+calls=1 42 
+* 14
+-1 3
+cfi=(97)
+cfn=(5116)
+calls=1 134 
+* 7
+* 7
+cfi=(101)
+cfn=(5170) std::error_code asio::detail::reactive_socket_service<asio::ip::tcp>::set_option<asio::detail::socket_option::boolean<1, 2> >(asio::detail::reactive_socket_service<asio::ip::tcp>::implementation_type&, asio::detail::socket_option::boolean<1, 2> const&, std::error_code&)
+calls=1 166 
+* 1095
+* 3
++2 5
+cfi=(80)
+cfn=(4774)
+calls=1 48 
+* 22
++2 3
+cfi=(97)
+cfn=(5114)
+calls=1 122 
+* 7
+* 4
+cfi=(97)
+cfn=(5116)
+calls=1 134 
+* 7
+* 7
+cfi=(101)
+cfn=(5190) asio::detail::reactive_socket_service<asio::ip::tcp>::bind(asio::detail::reactive_socket_service<asio::ip::tcp>::implementation_type&, asio::ip::basic_endpoint<asio::ip::tcp> const&, std::error_code&)
+calls=1 155 
+* 1002
+* 3
++1 5
+cfi=(80)
+cfn=(4774)
+calls=1 48 
+* 22
++1 3
+cfi=(97)
+cfn=(5114)
+calls=1 122 
+* 7
+* 4
+cfi=(97)
+cfn=(5116)
+calls=1 134 
+* 7
+* 6
+cfi=(122) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/reactive_socket_service_base.hpp
+cfn=(5210) asio::detail::reactive_socket_service_base::listen(asio::detail::reactive_socket_service_base::base_implementation_type&, int, std::error_code&)
+calls=1 127 
+* 907
+* 3
++2 5
+cfi=(80)
+cfn=(4774)
+calls=1 48 
+* 22
++1 7
+
+fl=(129)
+fn=(5278) char* std::__fill_n_a<char*, unsigned long, char>(char*, unsigned long, char const&, std::random_access_iterator_tag)
+1117 6
++6 2
++5 8
+cfn=(5280) void std::__fill_a<char*, char>(char*, char*, char const&)
+calls=1 976 
+* 886
++1 3
++1 2
+
+fn=(5238)
+233 20
++5 30
++1 2
++1 4
++1 10
+
+fn=(5276) std::__size_to_integer(unsigned long)
+1018 6
+
+fn=(5280)
+976 6
++1 6
+cfn=(5282) __gnu_cxx::__enable_if<std::__is_byte<char>::__value, void>::__type std::__fill_a1<char>(char*, char*, char const&)
+calls=1 -38 
+* 871
+* 3
+
+fn=(5274) char* std::fill_n<char*, unsigned long, char>(char*, unsigned long, char const&)
+1152 6
+fi=(138) /usr/include/c++/13.2.1/bits/stl_iterator_base_types.h
+240 1
+fe=(129)
+1157 3
+cfn=(5276)
+calls=1 1018 
+* 6
+* 6
+cfn=(5278)
+calls=1 -40 
+* 907
++2 2
+
+fn=(5282)
+939 6
++2 3
++9 5
++1 7
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 0 
+* 842
+* 5
++1 3
+
+fn=(5302) char* std::__niter_base<char*>(char*)
+316 9
++2 9
+
+fn=(5240)
+257 8
++5 12
++1 2
++1 1
++1 4
+
+fl=(90) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/scoped_ptr.hpp
+fn=(4880) asio::detail::scoped_ptr<asio::detail::scheduler>::release()
+67 3
++2 3
++1 2
++1 1
++1 2
+
+fn=(4830) asio::detail::scoped_ptr<asio::detail::scheduler>::get()
+42 3
++2 2
++1 2
+
+fn=(4828) asio::detail::scoped_ptr<asio::detail::scheduler>::scoped_ptr(asio::detail::scheduler*)
+30 4
++1 3
++2 3
+
+fn=(4882) asio::detail::scoped_ptr<asio::detail::scheduler>::~scoped_ptr()
+36 4
++2 4
++1 3
+
+fl=(59) ???
+fn=(4606) 0x00000000000068b0
+0 12
+
+fn=(4598) (below main)
+0 12
+cob=(2)
+cfi=(2)
+cfn=(4600) (below main)
+calls=1 0 
+0 36461
+
+fl=(96)
+fn=(4886)
+136 7
++4 7
+cfi=(97)
+cfn=(4888)
+calls=1 -84 
+* 9730
++2 4
+
+fn=(5334) asio::basic_socket<asio::ip::tcp, asio::any_io_executor>::is_open() const
+496 5
++2 3
+cfi=(97)
+cfn=(5336)
+calls=1 128 
+* 7
+* 4
+cfi=(97)
+cfn=(5338)
+calls=1 140 
+* 7
+* 3
+cfi=(122)
+cfn=(5126) asio::detail::reactive_socket_service_base::is_open(asio::detail::reactive_socket_service_base::base_implementation_type const&) const
+calls=1 89 
+* 10
++1 3
+
+fl=(94) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/posix_mutex.hpp
+fn=(4856) asio::detail::posix_mutex::unlock()
+55 44
++2 33
+cob=(2)
+cfi=(2)
+cfn=(4862) pthread_mutex_unlock
+calls=10 -57 
+* 270
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 -57 
+* 899
+* 15
++1 33
+
+fn=(4846) asio::detail::posix_mutex::lock()
+49 44
++2 33
+cob=(2)
+cfi=(2)
+cfn=(4852) pthread_mutex_lock
+calls=10 -51 
+* 350
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 -51 
+* 862
+* 15
++1 33
+
+fl=(118)
+fn=(5074)
+236 12
++6 12
+cfi=(69)
+cfn=(5076) asio::io_context::basic_executor_type<std::allocator<void>, 0ul>::query(asio::execution::detail::blocking_t<0>) const
+calls=2 899 
+* 78
++1 4
+
+fl=(71) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../src/communicator.cpp
+fn=(4752) Communicator::Communicator()
+4 11
+cfi=(75) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/impl/io_context.ipp
+cfn=(4754) asio::io_context::io_context()
+calls=1 +32 
+* 8056
+* 7
+cfi=(95)
+cfn=(4884)
+calls=1 118 
+* 9763
++1 3
+cfi=(114)
+cfn=(5054)
+calls=1 +47 
+* 26
+* 7
+cfi=(111)
+cfn=(5098)
+calls=1 +83 
+* 786
+* 7
+cfi=(121)
+cfn=(5112)
+calls=1 283 
+* 6276
+* 4
+fi=(131)
++83 1
+fi=(136)
++75 1
+fe=(71)
+5 1
+cfi=(125) /usr/include/c++/13.2.1/limits
+cfn=(5220) std::numeric_limits<unsigned long>::max()
+calls=1 1274 
+* 5
+* 6
+cfi=(126) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/basic_streambuf.hpp
+cfn=(5222) asio::basic_streambuf<std::allocator<char> >::basic_streambuf(unsigned long, std::allocator<char> const&)
+calls=1 131 
+* 5173
+fi=(136)
+184 3
+cfi=(131)
+cfn=(5324)
+calls=1 -84 
+* 6
+* 1
+fe=(71)
+5 4
+cfi=(137) /usr/include/c++/13.2.1/bits/std_mutex.h
+cfn=(5326) std::mutex::mutex()
+calls=1 +99 
+* 21
++2 8
+cfi=(121)
+cfn=(5330)
+calls=1 1291 
+* 934
+
+fn=(4712) _GLOBAL__sub_I__ZN12CommunicatorC2Ev
+67 3
+cfn=(4714) __static_initialization_and_destruction_0()
+calls=1 * 
+* 202
+* 2
+
+fn=(4714)
+67 2
+fi=(61)
+293 1
+cfn=(4616)
+calls=1 -31 
+* 15
+* 1
++3 1
+cfi=(64)
+cfn=(4678)
+calls=1 56 
+* 10
+* 1
++3 1
+cfi=(64)
+cfn=(4680)
+calls=1 84 
+* 10
+* 1
++3 1
+cfi=(64)
+cfn=(4682)
+calls=1 118 
+* 10
+* 1
+fi=(65)
+118 8
+fi=(69)
+1246 4
+fi=(65)
+118 4
+fi=(70)
+400 17
+cfn=(4716) asio::detail::service_id<asio::detail::reactive_socket_service<asio::ip::tcp> >::service_id()
+calls=1 -21 
+* 26
+* 7
+cob=(2)
+cfi=(2)
+cfn=(4284) __cxa_atexit
+calls=1 0 
+* 77
+* 1
+fe=(71)
+67 3
+
+fl=(82)
+fn=(5036) asio::detail::conditionally_enabled_mutex::scoped_lock::locked() const
+89 3
++2 2
++1 2
+
+fn=(5042)
+62 12
++2 12
++1 10
+cfi=(94)
+cfn=(4856)
+calls=2 -10 
+* 76
++1 9
+cfi=(68)
+cfn=(4878)
+calls=3 -37 
+* 18
+* 9
+
+fn=(4786)
+107 28
++1 12
+cfi=(68)
+cfn=(4690)
+calls=4 -80 
+* 24
+* 16
+cfi=(78)
+cfn=(4764)
+calls=4 -77 
+* 540
+* 12
++2 16
+
+fn=(5040) asio::detail::conditionally_enabled_mutex::unlock()
+131 4
++2 4
++1 4
+cfi=(94)
+cfn=(4856)
+calls=1 -79 
+* 38
++1 3
+
+fn=(4984)
+118 3
++2 2
++1 2
+
+fn=(5022)
+49 15
++1 9
+cfi=(68)
+cfn=(4690)
+calls=3 -22 
+* 18
+* 9
++2 12
++2 15
+cfi=(94)
+cfn=(4846)
+calls=3 -5 
+* 138
++1 6
++4 12
+
+fn=(5038) asio::detail::conditionally_enabled_mutex::scoped_lock::unlock()
+79 4
++2 4
++2 4
+cfn=(5040)
+calls=1 +48 
+* 53
++1 2
++2 3
+
+fl=(102)
+fn=(5124) asio::detail::reactive_socket_service_base::do_open(asio::detail::reactive_socket_service_base::base_implementation_type&, int, int, int, std::error_code&)
+176 15
++1 5
+cfi=(122)
+cfn=(5126)
+calls=1 -88 
+* 10
+* 2
++6 6
+cfi=(120)
+cfn=(5128) asio::detail::socket_ops::socket(int, int, int, std::error_code&)
+calls=1 1810 
+* 866
+* 5
+cfi=(123) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/socket_holder.hpp
+cfn=(5144) asio::detail::socket_holder::socket_holder(int)
+calls=1 39 
+* 20
++1 3
+cfi=(123)
+cfn=(5146) asio::detail::socket_holder::get() const
+calls=1 56 
+* 7
+* 4
++3 7
+cfi=(123)
+cfn=(5146)
+calls=1 56 
+* 7
+* 4
+cfi=(103)
+cfn=(5148)
+calls=1 -34 
+* 988
+* 3
++7 3
+cfi=(123)
+cfn=(5164) asio::detail::socket_holder::release()
+calls=1 81 
+* 11
+* 2
++1 2
++2 3
++4 3
+cfi=(79)
+cfn=(5010)
+calls=1 +29 
+* 16
+* 5
++1 3
++1 3
+cfi=(123)
+cfn=(5166) asio::detail::socket_holder::~socket_holder()
+calls=1 45 
+* 26
+* 14
+
+fn=(5096)
+44 8
++1 4
++1 4
++1 4
++1 6
+
+fn=(4932) asio::detail::reactive_socket_service_base::reactive_socket_service_base(asio::execution_context&)
+31 5
++2 3
+cfi=(91)
+cfn=(4934) asio::detail::epoll_reactor& asio::use_service<asio::detail::epoll_reactor>(asio::execution_context&)
+calls=1 -4 
+* 5870
+* 6
+cfi=(79)
+cfn=(5010)
+calls=1 230 
+* 845
++2 4
+cfi=(103)
+cfn=(5018)
+calls=1 147 
+* 670
++1 3
+
+fl=(126)
+fn=(5222)
+131 12
++4 3
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 0 
+* 991
+* 5
+* 3
+cfi=(68)
+cfn=(4690)
+calls=1 28 
+* 6
+* 3
+-1 3
++1 6
+cfi=(128)
+cfn=(5230)
+calls=1 539 
+* 59
++2 7
+cfi=(129)
+cfn=(5238)
+calls=1 +96 
+* 14
+* 2
++1 8
+cfi=(129)
+cfn=(5240)
+calls=1 257 
+* 13
+* 4
+cfi=(128)
+cfn=(5242)
+calls=1 1010 
+* 1871
++1 6
+cfi=(128)
+cfn=(5308)
+calls=1 1123 
+* 10
+* 6
+cfi=(128)
+cfn=(5308)
+calls=1 1123 
+* 10
+* 6
+cfi=(128)
+cfn=(5308)
+calls=1 1123 
+* 10
+* 5
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 0 
+* 1053
+* 5
++1 6
+cfi=(128)
+cfn=(5308)
+calls=1 1123 
+* 10
+* 7
+cfi=(128)
+cfn=(5308)
+calls=1 1123 
+* 10
+* 4
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 0 
+* 1000
+* 5
++1 10
+
+fl=(122)
+fn=(5210)
+127 8
++3 7
+cfi=(120)
+cfn=(5212) asio::detail::socket_ops::listen(int, int, std::error_code&)
+calls=1 682 
+* 880
++1 9
++1 3
+
+fn=(5126)
+89 8
++2 8
++1 4
+
+fl=(137)
+fn=(5326)
+104 7
+cfn=(5328) std::__mutex_base::__mutex_base()
+calls=1 -37 
+* 11
+* 3
+
+fn=(5328)
+67 11
+
+fl=(89)
+fn=(5026) asio::detail::op_queue<asio::detail::scheduler_operation>::push(asio::detail::scheduler_operation*)
+104 5
++2 4
+cfn=(5028) void asio::detail::op_queue_access::next<asio::detail::scheduler_operation, asio::detail::scheduler_operation>(asio::detail::scheduler_operation*&, asio::detail::scheduler_operation*)
+calls=1 -68 
+* 11
++1 4
++7 7
++2 3
+
+fn=(5158)
+68 12
++2 9
+cfi=(68)
+cfn=(4690)
+calls=3 -42 
+* 18
+-1 6
++1 6
++2 9
+
+fn=(4824) asio::detail::op_queue<asio::detail::scheduler_operation>::op_queue()
+68 4
++2 3
+cfi=(68)
+cfn=(4690)
+calls=1 -42 
+* 6
+-1 2
++1 2
++2 3
+
+fn=(5028)
+38 4
++2 4
++1 3
+
+fl=(115)
+fn=(5062)
+166 20
++11 12
+cfi=(69)
+cfn=(5064)
+calls=2 677 
+* 22
+* 10
+cfi=(116)
+cfn=(5066)
+calls=2 1586 
+* 472
+* 6
+cfi=(69)
+cfn=(5092)
+calls=2 687 
+* 12
++2 14
+
+fl=(117)
+fn=(5070)
+254 6
++1 4
++2 6
+
+fn=(5080) asio::execution::detail::blocking_t<0>::blocking_t(asio::execution::detail::blocking::possibly_t<0>)
+249 6
++1 4
++2 6
+
+fn=(5082)
+400 8
++3 12
++1 4
+
+fl=(92)
+fn=(4838) void asio::detail::service_registry::init_key_from_id<asio::detail::scheduler>(asio::execution_context::service::key&, asio::detail::service_id<asio::detail::scheduler> const&)
+75 8
++3 6
++1 4
++1 6
+
+fn=(4936) asio::detail::epoll_reactor& asio::detail::service_registry::use_service<asio::detail::epoll_reactor>()
+24 14
++2 6
+cfi=(70)
+cfn=(4784) asio::execution_context::service::key::key()
+calls=2 348 
+* 20
++1 10
+cfn=(4938) void asio::detail::service_registry::init_key<asio::detail::epoll_reactor>(asio::execution_context::service::key&, ...)
+calls=2 +31 
+* 62
++1 4
++1 14
+cfi=(77)
+cfn=(4899) asio::detail::service_registry::do_use_service(asio::execution_context::service::key const&, asio::execution_context::service* (*)(void*), void*)'2
+calls=2 +86 
+* 6020
++1 10
+
+fn=(4942) asio::execution_context::service* asio::detail::service_registry::create<asio::detail::epoll_reactor, asio::execution_context>(void*)
+84 7
++2 2
+cob=(7)
+cfi=(74)
+cfn=(4750)
+calls=1 -43 
+* 201
+* 1
+* 6
+cfi=(103)
+cfn=(4944)
+calls=1 -48 
+* 4980
+* 2
++1 6
+
+fn=(4834) void asio::detail::service_registry::add_service<asio::detail::scheduler>(asio::detail::scheduler*)
+42 8
++2 3
+cfi=(70)
+cfn=(4784)
+calls=1 348 
+* 10
++1 5
+cfn=(4836) void asio::detail::service_registry::init_key<asio::detail::scheduler>(asio::execution_context::service::key&, ...)
+calls=1 +13 
+* 31
++1 6
+cfi=(77)
+cfn=(4840) asio::detail::service_registry::do_add_service(asio::execution_context::service::key const&, asio::execution_context::service*)
+calls=1 155 
+* 1901
+* 1
++1 5
+
+fn=(4938)
+58 22
++3 10
+cfn=(4940) void asio::detail::service_registry::init_key_from_id<asio::detail::epoll_reactor>(asio::execution_context::service::key&, asio::detail::service_id<asio::detail::epoll_reactor> const&)
+calls=2 +14 
+* 24
++1 6
+
+fn=(4952) asio::detail::scheduler& asio::detail::service_registry::use_service<asio::detail::scheduler>()
+24 7
++2 3
+cfi=(70)
+cfn=(4784)
+calls=1 348 
+* 10
++1 5
+cfn=(4836)
+calls=1 +31 
+* 31
++1 2
++1 7
+cfi=(77)
+cfn=(4899)
+calls=1 +86 
+* 230
++1 5
+
+fn=(4940)
+75 8
++3 6
++1 4
++1 6
+
+fn=(4892)
+33 16
++2 6
+cfi=(70)
+cfn=(4784)
+calls=2 348 
+* 20
++1 10
+cfn=(4894) void asio::detail::service_registry::init_key<asio::detail::reactive_socket_service<asio::ip::tcp> >(asio::execution_context::service::key&, ...)
+calls=2 +22 
+* 62
++1 4
++1 12
+cfi=(77)
+cfn=(4898) asio::detail::service_registry::do_use_service(asio::execution_context::service::key const&, asio::execution_context::service* (*)(void*), void*)
+calls=2 +77 
+* 9405
++1 10
+
+fn=(4926) asio::execution_context::service* asio::detail::service_registry::create<asio::detail::reactive_socket_service<asio::ip::tcp>, asio::io_context>(void*)
+84 7
++2 2
+cob=(7)
+cfi=(74)
+cfn=(4750)
+calls=1 -43 
+* 204
+* 1
+* 6
+cfi=(101)
+cfn=(4928) asio::detail::reactive_socket_service<asio::ip::tcp>::reactive_socket_service(asio::execution_context&)
+calls=1 -9 
+* 7485
+* 2
++1 6
+
+fn=(4836)
+58 22
++3 10
+cfn=(4838)
+calls=2 +14 
+* 24
++1 6
+
+fn=(4894)
+58 22
++3 10
+cfn=(4896) void asio::detail::service_registry::init_key_from_id<asio::detail::reactive_socket_service<asio::ip::tcp> >(asio::execution_context::service::key&, asio::detail::service_id<asio::detail::reactive_socket_service<asio::ip::tcp> > const&)
+calls=2 +14 
+* 24
++1 6
+
+fn=(4896)
+75 8
++3 6
++1 4
++1 6
+
+fl=(76) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/impl/execution_context.ipp
+fn=(4782) asio::execution_context::service::service(asio::execution_context&)
+54 15
++2 9
+cfi=(68)
+cfn=(4690)
+calls=3 -28 
+* 18
+* 21
+cfi=(70)
+cfn=(4784)
+calls=3 348 
+* 30
+-1 9
++1 6
++2 9
+
+fn=(4756) asio::execution_context::execution_context()
+26 7
++1 3
+cfi=(68)
+cfn=(4690)
+calls=1 +1 
+* 6
+* 2
+cob=(7)
+cfi=(74)
+cfn=(4750)
+calls=1 +16 
+* 204
+* 1
+* 6
+cfi=(77)
+cfn=(4762) asio::detail::service_registry::service_registry(asio::execution_context&)
+calls=1 +1 
+* 996
+* 2
++2 7
+
+fl=(93) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../subprojects/asio-1.28.1/include/asio/detail/scoped_lock.hpp
+fn=(4924) asio::detail::scoped_lock<asio::detail::posix_mutex>::unlock()
+67 8
++2 8
++2 8
+cfi=(94)
+cfn=(4856)
+calls=2 -16 
+* 76
++1 4
++2 6
+
+fn=(4844) asio::detail::scoped_lock<asio::detail::posix_mutex>::scoped_lock(asio::detail::posix_mutex&)
+42 30
++1 18
+cfi=(68)
+cfn=(4690)
+calls=6 -15 
+* 36
+* 18
++2 24
+cfi=(94)
+cfn=(4846)
+calls=6 +4 
+* 1107
++1 12
++1 18
+
+fn=(4854) asio::detail::scoped_lock<asio::detail::posix_mutex>::~scoped_lock()
+50 24
++2 24
++1 24
+cfi=(94)
+cfn=(4856)
+calls=6 +2 
+* 1104
++1 18
+cfi=(68)
+cfn=(4878)
+calls=6 -25 
+* 36
+* 18
+
+fn=(5004) asio::detail::scoped_lock<asio::detail::posix_mutex>::lock()
+57 8
++2 10
++2 8
+cfi=(94)
+cfn=(4846)
+calls=2 -12 
+* 92
++1 4
++2 6
+
+fl=(133)
+fn=(5264)
+777 6
++2 5
+cfn=(5266) char* std::__uninitialized_default_n<char*, unsigned long>(char*, unsigned long)
+calls=1 -83 
+* 995
+* 2
+
+fn=(5268) char* std::__uninitialized_default_n_1<true>::__uninit_default_n<char*, unsigned long>(char*, unsigned long)
+660 5
++2 2
++3 3
+cfi=(134)
+cfn=(5270)
+calls=1 51 
+* 6
+* 1
++1 3
+cfi=(135)
+cfn=(5272)
+calls=1 109 
+* 19
++1 1
++1 7
+cfi=(129)
+cfn=(5274)
+calls=1 1152 
+* 931
+* 1
++2 1
++1 2
+
+fn=(5304) std::enable_if<std::__is_bitwise_relocatable<char, void>::value, char*>::type std::__relocate_a_1<char, char>(char*, char*, char*, std::allocator<char>&)
+1115 7
++4 3
++1 2
++14 3
++1 2
+
+fn=(5266)
+696 5
++11 1
++5 5
+cfn=(5268)
+calls=1 -52 
+* 982
++1 2
+
+fn=(5300)
+1142 9
++6 3
+cfi=(129)
+cfn=(5302)
+calls=1 316 
+* 6
+* 4
+cfi=(129)
+cfn=(5302)
+calls=1 316 
+* 6
+* 4
+cfi=(129)
+cfn=(5302)
+calls=1 316 
+* 6
+* 6
+cfn=(5304)
+calls=1 -33 
+* 17
++3 5
+
+fl=(77)
+fn=(5008)
+108 8
++1 6
++1 6
+
+fn=(4898)
+115 22
++1 12
+cfi=(93)
+cfn=(4844)
+calls=2 -74 
+* 144
++3 6
++1 2
++2 12
+cfn=(4900) asio::detail::service_registry::keys_match(asio::execution_context::service::key const&, asio::execution_context::service::key const&)
+calls=2 -25 
+* 917
+* 4
++1 2
++1 3
+-4 6
++10 3
+cfi=(93)
+cfn=(4924)
+calls=1 -63 
+* 55
++1 4
+cfi=(92)
+cfn=(4926)
+calls=1 -47 
+* 7713
+* 1
++1 6
++1 3
+cfi=(93)
+cfn=(5004)
+calls=1 -76 
+* 64
++4 3
++1 1
++2 12
+cfn=(4900)
+calls=2 -43 
+* 216
+* 4
++2 6
+-4 6
++8 4
++1 3
++1 1
++1 2
++1 3
+cfi=(109)
+cfn=(5006)
+calls=1 -26 
+* 21
+* 6
+cfi=(93)
+cfn=(4854)
+calls=2 50 
+* 124
+* 14
+
+fn=(4899)
+115 33
++1 18
+cfi=(93)
+cfn=(4844)
+calls=3 -74 
+* 216
++3 9
++1 3
++2 18
+cfn=(4900)
+calls=3 -25 
+* 214
+* 6
++1 4
++1 3
+-4 8
++10 3
+cfi=(93)
+cfn=(4924)
+calls=1 -63 
+* 55
++1 4
+cfi=(92)
+cfn=(4942)
+calls=1 -47 
+* 5205
+* 1
++1 6
++1 3
+cfi=(93)
+cfn=(5004)
+calls=1 -76 
+* 64
++4 3
++1 1
++2 6
+cfn=(4900)
+calls=1 -43 
+* 108
+* 2
++2 3
+-4 4
++8 4
++1 3
++1 1
++1 2
++1 3
+cfi=(109)
+cfn=(5006)
+calls=1 -26 
+* 21
+* 9
+cfi=(93)
+cfn=(4854)
+calls=3 50 
+* 186
+* 21
+
+fn=(4900)
+97 40
++1 32
++3 64
++1 56
+cfi=(99)
+cfn=(4902)
+calls=8 +92 
+* 1220
+* 16
++1 6
++1 5
++1 16
+
+fn=(4840)
+155 10
++1 5
+cfi=(91)
+cfn=(4842) asio::execution_context::service::context()
+calls=1 -55 
+* 7
+* 4
++3 6
+cfi=(93)
+cfn=(4844)
+calls=1 42 
+* 903
++3 3
++1 3
++8 6
++1 4
++1 3
++1 3
+cfi=(93)
+cfn=(4854)
+calls=1 50 
+* 938
+* 6
+
+fn=(4762)
+28 6
++2 3
+cfi=(68)
+cfn=(4690)
+calls=1 -2 
+* 6
+* 4
+cfi=(78)
+cfn=(4764)
+calls=1 +1 
+* 968
+-1 3
++1 2
++2 4
+
+fl=(81)
+fn=(4778) asio::detail::scheduler::scheduler(asio::execution_context&, int, bool, asio::detail::scheduler_task* (*)(asio::execution_context&))
+111 15
++17 5
+cfi=(70)
+cfn=(4780) asio::detail::execution_context_service_base<asio::detail::scheduler>::execution_context_service_base(asio::execution_context&)
+calls=1 393 
+* 55
+* 3
+-11 2
+-2 4
++2 5
+-3 2
++5 10
+cfi=(82)
+cfn=(4786)
+calls=1 -12 
+* 162
++9 4
+cfi=(83)
+cfn=(4788)
+calls=1 -92 
+* 4149
+-7 2
++1 3
++6 4
+cfi=(85)
+cfn=(4816)
+calls=1 +79 
+* 25
+-5 2
++1 5
+cfi=(87) /usr/include/c++/13.2.1/atomic
+cfn=(4820) std::atomic<long>::atomic(long)
+calls=1 879 
+* 23
++4 4
+cfi=(89)
+cfn=(4824)
+calls=1 -60 
+* 20
+-3 2
++1 2
++1 3
++1 2
++4 2
++6 10
+
+fn=(5020)
+183 8
++1 6
+cfi=(82)
+cfn=(5022)
+calls=1 49 
+* 78
++1 9
++2 5
+cfi=(91)
+cfn=(4842)
+calls=1 -86 
+* 7
+* 2
+cfn=(5024) asio::detail::scheduler::get_default_task(asio::execution_context&)
+calls=1 662 
+* 323
+* 2
++1 7
+cfi=(89)
+cfn=(5026)
+calls=1 -84 
+* 34
++1 5
+cfn=(5030) asio::detail::scheduler::wake_one_thread_and_unlock(asio::detail::conditionally_enabled_mutex::scoped_lock&)
+calls=1 649 
+* 144
++2 3
+cfi=(82)
+cfn=(5042)
+calls=1 62 
+* 20
+* 6
+
+fn=(5030)
+649 5
++1 6
+cfi=(83)
+cfn=(5032)
+calls=1 76 
+* 49
+* 3
++2 5
++5 3
+cfi=(82)
+cfn=(5038)
+calls=1 79 
+* 70
++2 3
+
+fn=(5024)
+662 4
++4 3
+cfi=(91)
+cfn=(4934)
+calls=1 29 
+* 310
+* 4
++2 2
+
+fl=(61)
+fn=(5138) asio::error::clear(std::error_code&)
+257 16
++1 12
+cfi=(79)
+cfn=(5140)
+calls=4 +9 
+* 28
+* 20
+cfi=(79)
+cfn=(5142)
+calls=4 -9 
+* 56
++1 12
+
+fn=(4616)
+262 20
++1 10
+cfi=(62)
+cfn=(4618)
+calls=10 -66 
+* 2694
++1 20
+
+fl=(69)
+fn=(5076)
+899 16
++3 6
+cfn=(5078) asio::io_context::basic_executor_type<std::allocator<void>, 0ul>::bits() const
+calls=2 1119 
+* 16
+* 2
++1 4
++1 6
+cfi=(117)
+cfn=(5080)
+calls=2 249 
+* 16
+* 2
++1 10
+
+fn=(5078)
+1119 6
++2 6
++1 4
+
+fn=(5092)
+687 18
++5 18
+
+fn=(5064)
+677 24
++2 24
++4 18
+
+fn=(5060)
+1095 8
++2 6
++4 6
+
+fl=(104)
+fn=(4948)
+28 9
+
+fl=(75)
+fn=(4826) asio::io_context::add_impl(asio::detail::scheduler*)
+49 9
++1 5
+cfi=(90)
+cfn=(4828)
+calls=1 -20 
+* 10
++1 3
+cfi=(90)
+cfn=(4830)
+calls=1 -9 
+* 7
+* 5
+cfi=(91)
+cfn=(4832) void asio::add_service<asio::detail::scheduler>(asio::execution_context&, asio::detail::scheduler*)
+calls=1 +30 
+* 1984
++1 3
+cfi=(90)
+cfn=(4880)
+calls=1 +15 
+* 11
+* 2
++1 3
+cfi=(90)
+cfn=(4882)
+calls=1 -17 
+* 11
+-1 1
++1 6
+
+fn=(4754)
+36 7
++2 3
+cfi=(76)
+cfn=(4756)
+calls=1 -12 
+* 1234
+* 2
+cob=(7)
+cfi=(74)
+cfn=(4750)
+calls=1 +5 
+* 201
+* 1
+* 1
+-1 1
++1 7
+cfi=(81)
+cfn=(4778)
+calls=1 +73 
+* 4525
+-1 5
+cfn=(4826)
+calls=1 +12 
+* 2060
+* 2
++3 7
+
+fl=(72) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../src/robotActuation.cpp
+fn=(4720) __static_initialization_and_destruction_0()
+161 2
+fi=(61)
+293 1
+cfn=(4616)
+calls=1 -31 
+* 15
+* 1
++3 1
+cfi=(64)
+cfn=(4678)
+calls=1 56 
+* 10
+* 1
++3 1
+cfi=(64)
+cfn=(4680)
+calls=1 84 
+* 10
+* 1
++3 1
+cfi=(64)
+cfn=(4682)
+calls=1 118 
+* 10
+* 1
+fi=(65)
+118 8
+fi=(69)
+1246 4
+fi=(65)
+118 4
+fi=(70)
+400 17
+cfn=(4722) asio::detail::service_id<asio::detail::posix_serial_port_service>::service_id()
+calls=1 -21 
+* 26
+* 7
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 0 
+* 77
+* 1
+fe=(72)
+161 3
+
+fn=(4718) _GLOBAL__sub_I__ZN14RobotActuationC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEj
+161 3
+cfn=(4720)
+calls=1 * 
+* 202
+* 2
+
+fl=(60) /home/will/git/Lunabotics-Robot-Code-23-24/robotMainCode/PiCode/build/../src/main.cpp
+fn=(4614) __static_initialization_and_destruction_0()
+68 2
+fi=(61)
+293 1
+cfn=(4616)
+calls=1 -31 
+* 2609
+* 1
++3 1
+cfi=(64)
+cfn=(4678)
+calls=1 56 
+* 130
+* 1
++3 1
+cfi=(64)
+cfn=(4680)
+calls=1 84 
+* 130
+* 1
++3 1
+cfi=(64)
+cfn=(4682)
+calls=1 118 
+* 130
+* 1
+fi=(65)
+118 9
+cfi=(66)
+cfn=(4686)
+calls=1 -80 
+* 26
+* 7
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 0 
+* 77
+* 1
+* 9
+cfi=(66)
+cfn=(4692)
+calls=1 -80 
+* 26
+* 7
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 0 
+* 77
+* 1
+fi=(69)
+1246 9
+cfi=(70)
+cfn=(4698) asio::detail::service_id<asio::detail::strand_service>::service_id()
+calls=1 379 
+* 26
+* 7
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 0 
+* 77
+* 1
+fi=(65)
+118 9
+cfi=(66)
+cfn=(4702)
+calls=1 -80 
+* 26
+* 7
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 0 
+* 77
+* 1
+fi=(70)
+400 9
+cfn=(4708) asio::detail::service_id<asio::detail::scheduler>::service_id()
+calls=1 -21 
+* 26
+* 7
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 0 
+* 77
+* 1
+* 9
+cfn=(4710) asio::detail::service_id<asio::detail::epoll_reactor>::service_id()
+calls=1 -21 
+* 26
+* 7
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 0 
+* 77
+* 1
+fe=(60)
+68 3
+
+fn=(4612) _GLOBAL__sub_I_main
+68 3
+cfn=(4614)
+calls=1 * 
+* 3732
+* 2
+
+fn=(4744) main
+9 9
++1 2
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 -10 
+* 825
+* 5
+* 4
+cfi=(71)
+cfn=(4752)
+calls=1 -6 
+* 31110
+
+fl=(110)
+fn=(5034)
+88 5
++2 3
+cfi=(82)
+cfn=(5036)
+calls=1 -1 
+* 7
+* 2
++1 6
++1 4
++6 1
++1 2
+
+fl=(120)
+fn=(5342) asio::detail::socket_ops::accept(int, void*, unsigned long*, std::error_code&)
+110 10
++1 2
++6 6
+cfn=(5344) int asio::detail::socket_ops::call_accept<unsigned int>(unsigned int msghdr::*, int, void*, unsigned long*)
+calls=1 -21 
+* 759
+
+fn=(5202) int asio::detail::socket_ops::call_bind<unsigned int>(unsigned int msghdr::*, int, void const*, unsigned long)
+275 7
++3 7
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 0 
+* 807
+* 5
++2 2
+
+fn=(5182) int asio::detail::socket_ops::call_setsockopt<unsigned int>(unsigned int msghdr::*, int, int, int, void const*, unsigned long)
+1853 9
++4 9
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 0 
+* 868
+* 5
++2 2
+
+fn=(5180) asio::detail::socket_ops::setsockopt(int, unsigned char&, int, int, void const*, unsigned long, std::error_code&)
+1863 14
++1 2
++6 2
++6 2
++17 4
++22 10
+cfn=(5182)
+calls=1 -62 
+* 893
+* 1
++2 7
+cfn=(5136) asio::detail::socket_ops::get_last_error(std::error_code&, bool)
+calls=1 78 
+* 61
++17 1
++2 5
+
+fn=(5212)
+682 9
++1 2
++6 5
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 0 
+* 784
+* 5
+* 1
++1 7
+cfn=(5136)
+calls=1 78 
+* 61
++1 1
++1 5
+
+fn=(5128)
+1810 7
++36 6
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 0 
+* 776
+* 5
+* 1
++1 7
+cfn=(5136)
+calls=1 78 
+* 61
++1 1
++2 2
+
+fn=(5104)
+3959 5
++8 3
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 0 
+* 714
+* 5
++2 2
+
+fn=(5200) asio::detail::socket_ops::bind(int, void const*, unsigned long, std::error_code&)
+284 10
++1 2
++6 6
+cfn=(5202)
+calls=1 -16 
+* 828
+* 1
++1 7
+cfn=(5136)
+calls=1 78 
+* 61
++1 1
++1 5
+
+fn=(5340) asio::detail::socket_ops::sync_accept(int, unsigned char, void*, unsigned long*, std::error_code&)
+140 12
++5 6
+cfn=(5342)
+calls=1 -35 
+* 777
+
+fn=(5344)
+96 10
++3 4
++1 8
+cob=(1)
+cfi=(1)
+cfn=(4626)
+calls=1 0 
+* 732
+* 5
+
+fn=(5136)
+78 40
++1 16
++2 12
+cfi=(61)
+cfn=(5138)
+calls=4 257 
+* 144
++12 32
+
+fl=(101)
+fn=(5118)
+125 13
++3 5
+cfi=(114)
+cfn=(5120)
+calls=1 -58 
+* 6
+* 4
+cfi=(114)
+cfn=(5122)
+calls=1 -64 
+* 6
+* 4
+cfi=(114)
+cfn=(5100)
+calls=1 -52 
+* 7
+* 9
+cfi=(102)
+cfn=(5124)
+calls=1 +48 
+* 2043
+* 7
+cfi=(79)
+cfn=(4776)
+calls=1 281 
+* 9
+* 3
++2 4
++3 9
++1 9
+
+fn=(5170)
+166 10
++5 2
+-2 4
+cfi=(124)
+cfn=(5172)
+calls=1 -67 
+* 7
+* 1
++2 6
+cfi=(124)
+cfn=(5174)
+calls=1 -76 
+* 7
+* 1
+-1 2
+-1 4
+cfi=(124)
+cfn=(5176)
+calls=1 -88 
+* 7
+* 1
++1 2
+-1 4
+cfi=(124)
+cfn=(5178)
+calls=1 -95 
+* 7
+* 12
+cfi=(120)
+cfn=(5180)
+calls=1 1863 
+* 1002
+* 1
++5 9
++1 6
+
+fn=(5332)
+480 14
++4 3
+cfi=(96)
+cfn=(5334)
+calls=1 +12 
+* 42
+* 2
++7 4
++1 6
++1 2
+-1 8
+cfi=(120)
+cfn=(5340)
+calls=1 140 
+* 795
+
+fn=(4928)
+77 6
++3 5
+cfi=(70)
+cfn=(4930) asio::detail::execution_context_service_base<asio::detail::reactive_socket_service<asio::ip::tcp> >::execution_context_service_base(asio::execution_context&)
+calls=1 393 
+* 55
+* 6
+cfi=(102)
+cfn=(4932)
+calls=1 -49 
+* 7406
+* 3
++2 4
+
+fn=(5190)
+155 8
++3 3
+cfi=(111)
+cfn=(5192)
+calls=1 -4 
+* 31
+* 4
+cfi=(111)
+cfn=(5196)
+calls=1 -10 
+* 15
+* 8
+cfi=(120)
+cfn=(5200)
+calls=1 284 
+* 921
++3 9
++1 3
+
+fn=(5044)
+67 16
++1 6
+cfi=(111)
+cfn=(5046)
+calls=2 -1 
+* 52
+* 8
+cfi=(111)
+cfn=(5050)
+calls=2 +66 
+* 96
+* 2
++2 14
+
+fl=(91)
+fn=(4832)
+81 5
++5 6
+cfi=(92)
+cfn=(4834)
+calls=1 -44 
+* 1970
++1 3
+
+fn=(4842)
+101 6
++1 4
++1 4
+
+fn=(4950)
+29 4
++5 4
+cfi=(92)
+cfn=(4952)
+calls=1 -10 
+* 300
++1 2
+
+fn=(4934)
+29 8
++5 8
+cfi=(92)
+cfn=(4936)
+calls=2 -10 
+* 6160
++1 4
+
+fl=(87)
+fn=(4820)
+879 10
+cfi=(88)
+cfn=(4822)
+calls=1 362 
+* 10
+* 3
+
+fl=(70)
+fn=(4708)
+379 7
+cfn=(4700) asio::execution_context::id::id()
+calls=1 -68 
+* 16
+* 3
+
+fn=(4700)
+311 35
+cfi=(68)
+cfn=(4690)
+calls=5 28 
+* 30
+* 15
+
+fn=(4698)
+379 7
+cfn=(4700)
+calls=1 -68 
+* 16
+* 3
+
+fn=(4710)
+379 7
+cfn=(4700)
+calls=1 -68 
+* 16
+* 3
+
+fn=(4722)
+379 7
+cfn=(4700)
+calls=1 -68 
+* 16
+* 3
+
+fn=(4946)
+393 5
++1 5
+cfi=(76)
+cfn=(4782)
+calls=1 54 
+* 39
+* 3
++2 3
+
+fn=(4930)
+393 5
++1 5
+cfi=(76)
+cfn=(4782)
+calls=1 54 
+* 39
+* 3
++2 3
+
+fn=(4716)
+379 7
+cfn=(4700)
+calls=1 -68 
+* 16
+* 3
+
+fn=(4780)
+393 5
++1 5
+cfi=(76)
+cfn=(4782)
+calls=1 54 
+* 39
+* 3
++2 3
+
+fn=(4784)
+348 90
+
+fl=(123)
+fn=(5144)
+39 5
++1 3
+cfi=(68)
+cfn=(4690)
+calls=1 -12 
+* 6
+* 3
++2 3
+
+fn=(5146)
+56 6
++2 4
++1 4
+
+fn=(5166)
+45 7
++2 4
++6 3
+cfi=(68)
+cfn=(4878)
+calls=1 -24 
+* 6
+* 6
+
+fn=(5164)
+81 3
++2 3
++1 2
++1 1
++1 2
+
+fl=(125)
+fn=(5220)
+1274 5
+
+fl=(64)
+fn=(4678)
+56 8
++1 23
+cob=(7)
+cfi=(63) /usr/src/debug/gcc/gcc/libstdc++-v3/libsupc++/guard.cc
+cfn=(4662) __cxa_guard_acquire
+calls=1 273 
+* 17
+* 1
+* 11
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 -57 
+* 77
+* 1
+* 3
+cob=(7)
+cfi=(63)
+cfn=(4674) __cxa_guard_release
+calls=1 443 
+* 6
+* 1
++1 4
++1 8
+
+fn=(4680)
+84 8
++1 23
+cob=(7)
+cfi=(63)
+cfn=(4662)
+calls=1 273 
+* 17
+* 1
+* 11
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 -85 
+* 77
+* 1
+* 3
+cob=(7)
+cfi=(63)
+cfn=(4674)
+calls=1 443 
+* 6
+* 1
++1 4
++1 8
+
+fn=(4682)
+118 8
++1 23
+cob=(7)
+cfi=(63)
+cfn=(4662)
+calls=1 273 
+* 17
+* 1
+* 11
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 0 
+* 77
+* 1
+* 3
+cob=(7)
+cfi=(63)
+cfn=(4674)
+calls=1 443 
+* 6
+* 1
++1 4
++1 8
+
+ob=(4) ???
+fl=(4) ???
+fn=(3994) 0x0000000004836000
+0 7
+
+fn=(4062) 0x0000000004d03000
+0 7
+
+fn=(4602) 0x000000000010e000
+0 7
+
+fn=(4040) 0x0000000004b37320
+0 2
+cob=(2)
+cfi=(2)
+cfn=(4042) 0x000000000015cd70
+calls=1 0 
+0 22
+
+fn=(4340) 0x0000000004b372e0
+0 4
+cob=(2)
+cfi=(2)
+cfn=(4342) 0x000000000015bfa0
+calls=2 0 
+0 50
+
+fn=(4072) 0x0000000004af0000
+0 7
+
+fn=(4088) 0x000000000490d000
+0 7
+
+fn=(4192) 0x0000000004b37240
+0 138
+cob=(2)
+cfi=(2)
+cfn=(4194) 0x000000000015aec0
+calls=69 0 
+0 966
+
+ob=(2)
+fl=(2)
+fn=(4600)
+0 18
+cfn=(4284)
+calls=1 0 
+0 77
+0 12
+cob=(1)
+cfi=(1)
+cfn=(4728) _dl_audit_preinit
+calls=1 0 
+0 5
+0 6
+cfn=(4730) 0x0000000000027c50
+calls=1 0 
+0 32015
+0 11
+cob=(4)
+cfi=(4)
+cfn=(4602)
+calls=1 0 
+0 7
+0 35
+cob=(8)
+cfi=(73)
+cfn=(4724)
+calls=1 92 
+0 87
+cob=(8)
+cfi=(72)
+cfn=(4718)
+calls=1 161 
+0 207
+cob=(8)
+cfi=(71)
+cfn=(4712)
+calls=1 67 
+0 207
+cob=(8)
+cfi=(60)
+cfn=(4612)
+calls=1 68 
+0 3737
+0 4
+cob=(8)
+cfi=(59)
+cfn=(4606)
+calls=1 0 
+0 12
+0 21
+
+fn=(3202) wcslen
+0 38
+
+fn=(3224) stpncpy
+0 19
+
+fn=(3234) wcscpy
+0 16
+
+fn=(3910) getrlimit
+0 10
+
+fn=(4054) 0x0000000000027bd0
+0 12
+
+fn=(4356) 0x0000000000099590
+0 793
+cob=(1)
+cfi=(1)
+cfn=(206) __tunable_get_val
+calls=1 0 
+0 21
+0 4
+cob=(1)
+cfi=(1)
+cfn=(206)
+calls=1 0 
+0 22
+0 4
+cob=(1)
+cfi=(1)
+cfn=(206)
+calls=1 0 
+0 21
+0 4
+cob=(1)
+cfi=(1)
+cfn=(206)
+calls=1 0 
+0 21
+0 4
+cob=(1)
+cfi=(1)
+cfn=(206)
+calls=1 0 
+0 22
+0 4
+cob=(1)
+cfi=(1)
+cfn=(206)
+calls=1 0 
+0 21
+0 4
+cob=(1)
+cfi=(1)
+cfn=(206)
+calls=1 0 
+0 21
+0 4
+cob=(1)
+cfi=(1)
+cfn=(206)
+calls=1 0 
+0 21
+0 4
+cob=(1)
+cfi=(1)
+cfn=(206)
+calls=1 0 
+0 21
+0 4
+cob=(1)
+cfi=(1)
+cfn=(206)
+calls=1 0 
+0 21
+0 4
+cob=(1)
+cfi=(1)
+cfn=(206)
+calls=1 0 
+0 21
+0 4
+cob=(1)
+cfi=(1)
+cfn=(206)
+calls=1 0 
+0 21
+0 9
+
+fn=(4462) brk
+0 18
+
+fn=(4732) _setjmp
+0 3
+cfn=(4734) __sigsetjmp
+calls=1 0 
+0 31
+
+fn=(4972) epoll_create1
+0 6
+
+fn=(4994)
+0 21
+
+fn=(5002) write
+0 8
+
+fn=(5218) listen
+0 6
+
+fn=(4112) pthread_once
+0 40
+cfn=(4122) _pthread_cleanup_push
+calls=1 0 
+0 7
+0 1
+cob=(7)
+cfi=(14) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++98/locale.cc
+cfn=(4126) std::locale::facet::_S_initialize_once()
+calls=1 208 
+0 54
+0 3
+cfn=(4134) _pthread_cleanup_pop
+calls=1 0 
+0 6
+0 92
+
+fn=(3206) wcsnlen
+0 19
+
+fn=(3244) strcasecmp_l
+0 21
+
+fn=(4180) wctob
+0 2816
+
+fn=(4508) 0x00000000000989c0
+0 36
+
+fn=(4730)
+0 11
+cfn=(4732)
+calls=1 0 
+0 34
+0 15
+cob=(8)
+cfi=(60)
+cfn=(4744)
+calls=1 9 
+0 31955
+
+fn=(4862)
+0 297
+
+fn=(3182) __memmove_chk
+0 22
+
+fn=(3204) memset
+0 96
+
+fn=(3210) strpbrk
+0 7
+
+fn=(3212) strcmp
+0 57
+
+fn=(4028) 0x0000000000027b60
+0 32
+cob=(4)
+cfi=(4)
+cfn=(4040)
+calls=1 0 
+0 24
+0 12
+
+fn=(4184) _dl_mcount_wrapper_check
+0 768
+
+fn=(4442) 0x000000000009ac70
+0 99
+cfn=(4458) __default_morecore
+calls=1 0 
+0 27
+0 14
+cfn=(4458)
+calls=1 0 
+0 58
+0 38
+
+fn=(5188) setsockopt
+0 7
+
+fn=(3216) wcschr
+0 50
+
+fn=(3238) strchrnul
+0 25
+
+fn=(3250) memmove
+0 88
+
+fn=(3252) memchr
+0 46
+
+fn=(4814) pthread_condattr_destroy
+0 3
+
+fn=(4964) eventfd
+0 6
+
+fn=(4980) timerfd_create
+0 6
+
+fn=(5134) socket
+0 6
+
+fn=(4122)
+0 7
+
+fn=(3190) strcat
+0 17
+
+fn=(3200) __mempcpy_chk
+0 22
+
+fn=(3220) rindex
+0 25
+
+fn=(3228) strncmp
+0 42
+
+fn=(3232) strcspn
+0 7
+
+fn=(3240) bcmp
+0 48
+
+fn=(3526) strstr
+0 10
+
+fn=(3906) __libc_early_init
+0 11
+cob=(1)
+cfi=(1)
+cfn=(206)
+calls=1 0 
+0 22
+0 4
+cob=(1)
+cfi=(1)
+cfn=(206)
+calls=1 0 
+0 22
+0 4
+cob=(1)
+cfi=(1)
+cfn=(206)
+calls=1 0 
+0 22
+0 4
+cob=(1)
+cfi=(1)
+cfn=(206)
+calls=1 0 
+0 22
+0 4
+cob=(1)
+cfi=(1)
+cfn=(206)
+calls=1 0 
+0 22
+0 18
+cfn=(3908) __ctype_init
+calls=1 0 
+0 17
+0 7
+cfn=(3910)
+calls=1 0 
+0 10
+0 30
+cfn=(3912) 0x000000000008f380
+calls=1 0 
+0 90
+0 6
+
+fn=(4182) btowc
+0 8320
+cfn=(4184)
+calls=128 0 
+0 768
+0 1408
+
+fn=(4284)
+0 468
+cfn=(4292) 0x0000000000040480
+calls=26 0 
+0 932
+0 598
+
+fn=(4336) secure_getenv
+0 6
+cfn=(4338) getenv
+calls=1 0 
+0 504
+
+fn=(4338)
+0 15
+cob=(4)
+cfi=(4)
+cfn=(4192)
+calls=1 0 
+0 16
+0 408
+cob=(4)
+cfi=(4)
+cfn=(4340)
+calls=2 0 
+0 54
+0 11
+
+fn=(4402) 0x000000000009b500
+0 1100
+cfn=(4508)
+calls=9 0 
+0 36
+0 148
+cfn=(4442)
+calls=1 0 
+0 236
+0 3
+
+fn=(4460) sbrk
+0 36
+cfn=(4462)
+calls=1 0 
+0 9
+0 9
+cfn=(4462)
+calls=1 0 
+0 9
+0 4
+
+fn=(4796) pthread_condattr_init
+0 4
+
+fn=(4802) pthread_condattr_setclock
+0 11
+
+fn=(4134)
+0 6
+
+fn=(3174) strncasecmp
+0 21
+
+fn=(3254) strspn
+0 14
+
+fn=(3912)
+0 11
+cob=(1)
+cfi=(1)
+cfn=(206)
+calls=1 0 
+0 22
+0 4
+cob=(1)
+cfi=(1)
+cfn=(206)
+calls=1 0 
+0 21
+0 4
+cob=(1)
+cfi=(1)
+cfn=(206)
+calls=1 0 
+0 22
+0 6
+
+fn=(4200) 0x0000000000157a20
+0 1048
+
+fn=(4292)
+0 932
+
+fn=(4458)
+0 10
+cfn=(4460)
+calls=2 0 
+0 67
+0 8
+
+fn=(4916)
+0 135
+
+fn=(5288) 0x0000000000158b80
+0 19
+
+fn=(4130) newlocale
+0 39
+
+fn=(3186) wcscat
+0 18
+
+fn=(3188) wmemset
+0 30
+
+fn=(3208) strnlen
+0 50
+
+fn=(3230) strcasecmp
+0 21
+
+fn=(3236) strncasecmp_l
+0 21
+
+fn=(3908)
+0 17
+
+fn=(4354) malloc
+0 240
+cfn=(4396) 0x000000000009c4f0
+calls=1 0 
+0 475
+0 55
+cfn=(4402)
+calls=8 0 
+0 1160
+0 57
+cfn=(4356)
+calls=1 0 
+0 1100
+0 2
+
+fn=(4770)
+0 210
+
+fn=(4852)
+0 385
+
+fn=(3164) 0x00000000000b56e0
+0 28
+
+fn=(3192) __memset_chk
+0 24
+
+fn=(3194) memcpy
+0 88
+
+fn=(3196) wcsncpy
+0 18
+
+fn=(3198) __memcpy_chk
+0 22
+
+fn=(3218) index
+0 38
+
+fn=(3226) wmemchr
+0 69
+
+fn=(3246) strlen
+0 100
+
+fn=(3516) gettimeofday
+0 7
+
+fn=(4342)
+0 50
+
+fn=(4396)
+0 13
+cfn=(4402)
+calls=1 0 
+0 363
+0 99
+
+fn=(4808) pthread_cond_init
+0 16
+
+fn=(5208) bind
+0 6
+
+fn=(3176) mempcpy
+0 22
+
+fn=(3178) wcpncpy
+0 18
+
+fn=(3180) stpcpy
+0 17
+
+fn=(3184) wmemcmp
+0 48
+
+fn=(3214) memrchr
+0 25
+
+fn=(3222) wcscmp
+0 50
+
+fn=(3242) strcpy
+0 17
+
+fn=(3248) strncpy
+0 38
+
+fn=(4042)
+0 22
+
+fn=(4190) wctype_l
+0 120
+cob=(4)
+cfi=(4)
+cfn=(4192)
+calls=10 0 
+0 160
+0 328
+cob=(4)
+cfi=(4)
+cfn=(4192)
+calls=48 0 
+0 768
+0 20
+cob=(4)
+cfi=(4)
+cfn=(4192)
+calls=10 0 
+0 160
+0 370
+cfn=(4200)
+calls=49 0 
+0 1048
+0 198
+
+fn=(4194)
+0 966
+
+fn=(4734)
+0 31
+
+fn=(5110) htons
+0 4
+
+fn=(5350) accept
+0 3
+
+fn=(4176) uselocale
+0 44
+
+ob=(1)
+fl=(1)
+fn=(4626)
+0 728
+cfn=(4628) 0x0000000000010600
+calls=28 0 
+0 22424
+0 420
+
+fn=(132) 0x0000000000019e30
+0 485
+
+fn=(1048) 0x00000000000197e0
+0 66
+cfn=(1050) 0x0000000000019670
+calls=11 0 
+0 483
+0 6
+cfn=(1050)
+calls=3 0 
+0 180
+0 106
+cfn=(1088) 0x0000000000019710
+calls=6 0 
+0 30
+0 34
+
+fn=(2000) 0x000000000000af00
+0 12
+cfn=(1428) 0x00000000000212e0
+calls=1 0 
+0 17
+0 13
+cfn=(1482) 0x0000000000021090
+calls=1 0 
+0 15
+0 8
+cfn=(1802) 0x00000000000211d0
+calls=1 0 
+0 6
+0 7
+cfn=(1608) 0x00000000000214a0
+calls=1 0 
+0 23
+0 2
+
+fn=(2420) 0x0000000000010db0
+0 229
+cfn=(2421) 0x0000000000010db0'2
+calls=1 0 
+0 40
+0 2
+
+fn=(2421)
+0 40
+
+fn=(2972) 0x0000000000009f90
+0 900019
+cfn=(2992) 0x0000000000009300
+calls=2875 0 
+0 1044084
+0 116284
+
+fn=(3020) 0x0000000000009160
+0 78885
+cfn=(916) 0x0000000000022bc0
+calls=345 0 
+0 18397
+0 72406
+cfn=(916)
+calls=2848 0 
+0 80269
+0 5732
+
+fn=(212) 0x00000000000203c0
+0 8
+
+fn=(852) 0x0000000000006b70
+0 120
+
+fn=(2402) 0x0000000000010eb0
+0 152
+cfn=(2420)
+calls=6 0 
+0 271
+0 31
+cfn=(742) 0x0000000000022000
+calls=1 0 
+0 19
+0 4
+
+fn=(2492) 0x00000000000013c0
+0 13
+cfn=(2496) 0x000000000001bd50
+calls=1 0 
+0 27237
+0 8
+
+fn=(2506) 0x0000000000013440
+0 625
+cfn=(1352) 0x000000000000af90
+calls=58 0 
+0 5221
+0 12336
+cfn=(916)
+calls=63 0 
+0 2792
+0 444
+cfn=(916)
+calls=1 0 
+0 51
+0 1209
+cfn=(724) 0x000000000000adf0
+calls=6 0 
+0 258
+0 4120
+cfn=(2678) 0x0000000000024380
+calls=1 0 
+0 57
+0 2
+
+fn=(2756) 0x0000000000011880
+0 11
+cfn=(206)
+calls=1 0 
+0 21
+0 5
+cfn=(206)
+calls=1 0 
+0 21
+0 21
+
+fn=(3274) 0x000000000000e110
+0 126
+cfn=(3278) 0x0000000000021550
+calls=7 0 
+0 42
+0 14
+
+fn=(3294) 0x00000000000123e0
+0 81
+
+fn=(3734) 0x0000000000003ef0
+0 441
+
+fn=(3812) 0x0000000000019a30
+0 60
+cfn=(2972)
+calls=4 0 
+0 2787
+0 104
+
+fn=(3836) 0x0000000000019d30
+0 12
+cfn=(3838) 0x000000000000ab30
+calls=1 0 
+0 257
+0 17
+cfn=(3838)
+calls=1 0 
+0 279
+0 13
+
+fn=(3958) 0x0000000000021580
+0 6
+
+fn=(3980) 0x0000000000004e10
+0 231
+cob=(4)
+cfi=(4)
+cfn=(4088)
+calls=1 0 
+0 7
+cob=(4)
+cfi=(4)
+cfn=(4072)
+calls=1 0 
+0 7
+cob=(4)
+cfi=(4)
+cfn=(4062)
+calls=1 0 
+0 7
+cob=(4)
+cfi=(4)
+cfn=(3994)
+calls=1 0 
+0 7
+0 163
+cob=(7)
+cfi=(58) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++20/tzdb.cc
+cfn=(4590) _GLOBAL__sub_I_tzdb.cc
+calls=1 2041 
+0 252
+cob=(7)
+cfi=(57) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++17/memory_resource.cc
+cfn=(4588) _GLOBAL__sub_I_memory_resource.cc
+calls=1 1482 
+0 247
+cob=(7)
+cfi=(56) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++11/locale-inst.cc
+cfn=(4580) _GLOBAL__sub_I_wlocale_inst.cc
+calls=1 160 
+0 50
+cob=(7)
+cfi=(56)
+cfn=(4572) _GLOBAL__sub_I_locale_inst.cc
+calls=1 160 
+0 50
+cob=(7)
+cfi=(56)
+cfn=(4564) _GLOBAL__sub_I_cxx11_wlocale_inst.cc
+calls=1 160 
+0 34
+cob=(7)
+cfi=(56)
+cfn=(4556) _GLOBAL__sub_I_cxx11_locale_inst.cc
+calls=1 160 
+0 34
+cob=(7)
+cfi=(55)
+cfn=(4554) _GLOBAL__sub_I_system_error.cc
+calls=1 578 
+0 166
+cob=(7)
+cfi=(54) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++11/ios_errcat.cc
+cfn=(4552) _GLOBAL__sub_I_ios_errcat.cc
+calls=1 84 
+0 82
+cob=(7)
+cfi=(47) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++11/future.cc
+cfn=(4550) _GLOBAL__sub_I_future.cc
+calls=1 126 
+0 82
+cob=(7)
+cfi=(53) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++98/parallel_settings.cc
+cfn=(4548) _GLOBAL__sub_I_parallel_settings.cc
+calls=1 42 
+0 44
+cob=(7)
+cfi=(50) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++98/bitmap_allocator.cc
+cfn=(4542) _GLOBAL__sub_I_bitmap_allocator.cc
+calls=1 127 
+0 78
+cob=(7)
+cfi=(48) /usr/src/debug/gcc/gcc/libstdc++-v3/libsupc++/eh_alloc.cc
+cfn=(4334) _GLOBAL__sub_I_eh_alloc.cc
+calls=1 456 
+0 2327
+cob=(7)
+cfi=(46) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++11/compatibility-thread-c++0x.cc
+cfn=(4330) _GLOBAL__sub_I_compatibility_thread_c__0x.cc
+calls=1 128 
+0 10
+cob=(7)
+cfi=(45) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++11/compatibility-condvar.cc
+cfn=(4328) _GLOBAL__sub_I_compatibility_condvar.cc
+calls=1 108 
+0 3
+cob=(7)
+cfi=(44) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++11/compatibility-c++0x.cc
+cfn=(4318) _GLOBAL__sub_I_compatibility_c__0x.cc
+calls=1 260 
+0 192
+cob=(7)
+cfi=(43) ???
+cfn=(4312) 0x00000000000acc70
+calls=1 0 
+0 12
+cob=(6) /usr/lib/libgcc_s.so.1
+cfi=(9) ???
+cfn=(4082) 0x0000000000005100
+calls=1 0 
+0 12
+cob=(2)
+cfi=(2)
+cfn=(4054)
+calls=1 0 
+0 12
+0 20
+cob=(7)
+cfi=(10) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++98/globals_io.cc
+cfn=(4092) _GLOBAL__sub_I.00090_globals_io.cc
+calls=1 109 
+0 39064
+cob=(6)
+cfi=(6) /usr/src/debug/gcc/gcc/libgcc/config/i386/cpuinfo.c
+cfn=(4076) __cpu_indicator_init@GCC_4.8.0
+calls=1 60 
+0 378
+cob=(3)
+cfi=(3)
+cfn=(4066)
+calls=1 0 
+0 12
+cob=(2)
+cfi=(2)
+cfn=(4028)
+calls=1 0 
+0 68
+cob=(5) /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+cfi=(5) ???
+cfn=(4006) 0x00000000000010e0
+calls=1 0 
+0 12
+0 119
+
+fn=(658) 0x000000000001c740
+0 24
+cfn=(660) 0x0000000000012660
+calls=1 0 
+0 17
+0 14
+cfn=(664) 0x0000000000019090
+calls=1 0 
+0 411
+0 2
+cfn=(664)
+calls=1 0 
+0 6
+0 86
+cfn=(712) 0x000000000000b250
+calls=1 0 
+0 288
+0 13
+cfn=(780) 0x000000000000b1b0
+calls=1 0 
+0 37
+0 282
+cfn=(852)
+calls=1 0 
+0 20
+0 271
+cfn=(916)
+calls=1 0 
+0 25
+0 301
+cfn=(120) 0x0000000000010ce0
+calls=1 0 
+0 27
+0 10
+cfn=(1014) 0x00000000000067f0
+calls=1 0 
+0 1515
+0 3
+cfn=(1212) 0x0000000000002570
+calls=1 0 
+0 33
+0 50
+cfn=(1258) 0x0000000000011a30
+calls=1 0 
+0 6
+0 8
+cfn=(1266) _dl_debug_state
+calls=1 0 
+0 2
+0 4
+cfn=(1270) 0x00000000000177f0
+calls=1 0 
+0 21
+0 12
+cfn=(1888) 0x0000000000021060
+calls=1 0 
+0 9
+0 23
+cfn=(1912) 0x0000000000002720
+calls=1 0 
+0 27271
+0 136
+cfn=(2492)
+calls=1 0 
+0 27258
+0 142
+cfn=(2856) 0x00000000000177e0
+calls=1 0 
+0 33
+0 139
+cfn=(2880) 0x000000000000e260
+calls=6 0 
+0 2544532
+0 32
+cfn=(3294)
+calls=3 0 
+0 81
+0 22
+cfn=(3716) _dl_allocate_tls_init
+calls=1 0 
+0 296
+0 10
+cfn=(3896) 0x0000000000001000
+calls=1 0 
+0 589
+0 1
+cfn=(3940) 0x000000000001ad10
+calls=1 0 
+0 2
+0 3
+cfn=(3944) 0x0000000000017880
+calls=1 0 
+0 9
+0 2
+cfn=(1844) 0x0000000000002520
+calls=1 0 
+0 7
+0 3
+cfn=(1266)
+calls=1 0 
+0 2
+0 2
+cfn=(3954) 0x0000000000014900
+calls=1 0 
+0 18
+0 119
+cfn=(3730) 0x00000000000044e0
+calls=1 0 
+0 1029
+0 3
+cfn=(3806) 0x0000000000019b00
+calls=1 0 
+0 3059
+0 1
+cfn=(3836)
+calls=1 0 
+0 578
+0 10
+cfn=(2880)
+calls=1 0 
+0 1896
+0 8
+cfn=(2736) 0x000000000001bd90
+calls=1 0 
+0 843
+0 25
+cfn=(1280) 0x000000000001c630
+calls=1 0 
+0 2988
+0 25
+
+fn=(1088)
+0 30
+
+fn=(1258)
+0 6
+
+fn=(120)
+0 189
+
+fn=(260) 0x0000000000015b80
+0 203
+
+fn=(1338) 0x000000000001b3b0
+0 12
+cfn=(1340) 0x00000000000084a0
+calls=1 0 
+0 2558
+0 3
+
+fn=(2056) 0x0000000000013d80
+0 3533
+
+fn=(2496)
+0 7
+cfn=(2498) 0x0000000000013d00
+calls=1 0 
+0 27226
+0 4
+
+fn=(2880)
+0 298323
+cfn=(2972)
+calls=2837 0 
+0 2034481
+0 173649
+cfn=(3888) 0x00000000000172e0
+calls=1 0 
+0 6
+cob=(3)
+cfi=(3)
+cfn=(3382)
+calls=1 0 
+0 9
+cob=(3)
+cfi=(3)
+cfn=(3380)
+calls=1 0 
+0 9
+cob=(3)
+cfi=(3)
+cfn=(3378)
+calls=1 0 
+0 9
+cob=(3)
+cfi=(3)
+cfn=(3376)
+calls=1 0 
+0 9
+cob=(3)
+cfi=(3)
+cfn=(3374)
+calls=1 0 
+0 9
+cob=(3)
+cfi=(3)
+cfn=(3372)
+calls=1 0 
+0 9
+cob=(3)
+cfi=(3)
+cfn=(3370)
+calls=1 0 
+0 9
+cob=(3)
+cfi=(3)
+cfn=(3368)
+calls=1 0 
+0 8
+cob=(3)
+cfi=(3)
+cfn=(3366)
+calls=1 0 
+0 9
+cob=(3)
+cfi=(3)
+cfn=(3364)
+calls=1 0 
+0 9
+cob=(3)
+cfi=(3)
+cfn=(3362)
+calls=1 0 
+0 8
+cob=(3)
+cfi=(3)
+cfn=(3360)
+calls=1 0 
+0 9
+cob=(3)
+cfi=(3)
+cfn=(3358)
+calls=1 0 
+0 6
+cob=(3)
+cfi=(3)
+cfn=(3356)
+calls=1 0 
+0 8
+cob=(3)
+cfi=(3)
+cfn=(3354)
+calls=1 0 
+0 9
+cob=(3)
+cfi=(3)
+cfn=(3352)
+calls=1 0 
+0 9
+cob=(3)
+cfi=(3)
+cfn=(3350)
+calls=1 0 
+0 9
+cob=(3)
+cfi=(3)
+cfn=(3348)
+calls=1 0 
+0 8
+cob=(2)
+cfi=(2)
+cfn=(3254)
+calls=1 0 
+0 7
+cob=(2)
+cfi=(2)
+cfn=(3252)
+calls=1 0 
+0 23
+cob=(2)
+cfi=(2)
+cfn=(3250)
+calls=1 0 
+0 22
+cob=(2)
+cfi=(2)
+cfn=(3248)
+calls=1 0 
+0 19
+cob=(2)
+cfi=(2)
+cfn=(3246)
+calls=1 0 
+0 25
+cob=(2)
+cfi=(2)
+cfn=(3244)
+calls=1 0 
+0 21
+cob=(2)
+cfi=(2)
+cfn=(3242)
+calls=1 0 
+0 17
+cob=(2)
+cfi=(2)
+cfn=(3240)
+calls=1 0 
+0 24
+cob=(2)
+cfi=(2)
+cfn=(3238)
+calls=1 0 
+0 25
+cob=(2)
+cfi=(2)
+cfn=(3236)
+calls=1 0 
+0 21
+cob=(2)
+cfi=(2)
+cfn=(3234)
+calls=1 0 
+0 16
+cob=(2)
+cfi=(2)
+cfn=(3232)
+calls=1 0 
+0 7
+cob=(2)
+cfi=(2)
+cfn=(3230)
+calls=1 0 
+0 21
+cob=(2)
+cfi=(2)
+cfn=(3228)
+calls=1 0 
+0 21
+cob=(2)
+cfi=(2)
+cfn=(3226)
+calls=2 0 
+0 46
+cob=(2)
+cfi=(2)
+cfn=(3224)
+calls=1 0 
+0 19
+cob=(2)
+cfi=(2)
+cfn=(3222)
+calls=1 0 
+0 25
+cob=(2)
+cfi=(2)
+cfn=(3220)
+calls=1 0 
+0 25
+cob=(2)
+cfi=(2)
+cfn=(3218)
+calls=1 0 
+0 19
+cob=(2)
+cfi=(2)
+cfn=(3216)
+calls=2 0 
+0 50
+cob=(2)
+cfi=(2)
+cfn=(3214)
+calls=1 0 
+0 25
+cob=(2)
+cfi=(2)
+cfn=(3212)
+calls=1 0 
+0 19
+cob=(2)
+cfi=(2)
+cfn=(3210)
+calls=1 0 
+0 7
+cob=(2)
+cfi=(2)
+cfn=(3208)
+calls=2 0 
+0 50
+cob=(2)
+cfi=(2)
+cfn=(3206)
+calls=1 0 
+0 19
+cob=(2)
+cfi=(2)
+cfn=(3204)
+calls=1 0 
+0 24
+cob=(2)
+cfi=(2)
+cfn=(3202)
+calls=1 0 
+0 19
+cob=(2)
+cfi=(2)
+cfn=(3200)
+calls=1 0 
+0 22
+cob=(2)
+cfi=(2)
+cfn=(3198)
+calls=1 0 
+0 22
+cob=(2)
+cfi=(2)
+cfn=(3196)
+calls=1 0 
+0 18
+cob=(2)
+cfi=(2)
+cfn=(3194)
+calls=1 0 
+0 22
+cob=(2)
+cfi=(2)
+cfn=(3192)
+calls=1 0 
+0 24
+cob=(2)
+cfi=(2)
+cfn=(3190)
+calls=1 0 
+0 17
+cob=(2)
+cfi=(2)
+cfn=(3188)
+calls=2 0 
+0 20
+cob=(2)
+cfi=(2)
+cfn=(3186)
+calls=1 0 
+0 18
+cob=(2)
+cfi=(2)
+cfn=(3184)
+calls=1 0 
+0 24
+cob=(2)
+cfi=(2)
+cfn=(3182)
+calls=1 0 
+0 22
+cob=(2)
+cfi=(2)
+cfn=(3180)
+calls=1 0 
+0 17
+cob=(2)
+cfi=(2)
+cfn=(3178)
+calls=1 0 
+0 18
+cob=(2)
+cfi=(2)
+cfn=(3176)
+calls=1 0 
+0 22
+cob=(2)
+cfi=(2)
+cfn=(3174)
+calls=1 0 
+0 21
+cob=(2)
+cfi=(2)
+cfn=(3164)
+calls=1 0 
+0 28
+0 368
+cfn=(742)
+calls=9 0 
+0 191
+0 26205
+cob=(2)
+cfi=(2)
+cfn=(3188)
+calls=1 0 
+0 10
+cob=(2)
+cfi=(2)
+cfn=(3222)
+calls=1 0 
+0 25
+cob=(2)
+cfi=(2)
+cfn=(3248)
+calls=1 0 
+0 19
+cob=(2)
+cfi=(2)
+cfn=(3240)
+calls=1 0 
+0 24
+cob=(2)
+cfi=(2)
+cfn=(3212)
+calls=1 0 
+0 19
+cob=(2)
+cfi=(2)
+cfn=(3218)
+calls=1 0 
+0 19
+cob=(2)
+cfi=(2)
+cfn=(3254)
+calls=1 0 
+0 7
+cob=(2)
+cfi=(2)
+cfn=(3526)
+calls=1 0 
+0 10
+cob=(2)
+cfi=(2)
+cfn=(3226)
+calls=1 0 
+0 23
+cob=(2)
+cfi=(2)
+cfn=(3228)
+calls=1 0 
+0 21
+cob=(2)
+cfi=(2)
+cfn=(3516)
+calls=1 0 
+0 7
+cob=(2)
+cfi=(2)
+cfn=(3184)
+calls=1 0 
+0 24
+cob=(2)
+cfi=(2)
+cfn=(3252)
+calls=1 0 
+0 23
+cob=(2)
+cfi=(2)
+cfn=(3202)
+calls=1 0 
+0 19
+cob=(2)
+cfi=(2)
+cfn=(3204)
+calls=2 0 
+0 48
+cob=(2)
+cfi=(2)
+cfn=(3250)
+calls=3 0 
+0 66
+cob=(2)
+cfi=(2)
+cfn=(3194)
+calls=3 0 
+0 66
+cob=(2)
+cfi=(2)
+cfn=(3246)
+calls=3 0 
+0 75
+0 139
+cfn=(3274)
+calls=7 0 
+0 182
+0 448
+cfn=(2972)
+calls=6 0 
+0 3544
+0 7301
+
+fn=(232) 0x0000000000015230
+0 71
+
+fn=(470) 0x00000000000153d0
+0 227
+
+fn=(1050)
+0 276
+cfn=(1070) 0x0000000000022990
+calls=9 0 
+0 216
+0 120
+cfn=(638) 0x00000000000241e0
+calls=3 0 
+0 51
+0 12
+
+fn=(1478) 0x0000000000006be0
+0 155
+cfn=(712)
+calls=5 0 
+0 1751
+0 2314
+cfn=(1608)
+calls=5 0 
+0 125
+0 295
+cfn=(1192) 0x00000000000221f0
+calls=5 0 
+0 819
+0 320
+cfn=(1608)
+calls=15 0 
+0 270
+0 45
+cfn=(1482)
+calls=5 0 
+0 75
+0 289
+cfn=(2230) 0x0000000000021360
+calls=1 0 
+0 7
+0 2020
+cfn=(852)
+calls=5 0 
+0 100
+0 889
+cfn=(1802)
+calls=5 0 
+0 30
+0 60
+cfn=(120)
+calls=5 0 
+0 135
+0 123
+cfn=(2200) 0x0000000000011920
+calls=2 0 
+0 20
+0 15
+cfn=(780)
+calls=5 0 
+0 270
+0 20
+cfn=(1844)
+calls=5 0 
+0 35
+0 80
+cfn=(1858) 0x0000000000017970
+calls=5 0 
+0 25
+0 240
+cfn=(1608)
+calls=2 0 
+0 36
+0 46
+cfn=(916)
+calls=3 0 
+0 75
+0 20
+
+fn=(1994) 0x0000000000014570
+0 85
+cfn=(2040) 0x0000000000013e50
+calls=4 0 
+0 5025
+0 28
+cfn=(638)
+calls=4 0 
+0 140
+0 72
+cfn=(742)
+calls=4 0 
+0 44
+0 8
+cfn=(1408) 0x0000000000024180
+calls=4 0 
+0 356
+0 25
+cfn=(2000)
+calls=1 0 
+0 103
+0 31
+
+fn=(2040)
+0 76
+cfn=(916)
+calls=4 0 
+0 100
+0 36
+cfn=(206)
+calls=4 0 
+0 84
+0 708
+cfn=(2056)
+calls=43 0 
+0 3207
+0 264
+cfn=(2056)
+calls=4 0 
+0 326
+0 224
+
+fn=(2) 0x000000000001bf00
+0 525
+cfn=(116) 0x0000000000019830
+calls=1 0 
+0 10
+0 9
+cfn=(120)
+calls=1 0 
+0 27
+0 7
+cfn=(130) 0x000000000001ac50
+calls=1 0 
+0 2659601
+0 15
+
+fn=(204) 0x0000000000010e80
+0 6
+cfn=(206)
+calls=1 0 
+0 22
+0 6
+
+fn=(220) 0x0000000000017310
+0 81
+cfn=(206)
+calls=1 0 
+0 21
+0 7
+cfn=(206)
+calls=1 0 
+0 21
+0 7
+cfn=(206)
+calls=1 0 
+0 21
+0 15
+cfn=(206)
+calls=1 0 
+0 21
+0 7
+cfn=(206)
+calls=1 0 
+0 21
+0 9
+cfn=(572) 0x0000000000012c90
+calls=1 0 
+0 44
+0 9
+cfn=(572)
+calls=1 0 
+0 44
+0 10
+cfn=(572)
+calls=1 0 
+0 44
+0 11
+cfn=(572)
+calls=1 0 
+0 44
+0 8
+cfn=(572)
+calls=1 0 
+0 44
+0 15
+cfn=(206)
+calls=1 0 
+0 19
+0 4
+cfn=(206)
+calls=1 0 
+0 22
+0 10
+cfn=(206)
+calls=1 0 
+0 19
+0 4
+cfn=(206)
+calls=1 0 
+0 19
+0 54
+cfn=(350) 0x0000000000015a70
+calls=1 0 
+0 450
+0 3
+cfn=(350)
+calls=1 0 
+0 494
+0 3
+cfn=(350)
+calls=1 0 
+0 521
+0 5
+cfn=(350)
+calls=1 0 
+0 469
+0 3
+cfn=(350)
+calls=1 0 
+0 461
+0 4
+cfn=(350)
+calls=1 0 
+0 441
+0 3
+cfn=(350)
+calls=1 0 
+0 442
+0 5
+cfn=(350)
+calls=1 0 
+0 485
+0 3
+cfn=(350)
+calls=1 0 
+0 486
+0 4
+cfn=(350)
+calls=1 0 
+0 512
+0 3
+cfn=(350)
+calls=1 0 
+0 513
+0 3
+cfn=(350)
+calls=1 0 
+0 819
+0 6
+cfn=(470)
+calls=1 0 
+0 227
+0 21
+cfn=(232)
+calls=1 0 
+0 71
+0 14
+cfn=(260)
+calls=1 0 
+0 203
+0 72
+
+fn=(356) 0x0000000000015800
+0 5532
+
+fn=(724)
+0 454
+cfn=(1608)
+calls=3 0 
+0 69
+0 222
+
+fn=(780)
+0 54
+cfn=(782) 0x0000000000012650
+calls=6 0 
+0 18
+0 235
+
+fn=(1158) 0x0000000000019170
+0 46
+cfn=(1170) 0x0000000000021ff0
+calls=2 0 
+0 26
+0 22
+cfn=(1048)
+calls=2 0 
+0 138
+0 4
+cfn=(1048)
+calls=2 0 
+0 171
+0 20
+
+fn=(3716)
+0 16
+cfn=(782)
+calls=1 0 
+0 3
+0 131
+cfn=(1170)
+calls=3 0 
+0 39
+0 15
+cfn=(1192)
+calls=3 0 
+0 52
+0 26
+cfn=(782)
+calls=1 0 
+0 3
+0 11
+
+fn=(3782) 0x0000000000004430
+0 248
+
+fn=(3888)
+0 6
+
+fn=(3976) 0x0000000000004f60
+0 32
+cfn=(3980)
+calls=1 0 
+0 37
+0 42
+cfn=(3980)
+calls=6 0 
+0 43665
+0 23
+cfn=(3980)
+calls=1 0 
+0 80
+0 2
+
+fn=(4728)
+0 5
+
+fn=(350)
+0 336
+cfn=(356)
+calls=12 0 
+0 1215
+0 29
+cfn=(356)
+calls=1 0 
+0 20
+0 7
+cfn=(356)
+calls=1 0 
+0 265
+0 66
+cfn=(356)
+calls=12 0 
+0 4032
+0 123
+
+fn=(638)
+0 729
+
+fn=(728) 0x000000000000acd0
+0 550
+
+fn=(916)
+0 109834
+
+fn=(1014)
+0 14
+cfn=(1016) 0x0000000000019220
+calls=1 0 
+0 1371
+0 3
+cfn=(728)
+calls=1 0 
+0 25
+0 12
+cfn=(728)
+calls=1 0 
+0 25
+0 21
+cfn=(1192)
+calls=1 0 
+0 14
+0 30
+
+fn=(1286) 0x0000000000024010
+0 224
+
+fn=(2200)
+0 20
+
+fn=(572)
+0 220
+
+fn=(646) 0x0000000000020bc0
+0 15
+
+fn=(660)
+0 17
+
+fn=(1016)
+0 17
+cfn=(1018) 0x00000000000195b0
+calls=1 0 
+0 49
+0 10
+cfn=(1048)
+calls=1 0 
+0 22
+0 23
+cfn=(1048)
+calls=2 0 
+0 138
+0 2
+cfn=(1048)
+calls=1 0 
+0 149
+0 12
+cfn=(728)
+calls=1 0 
+0 25
+0 13
+cfn=(1050)
+calls=1 0 
+0 12
+0 33
+cfn=(1048)
+calls=2 0 
+0 138
+0 2
+cfn=(1048)
+calls=1 0 
+0 149
+0 51
+cfn=(1132) 0x0000000000021d20
+calls=1 0 
+0 19
+0 21
+cfn=(728)
+calls=1 0 
+0 25
+0 14
+cfn=(1158)
+calls=1 0 
+0 46
+0 5
+cfn=(1158)
+calls=1 0 
+0 381
+0 15
+
+fn=(1132)
+0 19
+
+fn=(1266)
+0 4
+
+fn=(1424) 0x0000000000005310
+0 95
+cfn=(1428)
+calls=5 0 
+0 85
+0 65
+cfn=(1442) 0x0000000000021390
+calls=5 0 
+0 30
+0 257
+cfn=(2230)
+calls=1 0 
+0 7
+0 13
+
+fn=(1912)
+0 189
+cfn=(728)
+calls=5 0 
+0 125
+0 65
+cfn=(742)
+calls=5 0 
+0 63
+0 25
+cfn=(742)
+calls=5 0 
+0 63
+0 504
+cfn=(1394) 0x0000000000005fa0
+calls=11 0 
+0 534
+0 88
+cfn=(1334) _dl_catch_exception
+calls=11 0 
+0 23592
+0 1156
+cfn=(728)
+calls=1 0 
+0 25
+0 121
+cfn=(2402)
+calls=1 0 
+0 477
+0 91
+cfn=(2290) 0x00000000000213f0
+calls=5 0 
+0 100
+0 29
+cfn=(742)
+calls=1 0 
+0 19
+0 5
+
+fn=(3454) 0x000000000000b000
+0 159
+
+fn=(3806)
+0 82
+cfn=(3812)
+calls=1 0 
+0 772
+0 5
+cfn=(3812)
+calls=1 0 
+0 734
+0 5
+cfn=(3812)
+calls=1 0 
+0 781
+0 5
+cfn=(3812)
+calls=1 0 
+0 664
+0 11
+
+fn=(3846) 0x000000000000aa60
+0 84
+cfn=(916)
+calls=3 0 
+0 243
+0 39
+cfn=(916)
+calls=3 0 
+0 215
+0 30
+
+fn=(3944)
+0 9
+
+fn=(206)
+0 783
+
+fn=(712)
+0 111
+cfn=(638)
+calls=5 0 
+0 103
+0 45
+cfn=(724)
+calls=5 0 
+0 222
+0 3
+cfn=(724)
+calls=1 0 
+0 42
+0 84
+cfn=(742)
+calls=6 0 
+0 77
+0 412
+cfn=(638)
+calls=5 0 
+0 175
+0 50
+cfn=(1170)
+calls=5 0 
+0 73
+0 477
+cfn=(728)
+calls=5 0 
+0 125
+0 40
+
+fn=(1170)
+0 138
+
+fn=(1428)
+0 102
+
+fn=(1608)
+0 523
+
+fn=(1944) 0x00000000000026e0
+0 165
+cfn=(1340)
+calls=11 0 
+0 22679
+0 33
+
+fn=(2230)
+0 14
+
+fn=(1212)
+0 33
+
+fn=(1394)
+0 108
+cfn=(1070)
+calls=12 0 
+0 384
+0 108
+
+fn=(1858)
+0 25
+
+fn=(1958) 0x0000000000006780
+0 133
+
+fn=(2992)
+0 725342
+cfn=(3020)
+calls=2873 0 
+0 255689
+0 10057
+cfn=(782)
+calls=82 0 
+0 246
+0 9691
+cfn=(724)
+calls=1 0 
+0 79
+0 3231
+cfn=(782)
+calls=82 0 
+0 246
+0 2425
+cfn=(3454)
+calls=2 0 
+0 159
+0 8
+cfn=(724)
+calls=2 0 
+0 72
+0 2398
+cfn=(3492) 0x000000000000ae30
+calls=2 0 
+0 10
+0 34431
+
+fn=(3896)
+0 13
+cfn=(3838)
+calls=1 0 
+0 250
+0 11
+cob=(2)
+cfi=(2)
+cfn=(3906)
+calls=1 0 
+0 315
+
+fn=(3954)
+0 8
+cfn=(3958)
+calls=1 0 
+0 6
+0 4
+
+fn=(664)
+0 417
+
+fn=(782)
+0 516
+
+fn=(1018)
+0 49
+
+fn=(1192)
+0 885
+
+fn=(1270)
+0 21
+
+fn=(1330) 0x000000000001b880
+0 17
+cfn=(1332) 0x00000000000015e0
+calls=1 0 
+0 2661
+0 11
+
+fn=(1392) 0x00000000000061d0
+0 9
+cfn=(1394)
+calls=1 0 
+0 66
+0 34
+cfn=(638)
+calls=1 0 
+0 35
+0 3
+cfn=(728)
+calls=1 0 
+0 25
+0 9
+
+fn=(0) 0x000000000001b2a0
+0 2
+cfn=(2)
+calls=1 0 
+0 2660194
+0 10
+cfn=(3976)
+calls=1 0 
+0 43881
+0 3
+cob=(8)
+cfi=(59)
+cfn=(4598)
+calls=1 0 
+0 36473
+
+fn=(1280)
+0 31
+cfn=(1330)
+calls=1 0 
+0 2689
+0 6
+cfn=(1286)
+calls=1 0 
+0 224
+0 8
+cfn=(742)
+calls=1 0 
+0 19
+0 11
+
+fn=(2498)
+0 55
+cfn=(2506)
+calls=7 0 
+0 27115
+0 56
+
+fn=(2678)
+0 57
+
+fn=(2766) 0x0000000000011aa0
+0 142
+
+fn=(2786) 0x0000000000011c80
+0 9
+cfn=(728)
+calls=1 0 
+0 25
+0 317
+cfn=(2796) 0x0000000000011590
+calls=1 0 
+0 55
+0 7
+
+fn=(2856)
+0 33
+
+fn=(3278)
+0 42
+
+fn=(1334)
+0 216
+cfn=(1336) 0x0000000000021720
+calls=12 0 
+0 288
+0 72
+cfn=(1944)
+calls=11 0 
+0 22877
+cfn=(1338)
+calls=1 0 
+0 2573
+0 204
+
+fn=(1888)
+0 9
+
+fn=(2290)
+0 100
+
+fn=(1332)
+0 12
+cfn=(1334)
+calls=1 0 
+0 2638
+0 11
+
+fn=(1352)
+0 856
+cfn=(916)
+calls=107 0 
+0 3125
+0 1213
+cfn=(916)
+calls=122 0 
+0 3919
+0 779
+
+fn=(1408)
+0 68
+cfn=(638)
+calls=4 0 
+0 140
+0 12
+cfn=(728)
+calls=4 0 
+0 100
+0 36
+
+fn=(1442)
+0 30
+
+fn=(1802)
+0 36
+
+fn=(2736)
+0 13
+cfn=(724)
+calls=1 0 
+0 36
+0 63
+cfn=(2756)
+calls=1 0 
+0 79
+0 1
+cfn=(2766)
+calls=1 0 
+0 142
+0 1
+cfn=(2786)
+calls=1 0 
+0 413
+0 14
+cfn=(2814) 0x00000000000126c0
+calls=1 0 
+0 75
+0 6
+
+fn=(2814)
+0 32
+cfn=(206)
+calls=1 0 
+0 22
+0 21
+
+fn=(3492)
+0 10
+
+fn=(3730)
+0 8
+cfn=(3746) 0x0000000000003f60
+calls=1 0 
+0 126
+0 4
+cfn=(728)
+calls=1 0 
+0 25
+0 8
+cfn=(3746)
+calls=1 0 
+0 518
+0 9
+cfn=(3734)
+calls=1 0 
+0 73
+0 3
+cfn=(3782)
+calls=1 0 
+0 248
+0 7
+
+fn=(3940)
+0 2
+
+fn=(116)
+0 10
+
+fn=(130)
+0 7
+cfn=(132)
+calls=1 0 
+0 485
+0 2
+cfn=(154) 0x0000000000012cb0
+calls=1 0 
+0 36912
+0 1
+cfn=(204)
+calls=1 0 
+0 34
+0 2
+cfn=(212)
+calls=1 0 
+0 8
+0 1
+cfn=(220)
+calls=1 0 
+0 7401
+0 4
+cfn=(638)
+calls=1 0 
+0 17
+0 3
+cfn=(646)
+calls=1 0 
+0 15
+0 11
+cfn=(658)
+calls=1 0 
+0 2614694
+0 4
+
+fn=(1336)
+0 288
+
+fn=(1844)
+0 42
+
+fn=(4628)
+0 1792
+cfn=(2972)
+calls=28 0 
+0 19575
+0 1010
+cob=(2)
+cfi=(2)
+cfn=(3204)
+calls=1 0 
+0 24
+cob=(2)
+cfi=(2)
+cfn=(3212)
+calls=1 0 
+0 19
+0 4
+
+fn=(1482)
+0 90
+
+fn=(2796)
+0 9
+cfn=(724)
+calls=1 0 
+0 36
+0 10
+
+fn=(3746)
+0 252
+cfn=(3734)
+calls=6 0 
+0 368
+0 24
+
+fn=(3838)
+0 133
+cfn=(3846)
+calls=3 0 
+0 611
+0 42
+
+fn=(154)
+0 36912
+
+fn=(742)
+0 495
+
+fn=(1070)
+0 720
+
+fn=(1340)
+0 940
+cfn=(1352)
+calls=49 0 
+0 4671
+0 550
+cfn=(916)
+calls=22 0 
+0 623
+0 222
+cfn=(1070)
+calls=5 0 
+0 120
+0 15
+cfn=(1392)
+calls=1 0 
+0 181
+0 13
+cfn=(1424)
+calls=1 0 
+0 103
+0 98
+cfn=(1478)
+calls=5 0 
+0 10704
+0 23
+cfn=(638)
+calls=4 0 
+0 68
+0 64
+cfn=(1958)
+calls=4 0 
+0 44
+0 40
+cfn=(1994)
+calls=4 0 
+0 5917
+0 64
+cfn=(1424)
+calls=4 0 
+0 449
+0 76
+cfn=(1958)
+calls=4 0 
+0 36
+0 121
+cfn=(1958)
+calls=5 0 
+0 53
+0 42
+
+ob=(6)
+fl=(6)
+fn=(4076)
+60 1
+fi=(8) /usr/src/debug/gcc/gcc/libgcc/../gcc/common/config/i386/cpuinfo.h
+996 4
+fi=(7) /usr/src/debug/gcc/gcc-build/gcc/include/cpuid.h
+296 1
+fe=(6)
+60 1
+fi=(7)
+296 1
+fe=(6)
+60 5
+fi=(7)
+296 1
++21 2
++3 4
+fi=(8)
+1009 2
+fi=(7)
+296 2
++21 2
++3 3
+fi=(8)
+1023 1
+674 1
+fi=(7)
+320 1
+fi=(8)
+1023 1
+fi=(7)
+320 1
+fi=(8)
+1023 1
++1 4
++1 4
+674 2
++22 2
+92 1
+698 2
+92 1
+700 2
+92 1
+702 2
+92 1
++9 1
+704 2
++2 2
++3 2
+92 1
+711 3
+92 1
+713 2
+92 1
+715 2
+92 1
+717 2
+92 1
+719 2
+92 1
+721 2
+92 1
+723 2
++2 2
++2 2
++2 2
+92 1
+731 2
++2 2
++2 2
++2 2
+92 1
+739 2
++2 2
++5 2
++2 4
++1 2
++2 2
++2 2
++2 2
++2 2
++2 2
+92 1
+761 2
++2 2
++3 2
++2 2
++2 2
++2 2
++2 2
++2 2
++2 2
++2 2
++3 2
++2 2
++2 2
++2 2
++2 2
++2 2
++2 2
++2 2
++2 2
++4 2
++2 2
++2 2
++2 2
++2 2
++2 2
++9 2
++38 3
++1 2
++2 2
++2 2
++2 2
++2 2
++2 2
++2 2
++2 2
++2 2
++3 2
++5 2
++10 2
++2 3
++1 2
++2 2
++2 2
++5 2
++23 3
++4 2
++2 2
++2 2
++2 2
++2 3
++2 2
++2 2
++2 2
++2 2
++2 2
++3 2
++2 2
++2 2
++3 2
++2 2
++2 2
++5 2
+75 1
+1032 2
++16 1
+75 1
+1089 2
+-92 1
+fe=(6)
+64 7
+fi=(8)
+680 2
++3 4
++7 5
+66 1
+1090 2
+101 1
+1095 2
++1 2
++1 2
++1 2
+101 4
+1104 4
++1 2
++1 2
++1 2
++3 3
+101 3
+1118 3
+-83 2
++6 3
+334 9
+1048 2
+101 1
++2 1
+-2 1
++2 1
+-2 1
++2 1
+-2 1
++2 1
+-2 1
++2 1
+-2 1
++2 1
+-2 1
++2 1
+-11 1
++11 1
+-11 1
++11 1
+973 2
++1 2
++2 2
+92 1
++11 1
+687 2
+-2 1
++2 4
+101 1
++2 1
+-2 1
++2 1
+-2 1
++2 1
+-2 1
++2 1
+-2 1
++2 1
+-2 1
++2 1
+436 2
++2 1
+fe=(6)
+
+fl=(9)
+fn=(4082)
+0 12
+
+ob=(5)
+fl=(5)
+fn=(4006)
+0 12
+
+ob=(7)
+fl=(14)
+fn=(4250) std::locale::locale(std::locale::_Impl*)
+88 2
++1 1
+
+fn=(4266) std::locale::~locale()
+91 8
++2 8
+-2 8
++2 24
++2 16
+
+fn=(4126)
+208 1
++2 4
+cfi=(16) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/c++locale.cc
+cfn=(4128) std::locale::facet::_S_create_c_locale(__locale_struct*&, char const*, __locale_struct*)
+calls=1 -76 
+* 49
+
+fn=(4148) std::locale::id::_M_id() const
+504 86
++1 258
+fi=(12) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/ext/atomicity.h
+52 48
+fe=(14)
+518 96
++22 288
++2 48
++1 48
+-1 38
++1 38
+
+fn=(4146) std::locale::_Impl::_M_install_facet(std::locale::id const*, std::locale::facet const*)
+322 32
++1 64
+-1 256
++3 32
+-3 32
++3 32
+cfn=(4148)
+calls=32 504 
+* 480
+* 32
++3 128
+fi=(12)
+52 32
++56 64
+-16 32
+fe=(14)
+366 64
++1 96
++51 32
+-8 32
++8 4768
++2 1536
++1 4608
++7 256
+
+fn=(4106) std::locale::facet::_S_get_c_name()
+230 21
+
+fn=(4110) std::locale::facet::_S_get_c_locale()
+215 28
+fi=(139) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/x86_64-pc-linux-gnu/bits/gthr-default.h
+700 42
+cob=(2)
+cfi=(2)
+cfn=(4112)
+calls=14 0 
+* 203
+fe=(14)
+225 28
++1 28
+
+fn=(4264) std::locale::operator=(std::locale const&)
+120 48
++1 40
++4 16
++2 32
+-4 24
+
+fl=(45)
+fn=(4328)
+108 1
+-26 1
++26 1
+
+fl=(48)
+fn=(4334)
+456 2
+fi=(52) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/ext/concurrence.h
+129 1
+fe=(48)
++66 1
+456 11
+fi=(52)
+129 2
+fe=(48)
++58 1
+fi=(52)
+-58 1
+fe=(48)
++58 2
++8 1
+cob=(2)
+cfi=(2)
+cfn=(4336)
+calls=1 0 
+* 510
+fi=(49) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/stl_pair.h
+688 1
+fe=(48)
+195 1
+fi=(140) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/string_view
+-53 1
+-1 1
++1 2
+-1 1
++1 1
+fi=(49)
+688 1
+fe=(48)
+203 3
+456 11
+232 1
+-94 1
++97 2
+cob=(2)
+cfi=(2)
+cfn=(4354)
+calls=1 0 
+* 1760
+* 1
++1 2
++12 1
+-3 1
++2 1
++1 2
+
+fl=(23) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/x86_64-pc-linux-gnu/bits/time_members.h
+fn=(4166) std::__timepunct<char>::__timepunct(std::__timepunct_cache<char>*, unsigned long)
+48 2
+fi=(17) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_classes.h
+409 1
+fe=(23)
+48 3
+fi=(17)
+409 1
+fe=(23)
+49 1
+fi=(17)
+409 1
+fe=(23)
+49 1
+fi=(17)
+409 1
+fe=(23)
+50 4
+cfi=(14)
+cfn=(4106)
+calls=1 230 
+* 3
++1 2
+-1 1
++1 1
+cfi=(24) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/time_members.cc
+cfn=(4168) std::__timepunct<char>::_M_initialize_timepunct(__locale_struct*)
+calls=1 +15 
+* 164
+* 4
+
+fn=(4220) std::__timepunct<wchar_t>::__timepunct(std::__timepunct_cache<wchar_t>*, unsigned long)
+48 2
+fi=(17)
+409 1
+fe=(23)
+48 3
+fi=(17)
+409 1
+fe=(23)
+49 1
+fi=(17)
+409 1
+fe=(23)
+49 1
+fi=(17)
+409 1
+fe=(23)
+50 4
+cfi=(14)
+cfn=(4106)
+calls=1 230 
+* 3
++1 2
+-1 1
++1 1
+cfi=(24)
+cfn=(4222) std::__timepunct<wchar_t>::_M_initialize_timepunct(__locale_struct*)
+calls=1 222 
+* 162
+* 4
+
+fl=(55)
+fn=(4554)
+578 2
+81 5
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 -81 
+* 77
+523 1
++55 1
+-55 3
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 0 
+* 77
+
+fn=(5016)
+541 12
+
+fl=(31) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/numeric_members_cow.cc
+fn=(4242) std::numpunct<wchar_t>::_M_initialize_numpunct(__locale_struct*)
+183 8
++1 2
++3 2
++69 1
++1 1
+-1 1
++3 2
++1 1
++1 6
+-71 3
++4 1
+-3 1
++3 1
++6 1
+-8 1
++8 1
+-2 2
++2 2
+-2 3
++2 70
+-2 105
++6 2
+-2 2
++2 2
+-2 3
++2 50
+-2 76
+
+fn=(4230) std::numpunct<char>::_M_initialize_numpunct(__locale_struct*)
+92 8
++1 2
++3 2
++68 2
++1 1
+-1 1
++3 2
++1 1
++1 6
+-70 3
++1 1
++1 1
++2 1
++1 2
++3 2
+-1 2
++1 3
+-1 3
++1 105
+-1 105
++4 2
+-1 2
++1 3
+-1 3
++1 75
+-1 76
+
+fl=(44)
+fn=(4320) std::error_category::error_category()
+180 10
+
+fn=(4318)
+260 2
+-42 1
++42 1
+-42 1
+-30 1
++72 1
+-42 1
+-30 1
+cfn=(4320)
+calls=1 -8 
+* 5
++30 2
++1 1
+-31 1
++30 1
+-30 1
++30 1
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 0 
+* 77
+-15 1
++16 1
+-16 1
+cfn=(4320)
+calls=1 -23 
+* 5
+* 1
++16 2
+-16 1
++57 1
+-41 1
++41 2
+-41 1
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 0 
+* 77
+
+fl=(18) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++98/codecvt.cc
+fn=(4154) std::codecvt<char, char, __mbstate_t>::codecvt(unsigned long)
+38 2
+fi=(17)
+409 1
+fe=(18)
+38 3
+fi=(17)
+409 3
+fe=(18)
+41 4
+cfi=(14)
+cfn=(4110)
+calls=1 215 
+* 15
+* 1
++1 4
+
+fn=(4212) std::codecvt<wchar_t, char, __mbstate_t>::codecvt(unsigned long)
+118 2
+fi=(17)
+409 1
+fe=(18)
+118 3
+fi=(17)
+409 3
+fe=(18)
+121 4
+cfi=(14)
+cfn=(4110)
+calls=1 +94 
+* 15
+* 1
++1 4
+
+fl=(13) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++98/locale_init.cc
+fn=(4100) std::locale::_S_initialize()
+340 23
+fi=(12)
+52 23
+fe=(13)
+342 46
++3 91
++1 1
+cfn=(4102) std::locale::_S_initialize_once()
+calls=1 -22 
+* 36686
+
+fn=(4102)
+324 4
++4 3
++5 4
+cfn=(4104) std::locale::_Impl::_Impl(unsigned long)
+calls=1 490 
+* 36663
++1 1
+-1 1
++2 2
+-1 1
++2 3
+-1 1
+cfi=(14)
+cfn=(4250)
+calls=1 88 
+* 3
+
+fn=(4098) std::locale::locale()
+269 138
++2 23
+cfn=(4100)
+calls=23 +69 
+* 36870
++11 23
++1 23
+-1 46
++1 46
++6 92
+
+fn=(4104)
+490 2
++5 2
+-5 4
++20 1
+-20 6
++2 2
++3 2
++1 2
+-1 49
++1 2
++3 1
+-3 49
++3 16
++1 2
++1 1
+cfi=(14)
+cfn=(4106)
+calls=1 230 
+* 3
++9 3
+fi=(141) /usr/include/bits/string_fortified.h
+29 1
+fe=(13)
+510 1
+fi=(141)
+29 1
+fe=(13)
+510 1
+cfi=(15) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++11/ctype_configure_char.cc
+cfn=(4108) std::ctype<char>::ctype(unsigned short const*, bool, unsigned long)
+calls=1 121 
+* 250
+fi=(17)
+625 4
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fe=(13)
+511 4
+cfi=(18)
+cfn=(4154)
+calls=1 38 
+* 33
+fi=(17)
+625 4
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(19) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h
+1634 1
+fi=(17)
+409 1
+fi=(19)
+1633 1
+fi=(17)
+409 2
+fi=(19)
+1718 2
+-84 1
+-3 1
++3 1
++83 1
+-87 1
++87 1
+-87 1
++2 3
++1 2
++1 1
+fi=(17)
+409 1
+fi=(19)
+1717 2
++1 1
+cfi=(20) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/numeric_members.cc
+cfn=(4158) std::__cxx11::numpunct<char>::_M_initialize_numpunct(__locale_struct*)
+calls=1 92 
+* 414
+fi=(17)
+625 4
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(19)
+1981 1
+fi=(17)
+625 2
+409 1
+625 1
+fi=(19)
+1981 2
+fi=(17)
+625 1
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(19)
+2339 1
+fi=(17)
+625 2
+409 1
+625 1
+fi=(19)
+2339 2
+fi=(17)
+625 1
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
++63 1
+409 1
+688 3
+cfi=(14)
+cfn=(4110)
+calls=1 215 
+* 15
+* 1
+-63 4
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(21) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets_nonio.h
+1024 1
+-6 1
++88 1
+fi=(17)
+409 2
+fi=(21)
+1018 1
++88 1
+-82 1
++82 1
+fi=(17)
+409 1
+fi=(21)
+1024 1
++81 1
+-88 1
++88 1
+-88 2
++2 2
++1 2
++1 2
++1 1
++1 1
++1 1
+fi=(17)
+409 1
+fi=(21)
+1105 2
++1 1
+cfi=(22) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/monetary_members.cc
+cfn=(4162) std::__cxx11::moneypunct<char, false>::_M_initialize_moneypunct(__locale_struct*, char const*)
+calls=1 372 
+* 113
+fi=(17)
+625 4
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(21)
+1024 1
++82 2
+fi=(17)
+409 3
+fi=(21)
+1024 1
+-7 1
++89 1
+-82 1
+-6 2
++87 1
+-88 1
++88 1
+-88 1
++2 2
++1 2
++1 2
++1 1
++1 1
++1 1
+fi=(17)
+409 1
+fi=(21)
+1105 2
++1 1
+cfi=(22)
+cfn=(4164) std::__cxx11::moneypunct<char, true>::_M_initialize_moneypunct(__locale_struct*, char const*)
+calls=1 216 
+* 113
+fi=(17)
+625 4
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(21)
+1528 1
+fi=(17)
+625 2
+409 1
+625 1
+fi=(21)
+1528 2
+fi=(17)
+625 1
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(21)
+1688 1
+fi=(17)
+625 2
+409 1
+625 1
+fi=(21)
+1688 2
+fi=(17)
+625 1
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(21)
+136 1
+-13 1
+fe=(13)
+533 1
+fi=(17)
+409 1
+fi=(21)
+136 1
+fe=(13)
+533 3
+fi=(21)
+136 1
+-13 1
++13 2
+-13 22
+fe=(13)
+533 1
+cfi=(23)
+cfn=(4166)
+calls=1 48 
+* 190
+fi=(17)
++92 4
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(21)
+420 1
+fi=(17)
+625 2
+409 1
+625 1
+fi=(21)
+420 2
+fi=(17)
+625 1
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(21)
+857 1
+fi=(17)
+625 2
+409 1
+625 1
+fi=(21)
+857 2
+fi=(17)
+625 1
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fe=(13)
+-88 4
+cfi=(25) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/x86_64-pc-linux-gnu/bits/messages_members.h
+cfn=(4170) std::__cxx11::messages<char>::messages(unsigned long)
+calls=1 44 
+* 38
+fi=(17)
++88 4
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fe=(13)
+-85 4
+cfi=(26) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++11/ctype.cc
+cfn=(4172) std::ctype<wchar_t>::ctype(unsigned long)
+calls=1 103 
+* 19443
+fi=(17)
++85 4
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fe=(13)
+-84 4
+cfi=(18)
+cfn=(4212)
+calls=1 118 
+* 33
+fi=(17)
++84 4
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(19)
+1634 1
++84 1
+fi=(17)
+409 2
+fi=(19)
+1630 1
++88 1
+-84 1
+-4 1
++4 1
++83 1
+-86 1
++86 1
+-85 1
++85 2
+-85 2
++1 2
++1 1
+fi=(17)
+409 1
+fi=(19)
+1717 1
++1 1
+cfi=(20)
+cfn=(4214) std::__cxx11::numpunct<wchar_t>::_M_initialize_numpunct(__locale_struct*)
+calls=1 183 
+* 350
+fi=(17)
+625 4
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(19)
+1981 1
+fi=(17)
+625 2
+409 1
+625 1
+fi=(19)
+1981 2
+fi=(17)
+625 1
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(19)
+2339 1
+fi=(17)
+625 2
+409 1
+625 1
+fi=(19)
+2339 2
+fi=(17)
+625 1
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
++63 1
+409 1
+688 3
+cfi=(14)
+cfn=(4110)
+calls=1 215 
+* 15
+* 2
+-63 1
++63 1
+-64 3
++1 9
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(21)
+1024 1
++82 2
+fi=(17)
+409 2
+fi=(21)
+1106 1
+-82 1
+-7 1
++7 1
++81 1
+-88 1
++88 1
+-88 1
++1 1
++1 2
++1 2
++1 2
++1 1
++1 1
++1 1
+fi=(17)
+409 1
+fi=(21)
+1105 2
++1 1
+cfi=(22)
+cfn=(4216) std::__cxx11::moneypunct<wchar_t, false>::_M_initialize_moneypunct(__locale_struct*, char const*)
+calls=1 741 
+* 109
+fi=(17)
+625 4
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(21)
+1024 1
++82 2
+fi=(17)
+409 2
+fi=(21)
+1106 1
+-82 1
+-7 1
++7 1
++81 1
+-88 1
++88 1
+-88 1
++88 2
+-87 1
++1 2
++1 2
++1 2
++1 1
++1 1
++1 1
+fi=(17)
+409 1
+fi=(21)
+1105 1
++1 1
+cfi=(22)
+cfn=(4218) std::__cxx11::moneypunct<wchar_t, true>::_M_initialize_moneypunct(__locale_struct*, char const*)
+calls=1 558 
+* 109
+fi=(17)
+625 4
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(21)
+1528 1
+fi=(17)
+625 2
+409 1
+625 1
+fi=(21)
+1528 2
+fi=(17)
+625 1
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(21)
+1688 1
+fi=(17)
+625 2
+409 1
+625 1
+fi=(21)
+1688 2
+fi=(17)
+625 1
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(21)
+136 1
+-13 1
+fe=(13)
+563 1
+fi=(17)
+409 1
+fi=(21)
+136 1
+fe=(13)
+563 3
+fi=(21)
+136 1
+-13 1
++13 2
+-13 22
+fe=(13)
+563 1
+cfi=(23)
+cfn=(4220)
+calls=1 48 
+* 188
+fi=(17)
++62 4
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(21)
+420 1
+fi=(17)
+625 2
+409 1
+625 1
+fi=(21)
+420 2
+fi=(17)
+625 1
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(21)
+857 1
+fi=(17)
+625 2
+409 1
+625 1
+fi=(21)
+857 2
+fi=(17)
+625 1
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fe=(13)
+-58 4
+cfi=(25)
+cfn=(4224) std::__cxx11::messages<wchar_t>::messages(unsigned long)
+calls=1 44 
+* 38
+fi=(17)
++58 4
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(29) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/codecvt.h
+484 1
+fi=(17)
+625 2
+409 1
+625 1
+fi=(29)
+484 2
+fi=(17)
+625 1
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(29)
+-84 1
+fi=(17)
++84 2
+409 1
+625 1
+fi=(29)
+-84 2
+fi=(17)
++84 1
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(29)
+-26 1
+fi=(17)
++26 2
+409 1
+625 1
+fi=(29)
+-26 2
+fi=(17)
++26 1
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fi=(29)
++31 1
+fi=(17)
+-31 2
+409 1
+625 1
+fi=(29)
++31 2
+fi=(17)
+-31 1
+cfi=(14)
+cfn=(4146)
+calls=1 322 
+* 394
+fe=(13)
+-35 2
++3 2
+-3 4
++3 1
+cfi=(30) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++11/cow-locale_init.cc
+cfn=(4228) std::locale::_Impl::_M_init_extra(std::locale::facet**)
+calls=1 100 
+* 1884
++5 3
+cfi=(14)
+cfn=(4148)
+calls=1 -94 
+* 6
++1 1
+-1 1
++1 2
+cfi=(14)
+cfn=(4148)
+calls=1 -95 
+* 6
++1 1
+-1 1
++1 2
+cfi=(14)
+cfn=(4148)
+calls=1 -96 
+* 6
++1 1
+-1 1
++1 2
+cfi=(14)
+cfn=(4148)
+calls=1 -97 
+* 6
+* 1
++2 1
+-2 1
++2 2
+cfi=(14)
+cfn=(4148)
+calls=1 -99 
+* 6
+* 1
++1 1
+-1 1
++1 2
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 6
++1 1
+-1 1
++1 2
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 6
+* 1
++1 2
+-1 1
++1 1
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 6
+* 2
++2 11
+
+fl=(27) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++11/ctype_members.cc
+fn=(4188) std::ctype<wchar_t>::_M_convert_to_wmask(unsigned short) const
+60 12
++2 73
++36 3
+cob=(2)
+cfi=(2)
+cfn=(4190)
+calls=1 -98 
+* 484
+-36 21
++6 3
+cob=(2)
+cfi=(2)
+cfn=(4190)
+calls=1 -68 
+* 378
++3 3
+cob=(2)
+cfi=(2)
+cfn=(4190)
+calls=1 -71 
+* 537
+-9 6
++18 3
+cob=(2)
+cfi=(2)
+cfn=(4190)
+calls=1 -80 
+* 194
+-3 3
+cob=(2)
+cfi=(2)
+cfn=(4190)
+calls=1 -77 
+* 141
+-3 3
+cob=(2)
+cfi=(2)
+cfn=(4190)
+calls=1 -74 
+* 88
++9 3
+cob=(2)
+cfi=(2)
+cfn=(4190)
+calls=1 -83 
+* 247
++21 4
+-39 3
+cob=(2)
+cfi=(2)
+cfn=(4190)
+calls=1 -65 
+* 325
++24 3
+cob=(2)
+cfi=(2)
+cfn=(4190)
+calls=1 -89 
+* 188
+-3 3
+cob=(2)
+cfi=(2)
+cfn=(4190)
+calls=1 -86 
+* 590
+
+fn=(4174) std::ctype<wchar_t>::_M_initialize_ctype()
+273 6
++2 1
+-2 1
++2 2
+cob=(2)
+cfi=(2)
+cfn=(4176)
+calls=1 0 
+* 22
+* 1
++3 1
++6 128
+-6 384
+fi=(28) /usr/include/wchar.h
++73 256
+cob=(2)
+cfi=(2)
+cfn=(4180)
+calls=128 0 
+* 2816
+fe=(27)
+-70 256
++5 1
++5 2
+fi=(28)
++54 2
+cob=(2)
+cfi=(2)
+cfn=(4182)
+calls=1 0 
+* 25
+* 510
+cob=(2)
+cfi=(2)
+cfn=(4182)
+calls=255 0 
+* 10471
+fe=(27)
+-53 256
+-2 256
++1 512
++3 1
++2 29
++1 8
+-1 8
++1 16
+cfn=(4188)
+calls=8 60 
+* 1650
+-1 8
++1 8
+-3 8
++2 36
++1 4
+-1 4
++1 4
+cfn=(4188)
+calls=4 60 
+* 1668
+* 4
+-3 12
++8 1
+-2 1
++2 4
+-2 1
+cob=(2)
+cfi=(2)
+cfn=(4176)
+calls=1 0 
+* 22
+* 2
+
+fl=(25)
+fn=(4248) std::messages<wchar_t>::messages(unsigned long)
+44 2
+fi=(17)
+409 1
+fe=(25)
+44 3
+fi=(17)
+409 3
+fe=(25)
+46 3
+-1 1
+cfi=(14)
+cfn=(4110)
+calls=1 215 
+* 15
+* 1
++1 1
+cfi=(14)
+cfn=(4106)
+calls=1 230 
+* 3
+* 1
++1 4
+
+fn=(4170)
+44 2
+fi=(17)
+409 1
+fe=(25)
+44 3
+fi=(17)
+409 3
+fe=(25)
+46 3
+-1 1
+cfi=(14)
+cfn=(4110)
+calls=1 215 
+* 15
+* 1
++1 1
+cfi=(14)
+cfn=(4106)
+calls=1 230 
+* 3
+* 1
++1 4
+
+fn=(4240) std::messages<char>::messages(unsigned long)
+44 2
+fi=(17)
+409 1
+fe=(25)
+44 3
+fi=(17)
+409 3
+fe=(25)
+46 3
+-1 1
+cfi=(14)
+cfn=(4110)
+calls=1 215 
+* 15
+* 1
++1 1
+cfi=(14)
+cfn=(4106)
+calls=1 230 
+* 3
+* 1
++1 4
+
+fn=(4224)
+44 2
+fi=(17)
+409 1
+fe=(25)
+44 3
+fi=(17)
+409 3
+fe=(25)
+46 3
+-1 1
+cfi=(14)
+cfn=(4110)
+calls=1 215 
+* 15
+* 1
++1 1
+cfi=(14)
+cfn=(4106)
+calls=1 230 
+* 3
+* 1
++1 4
+
+fl=(37) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_ios.tcc
+fn=(4268) std::basic_ios<char, std::char_traits<char> >::_M_cache_locale(std::locale const&)
+157 24
+fi=(39) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_classes.tcc
+-63 8
+cfi=(14)
+cfn=(4148)
+calls=4 504 
+* 24
+* 8
++1 4
++8 4
+fe=(37)
++56 8
+fi=(39)
+-65 4
+cfi=(14)
+cfn=(4148)
+calls=4 504 
+* 24
+* 8
++1 4
++10 4
+fe=(37)
++55 8
+fi=(39)
+-66 4
+cfi=(14)
+cfn=(4148)
+calls=4 504 
+* 24
+* 4
++1 4
++9 4
+fe=(37)
++57 8
++1 16
+
+fn=(4274) std::basic_ios<wchar_t, std::char_traits<wchar_t> >::init(std::basic_streambuf<wchar_t, std::char_traits<wchar_t> >*)
+126 24
++3 4
+cfi=(38) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++98/ios_locale.cc
+cfn=(4262) std::ios_base::_M_init()
+calls=4 -90 
+* 316
++3 12
+cfn=(4276) std::basic_ios<wchar_t, std::char_traits<wchar_t> >::_M_cache_locale(std::locale const&)
+calls=4 +25 
+* 196
++20 8
+-6 4
++6 4
+-5 4
++2 4
++1 4
++1 4
++1 4
++1 16
+
+fn=(4260) std::basic_ios<char, std::char_traits<char> >::init(std::basic_streambuf<char, std::char_traits<char> >*)
+126 24
++3 4
+cfi=(38)
+cfn=(4262)
+calls=4 -90 
+* 316
++3 12
+cfn=(4268)
+calls=4 +25 
+* 196
++14 4
++3 4
+-3 4
++6 12
+-2 4
++1 4
++1 4
++1 16
+
+fn=(4276)
+157 24
+fi=(39)
+-63 8
+cfi=(14)
+cfn=(4148)
+calls=4 504 
+* 24
+* 8
++1 4
++23 4
+fe=(37)
++41 8
+fi=(39)
+-65 4
+cfi=(14)
+cfn=(4148)
+calls=4 504 
+* 24
+* 8
++1 4
++25 4
+fe=(37)
++40 8
+fi=(39)
+-66 4
+cfi=(14)
+cfn=(4148)
+calls=4 504 
+* 24
+* 4
++1 4
++24 4
+fe=(37)
++42 8
++1 16
+
+fl=(20)
+fn=(4214)
+183 8
++1 2
++3 2
++69 1
++1 1
+-1 1
++3 2
++1 1
++1 6
+-71 3
++4 1
+-3 1
++3 1
++6 1
+-8 1
++8 1
+-2 2
++2 2
+-2 3
++2 70
+-2 105
++6 2
+-2 2
++2 2
+-2 3
++2 50
+-2 76
+
+fn=(4158)
+92 8
++1 2
++3 2
++68 2
++1 1
+-1 1
++3 2
++1 1
++1 6
+-70 3
++1 1
++1 1
++2 1
++1 2
++3 2
+-1 2
++1 3
+-1 3
++1 105
+-1 105
++4 2
+-1 2
++1 3
+-1 3
++1 75
+-1 76
+
+fl=(24)
+fn=(4168)
+66 5
++1 1
+-1 1
++1 1
++3 2
++3 1
+cfi=(14)
+cfn=(4110)
+calls=1 215 
+* 15
+* 1
++2 1
+-2 2
++2 124
++54 1
+-54 3
++54 1
+-54 1
+192 4
+
+fn=(4222)
+222 4
++1 1
+-1 1
++1 1
++3 2
++3 1
+cfi=(14)
+cfn=(4110)
+calls=1 -14 
+* 15
+* 1
++2 1
+-2 1
++2 2
++53 1
+-53 124
++54 1
+-54 1
++54 1
+-54 1
+396 3
+
+fl=(38)
+fn=(4262)
+39 40
++2 8
+-2 24
++5 8
+-1 8
+-2 8
++3 16
+cfi=(13)
+cfn=(4098)
+calls=8 269 
+* 200
+* 24
+cfi=(14)
+cfn=(4264)
+calls=8 +76 
+* 160
+* 16
+cfi=(14)
+cfn=(4266)
+calls=8 +47 
+* 64
++1 56
+
+fl=(50)
+fn=(4542)
+127 1
+fi=(51) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/ext/bitmap_allocator.h
+1113 4
+106 5
+1126 3
++5 3
+fi=(52)
+129 1
+fi=(51)
+1131 1
+fi=(52)
+129 13
+fi=(51)
+1113 4
+106 5
+1126 3
++5 3
+fi=(52)
+129 1
+fi=(51)
+1131 1
+fi=(52)
+129 13
+fe=(50)
+-2 1
+fi=(51)
+1126 1
+412 1
++8 1
+-8 2
++8 1
++1 1
++1 1
+1126 1
+412 3
++8 2
++1 1
++1 1
+fe=(50)
+
+fl=(26)
+fn=(4172)
+103 2
+fi=(17)
+409 1
+fe=(26)
+103 3
+fi=(17)
+409 3
+fe=(26)
+105 4
+cfi=(14)
+cfn=(4110)
+calls=1 215 
+* 15
+* 1
++1 1
+-1 1
++1 4
+cfi=(27)
+cfn=(4174)
+calls=1 273 
+* 19408
+
+fl=(127) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf
+fn=(5314) std::basic_streambuf<char, std::char_traits<char> >::setg(char*, char*, char*)
+516 1
++2 1
++1 1
++1 1
++1 1
+
+fn=(5228) std::basic_streambuf<char, std::char_traits<char> >::basic_streambuf()
+470 1
++3 1
+-2 1
++2 1
+-2 1
++2 1
+-2 1
++2 1
+-1 3
++1 1
+cfi=(13)
+cfn=(4098)
+calls=1 269 
+* 25
+
+fn=(5320) std::basic_streambuf<char, std::char_traits<char> >::setp(char*, char*)
+562 1
++2 1
++1 1
+-1 2
++2 1
+
+fl=(43)
+fn=(4312)
+0 12
+
+fl=(22)
+fn=(4162)
+372 10
++1 2
++3 2
++3 1
++2 1
+-2 1
++1 2
++1 2
++3 1
++2 1
++2 1
++3 1
+-9 1
++9 1
+-8 1
++2 1
++2 1
++2 1
++1 1
++1 1
++1 2
++3 2
+-1 2
++1 3
+-1 3
++1 30
+-1 30
+517 8
+
+fn=(4218)
+558 13
++1 2
++3 2
+731 11
+565 2
++2 1
+-2 1
++5 2
++2 1
++2 1
++3 1
+-10 1
++10 1
+-9 1
++1 1
++8 1
+-6 1
++2 1
++2 1
++1 1
++2 2
++5 1
+-1 1
++1 1
+-2 2
++2 2
+-2 3
++2 20
+-2 31
+
+fn=(4164)
+216 10
++1 2
++3 2
++3 1
++2 1
+-2 1
++1 2
++1 2
++3 1
++2 1
++2 1
++3 1
+-9 1
++9 1
+-8 1
++2 1
++2 1
++2 1
++1 1
++1 1
++1 2
++3 2
+-1 2
++1 3
+-1 3
++1 30
+-1 30
+366 8
+
+fn=(4216)
+741 13
++1 2
++3 2
+914 11
+748 2
++2 1
+-2 1
++5 2
++2 1
++2 1
++3 1
+-10 1
++10 1
+-9 1
++1 1
++8 1
+-6 1
++2 1
++2 1
++1 1
++2 2
++5 1
+-1 1
++1 1
+-2 2
++2 2
+-2 3
++2 20
+-2 31
+
+fl=(56)
+fn=(4564)
+160 1
+fi=(21)
+1651 4
+1816 4
+1413 8
+fi=(19)
+1891 4
+fi=(21)
+794 4
+2022 4
+fi=(17)
+811 4
+fe=(56)
+160 1
+
+fn=(4572)
+160 1
+fi=(19)
+2302 4
+2589 4
+fi=(21)
+1651 4
+1816 4
+1413 8
+fi=(19)
+1891 4
+fi=(21)
+326 4
+927 4
+794 4
+2022 4
+fi=(17)
+811 4
+fe=(56)
+160 1
+
+fn=(4580)
+160 1
+fi=(19)
+2302 4
+2589 4
+fi=(21)
+1651 4
+1816 4
+1413 8
+fi=(19)
+1891 4
+fi=(21)
+326 4
+927 4
+794 4
+2022 4
+fi=(17)
+811 4
+fe=(56)
+160 1
+
+fn=(4556)
+160 1
+fi=(21)
+1651 4
+1816 4
+1413 8
+fi=(19)
+1891 4
+fi=(21)
+794 4
+2022 4
+fi=(17)
+811 4
+fe=(56)
+160 1
+
+fl=(32) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/monetary_members_cow.cc
+fn=(4238) std::moneypunct<char, true>::_M_initialize_moneypunct(__locale_struct*, char const*)
+216 10
++1 2
++3 2
++3 1
++2 1
+-2 1
++1 2
++1 2
++3 1
++2 1
++2 1
++3 1
+-9 1
++9 1
+-8 1
++2 1
++2 1
++2 1
++1 1
++1 1
++1 2
++3 2
+-1 2
++1 3
+-1 3
++1 30
+-1 30
+366 8
+
+fn=(4244) std::moneypunct<wchar_t, false>::_M_initialize_moneypunct(__locale_struct*, char const*)
+741 13
++1 2
++3 2
+914 11
+748 2
++2 1
+-2 1
++5 2
++2 1
++2 1
++3 1
+-10 1
++10 1
+-9 1
++1 1
++8 1
+-6 1
++2 1
++2 1
++1 1
++2 2
++5 1
+-1 1
++1 1
+-2 2
++2 2
+-2 3
++2 20
+-2 31
+
+fn=(4236) std::moneypunct<char, false>::_M_initialize_moneypunct(__locale_struct*, char const*)
+372 10
++1 2
++3 2
++3 1
++2 1
+-2 1
++1 2
++1 2
++3 1
++2 1
++2 1
++3 1
+-9 1
++9 1
+-8 1
++2 1
++2 1
++2 1
++1 1
++1 1
++1 2
++3 2
+-1 2
++1 3
+-1 3
++1 30
+-1 30
+517 8
+
+fn=(4246) std::moneypunct<wchar_t, true>::_M_initialize_moneypunct(__locale_struct*, char const*)
+558 13
++1 2
++3 2
+731 11
+565 2
++2 1
+-2 1
++5 2
++2 1
++2 1
++3 1
+-10 1
++10 1
+-9 1
++1 1
++8 1
+-6 1
++2 1
++2 1
++1 1
++2 2
++5 1
+-1 1
++1 1
+-2 2
++2 2
+-2 3
++2 20
+-2 31
+
+fl=(57)
+fn=(4588)
+1482 2
+95 5
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 -95 
+* 77
++1 4
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 -96 
+* 77
++53 1
+1482 1
+149 3
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 0 
+* 77
+
+fl=(10)
+fn=(4092)
+109 2
+fi=(42) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++98/ios_base_init.h
+-97 3
+cfi=(11) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++98/ios_init.cc
+cfn=(4094) std::ios_base::Init::Init()
+calls=1 +66 
+* 38981
+* 1
+fe=(10)
++97 1
+fi=(42)
+-97 3
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 -12 
+* 73
+fe=(10)
+
+fl=(15)
+fn=(4108)
+121 1
+fi=(17)
+409 2
+fe=(15)
+121 2
+fi=(17)
+409 1
+fe=(15)
+121 4
+fi=(17)
+409 1
+fe=(15)
+127 3
+-5 1
+cfi=(14)
+cfn=(4110)
+calls=1 +93 
+* 134
++1 1
+-1 1
++1 3
++1 2
++1 2
++1 2
++3 3
+-3 1
++3 2
+-2 1
++2 1
+-2 1
++2 36
++1 39
++1 4
+-5 2
+
+fl=(30)
+fn=(4228)
+100 4
+fi=(17)
+409 1
+fe=(30)
+100 5
+fi=(19)
+1718 1
+fe=(30)
+100 1
++3 1
+-2 1
++1 1
+fi=(19)
+1718 1
+fi=(17)
+409 1
+fe=(30)
+103 1
+fi=(19)
+1717 4
++1 1
+cfi=(31)
+cfn=(4230)
+calls=1 92 
+* 414
+fi=(12)
+52 1
++56 2
+-16 1
+fi=(17)
+632 4
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 15
+* 2
++56 1
+409 1
+688 3
+cfi=(14)
+cfn=(4110)
+calls=1 215 
+* 15
+fi=(12)
+108 1
+fi=(17)
+688 1
+fi=(12)
+108 1
+-16 1
+fi=(17)
+632 3
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 15
+* 1
+fi=(21)
+1106 2
+fi=(17)
+632 1
+fi=(21)
+1105 1
+fi=(17)
+409 2
+fi=(21)
+1106 1
+-1 3
++1 1
+cfi=(32)
+cfn=(4236)
+calls=1 372 
+* 113
+fi=(12)
+108 2
+-16 1
+fi=(17)
+632 4
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 15
+* 1
+fi=(21)
+1106 1
+fi=(17)
+632 1
+fi=(21)
+1105 1
+fi=(17)
+409 1
+fi=(21)
+1106 1
+fi=(17)
+409 1
+fi=(21)
+1106 1
+-1 4
++1 1
+cfi=(32)
+cfn=(4238)
+calls=1 216 
+* 113
+fi=(12)
+108 2
+-16 1
+fi=(17)
+632 4
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 15
+* 2
+fi=(21)
+1528 1
+fi=(17)
+409 1
+fi=(21)
+1528 1
+fi=(12)
+108 1
+fi=(21)
+1528 1
+fi=(12)
+108 1
+-16 1
+fi=(17)
+632 3
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 15
+* 2
+fi=(21)
+1688 1
+fi=(17)
+409 1
+fi=(21)
+1688 1
+fi=(12)
+108 1
+fi=(21)
+1688 1
+fi=(12)
+108 1
+-16 1
+fi=(17)
+632 3
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 15
+* 2
+fi=(21)
+420 1
+fi=(17)
+-11 1
+fi=(21)
++11 1
+fi=(12)
+108 1
+fi=(21)
+420 1
+fi=(12)
+108 1
+-16 1
+fi=(17)
+632 3
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 15
+* 1
+fe=(30)
+112 1
+fi=(17)
+632 1
+fe=(30)
+112 3
+cfi=(25)
+cfn=(4240)
+calls=1 -68 
+* 38
+fi=(12)
+-4 2
+-16 1
+fi=(17)
+632 4
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 15
+* 1
+fi=(19)
+1718 1
+fi=(17)
+632 1
+fe=(30)
+115 1
+fi=(17)
+409 1
+fe=(30)
+114 1
++1 1
++1 1
+fi=(17)
+409 1
+fi=(19)
+1717 1
++1 1
+fe=(30)
+116 1
+fi=(19)
+1717 3
++1 1
+cfi=(31)
+cfn=(4242)
+calls=1 183 
+* 350
+fi=(12)
+108 2
+-16 1
+fi=(17)
+632 4
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 15
+* 2
++56 1
+409 1
+688 3
+cfi=(14)
+cfn=(4110)
+calls=1 215 
+* 15
+fi=(12)
+108 1
+fi=(17)
+688 1
+fi=(12)
+108 1
+-16 1
+fi=(17)
+632 3
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 15
+* 1
+fi=(21)
+1106 2
+fi=(17)
+632 1
+fi=(21)
+1105 1
+fi=(17)
+409 2
+fi=(21)
+1106 1
+-1 4
++1 1
+cfi=(32)
+cfn=(4244)
+calls=1 741 
+* 109
+fi=(12)
+108 2
+-16 1
+fi=(17)
+632 4
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 15
+* 1
+fi=(21)
+1106 1
+fi=(17)
+632 1
+fi=(21)
+1105 1
+fi=(17)
+409 1
+fi=(21)
+1106 1
+fi=(17)
+409 1
+fi=(21)
+1106 1
+-1 4
++1 1
+cfi=(32)
+cfn=(4246)
+calls=1 558 
+* 109
+fi=(12)
+108 2
+-16 1
+fi=(17)
+632 4
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 15
+* 2
+fi=(21)
+1528 1
+fi=(17)
+409 1
+fi=(21)
+1528 1
+fi=(12)
+108 1
+fi=(21)
+1528 1
+fi=(12)
+108 1
+-16 1
+fi=(17)
+632 3
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 15
+* 2
+fi=(21)
+1688 1
+fi=(17)
+409 1
+fi=(21)
+1688 1
+fi=(12)
+108 1
+fi=(21)
+1688 1
+fi=(12)
+108 1
+-16 1
+fi=(17)
+632 3
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 15
+* 2
+fi=(21)
+420 1
+fi=(17)
+-11 1
+fi=(21)
++11 1
+fi=(12)
+108 1
+fi=(21)
+420 1
+fi=(12)
+108 1
+-16 1
+fi=(17)
+632 3
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 15
+* 1
+fe=(30)
+125 1
+fi=(17)
+632 1
+fe=(30)
+125 3
+cfi=(25)
+cfn=(4248)
+calls=1 -81 
+* 38
+fi=(12)
+-17 2
+-16 1
+fi=(17)
+632 3
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 15
+fe=(30)
+129 1
+fi=(17)
+632 1
+fe=(30)
+129 2
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 6
++1 1
+-1 1
++1 2
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 6
++1 1
+-1 1
++1 2
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 6
+* 1
++2 1
+-2 1
++2 2
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 6
++1 1
+-1 1
++1 2
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 6
+* 1
++1 2
+-1 1
++1 1
+cfi=(14)
+cfn=(4148)
+calls=1 504 
+* 6
+* 2
++2 8
+
+fl=(47)
+fn=(4332) std::future_category()
+89 3
+
+fn=(4550)
+126 1
+-49 4
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 -77 
+* 77
+
+fl=(58)
+fn=(4590)
+2041 3
+184 2
+2041 1
+184 3
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 0 
+* 77
+1081 5
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 0 
+* 77
+2041 1
+1082 2
+2041 1
+1082 1
+2041 1
+1082 1
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 0 
+* 77
+
+fl=(63)
+fn=(4674)
+443 4
+fi=(12)
+52 4
+fe=(63)
+448 8
++3 4
++1 4
+
+fn=(4662)
+273 4
+149 4
+278 8
+fi=(12)
+52 4
+fe=(63)
+273 8
++16 8
++7 4
++96 8
+-99 12
++2 4
++1 4
+
+fl=(11)
+fn=(4094)
+78 8
+fi=(12)
++20 1
+-14 1
++14 2
+-14 1
++1 2
+fe=(11)
+-5 2
++3 1
+fi=(127)
+473 1
+-2 7
+fe=(11)
+83 1
+fi=(127)
+472 3
+fe=(11)
+83 1
++2 2
+fi=(127)
+472 1
+fe=(11)
+85 1
+fi=(127)
+473 4
+cfi=(13)
+cfn=(4098)
+calls=1 269 
+* 36711
+fi=(33) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/ext/stdio_sync_filebuf.h
+81 2
+fi=(127)
+473 1
+fi=(33)
+81 2
+fe=(11)
++5 1
+fi=(127)
+473 1
+fi=(33)
+81 1
+fi=(127)
+471 1
+fe=(11)
+86 1
+fi=(127)
+471 2
++1 3
++1 1
+cfi=(13)
+cfn=(4098)
+calls=1 269 
+* 25
+fe=(11)
+87 1
+fi=(33)
+-6 1
+fi=(127)
+473 1
+fi=(33)
+81 1
+fe=(11)
++6 1
+fi=(33)
+-6 1
+fi=(127)
+473 1
+-2 3
++1 3
++1 1
+cfi=(13)
+cfn=(4098)
+calls=1 269 
+* 25
+fi=(33)
+81 1
+fi=(40) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_ios.h
+462 1
+fi=(33)
+81 2
+fi=(40)
+462 3
+cfi=(34) /usr/src/debug/gcc/gcc/libstdc++-v3/src/c++11/ios.cc
+cfn=(4254) std::ios_base::ios_base()
+calls=1 76 
+* 83
+fi=(36) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/ostream
+87 1
+fi=(40)
+461 1
++1 1
+-1 1
+fi=(36)
+87 2
+fi=(40)
+461 1
++1 2
+fi=(36)
+87 2
+cfi=(37)
+cfn=(4260)
+calls=1 +39 
+* 151
+fi=(40)
+462 4
+cfi=(34)
+cfn=(4254)
+calls=1 76 
+* 83
+* 1
+-1 1
+fi=(41) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/istream
+97 1
+-1 1
++1 1
+fi=(40)
+461 2
+fi=(41)
+96 5
+fi=(40)
+462 2
+fi=(41)
+97 1
+cfi=(37)
+cfn=(4260)
+calls=1 +29 
+* 151
+fi=(40)
+462 1
+fi=(36)
+87 1
+fi=(40)
+462 3
+cfi=(34)
+cfn=(4254)
+calls=1 76 
+* 83
+fi=(36)
+87 1
+fi=(40)
+462 1
+-1 2
+fi=(36)
+87 2
+fi=(40)
+461 1
++1 2
+fi=(36)
+87 2
+cfi=(37)
+cfn=(4260)
+calls=1 +39 
+* 151
+fi=(40)
+462 4
+cfi=(34)
+cfn=(4254)
+calls=1 76 
+* 83
+fi=(36)
+87 1
+fi=(40)
+462 1
+-1 2
+fi=(36)
+87 2
+fi=(40)
+461 1
++1 2
+fi=(36)
+87 2
+cfi=(37)
+cfn=(4260)
+calls=1 +39 
+* 151
+fi=(40)
+307 1
++3 1
+fi=(127)
+473 1
+fi=(40)
+310 3
+fi=(35) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/ios_base.h
+100 1
+fi=(142) /usr/src/debug/gcc/gcc/libstdc++-v3/libsupc++/new
++75 2
+fe=(11)
+-73 1
+fi=(127)
+471 3
+fe=(11)
+102 1
+fi=(127)
+470 1
++3 1
+-2 1
++1 1
++1 2
+-1 2
++1 1
+cfi=(13)
+cfn=(4098)
+calls=1 269 
+* 25
+fi=(33)
+81 2
+fi=(127)
+473 1
+fi=(33)
+81 2
+fe=(11)
++22 1
+fi=(127)
+473 1
+fi=(33)
+81 1
+fi=(127)
+471 1
+fe=(11)
+103 1
+fi=(127)
+471 2
++1 3
++1 1
+cfi=(13)
+cfn=(4098)
+calls=1 269 
+* 25
+fe=(11)
+104 1
+fi=(33)
+-23 1
+fi=(127)
+473 1
+fi=(33)
+81 1
+fe=(11)
++23 1
+fi=(33)
+-23 1
+fi=(127)
+473 1
+-2 3
++1 3
++1 1
+cfi=(13)
+cfn=(4098)
+calls=1 269 
+* 25
+fi=(33)
+81 1
+fi=(40)
+462 1
+fi=(33)
+81 2
+fi=(40)
+462 3
+cfi=(34)
+cfn=(4254)
+calls=1 76 
+* 83
+fi=(36)
+87 1
+fi=(40)
+462 1
+-1 2
+fi=(36)
+87 2
+fi=(40)
+461 1
++1 2
+fi=(36)
+87 2
+cfi=(37)
+cfn=(4274)
+calls=1 +39 
+* 151
+fi=(40)
+462 4
+cfi=(34)
+cfn=(4254)
+calls=1 76 
+* 83
+fi=(41)
+96 1
+fi=(40)
+462 1
+fi=(41)
+97 1
+fi=(40)
+461 1
+fi=(41)
+97 1
+fi=(40)
+461 1
+fi=(41)
+96 2
+fi=(40)
+461 1
+fi=(41)
+96 3
+fi=(40)
+462 2
+fi=(41)
+97 1
+cfi=(37)
+cfn=(4274)
+calls=1 +29 
+* 151
+fi=(40)
+462 1
+fi=(36)
+87 1
+fi=(40)
+462 3
+cfi=(34)
+cfn=(4254)
+calls=1 76 
+* 83
+fi=(36)
+87 3
+fi=(40)
+462 1
+-1 3
++1 2
+fi=(36)
+87 2
+cfi=(37)
+cfn=(4274)
+calls=1 +39 
+* 151
+fi=(40)
+462 4
+cfi=(34)
+cfn=(4254)
+calls=1 76 
+* 83
+fi=(36)
+87 1
+fi=(40)
+462 1
+fi=(36)
+87 1
+fi=(40)
+461 1
+fi=(36)
+87 1
+fi=(40)
+461 2
++1 2
+fi=(36)
+87 2
+cfi=(37)
+cfn=(4274)
+calls=1 +39 
+* 151
+fi=(12)
++21 1
+fi=(35)
+-8 1
+fi=(40)
+310 1
+fi=(12)
+108 1
+fi=(40)
+310 1
+fi=(12)
+108 1
+-16 1
+fe=(11)
++29 8
+
+fl=(16)
+fn=(4128)
+134 3
++1 2
+cob=(2)
+cfi=(2)
+cfn=(4130)
+calls=1 0 
+* 39
+* 1
++1 2
++6 2
+
+fl=(34)
+fn=(4254)
+76 8
++3 8
+-2 8
++2 8
+-2 8
++1 8
+fi=(35)
+609 16
+fe=(34)
+79 24
+-2 8
++1 16
+fi=(35)
+609 8
+fe=(34)
+79 8
+fi=(35)
+609 8
+fe=(34)
+79 16
+fi=(35)
+609 56
+fe=(34)
+79 56
+fi=(35)
+609 56
+fe=(34)
+79 144
+cfi=(13)
+cfn=(4098)
+calls=8 269 
+* 200
+
+fl=(53)
+fn=(4548)
+42 1
+fi=(143) /usr/src/debug/gcc/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/include/parallel/settings.h
+287 1
++12 1
+-4 1
++5 1
+-14 1
++1 2
++12 1
+-13 1
++1 1
++10 1
+-11 2
++11 1
++3 1
++8 1
++3 1
++3 1
++5 3
++8 1
+-41 1
++39 1
+-25 2
++27 2
+-2 1
+-19 1
+-20 1
++27 1
+-27 1
++14 1
++27 2
++6 1
++4 1
+-10 1
++8 1
+-2 1
++2 1
+fe=(53)
+42 1
+
+fl=(46)
+fn=(4330)
+128 2
+-74 1
+cfi=(47)
+cfn=(4332)
+calls=1 +35 
+* 3
+* 2
++74 2
+
+fl=(54)
+fn=(4552)
+84 1
+-12 4
+cob=(2)
+cfi=(2)
+cfn=(4284)
+calls=1 -72 
+* 77
+
+fl=(74)
+fn=(4750)
+43 7
++4 14
+-4 21
++7 14
+cob=(2)
+cfi=(2)
+cfn=(4354)
+calls=7 -50 
+* 1329
+* 14
++9 14
+
+totals: 2740563

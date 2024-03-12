@@ -57,7 +57,7 @@ def encode_gamepad_state():
                     button_set_2,
                     0, 0, 0, 0xA  # Future usage placeholders
                 )
-        print("Packet:", packet.hex())
+        print("Packet:", packet.hex(' '))
         if(time.time() > lastTime + .1):
             s.send(packet)
             lastTime = time.time()

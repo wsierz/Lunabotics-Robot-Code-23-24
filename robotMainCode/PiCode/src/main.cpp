@@ -7,36 +7,48 @@
 
 int main() 
 {
+
     Communicator * c = new Communicator();
     RobotActuation * rbActuator = new RobotActuation("/dev/ttyACM0", 115200);
     std::cout << "connection made" << std::endl;
 
-    rbActuator->sendDriveMotors(100, 0, 0, 0);
-
-  while(true){
-
-    c->readIncomingPacket();
-    std::cout << "Packet read" << std::endl;
-    RobotState rbstate = c->getRobotState();
-
-    std::cout << unsigned() << std::endl;
-
-    rbActuator->sendDriveMotors(rbstate.flMotor, rbstate.blMotor, rbstate.frMotor, rbstate.brMotor);
+    rbActuator->sendDriveMotors(0, 0, 0, 0);
     rbActuator->sendCurrentQueue();
     rbActuator->run();
 
+    RobotState lastState;
+  while(true){
+      std::cout << std::endl;
+    c->readIncomingPacket();
+    RobotState rbstate = c->getRobotState();
 
+    if (lastState.flMotor != rbstate.flMotor || lastState.frMotor != rbstate.frMotor)
+    {
+          rbActuator->sendDriveMotors(rbstate.flMotor, rbstate.blMotor, rbstate.frMotor, rbstate.brMotor);
+    }
+
+    if (lastState.dumpMotor != rbstate.dumpMotor)
+    {
+      
+      rbActuator->sendDumpMotor(rbstate.dumpMotor);
+    }
+
+    if (lastState.intakeMotor != rbstate.intakeMotor)
+    {
+      rbActuator->sendIntakeMotor(rbstate.intakeMotor);
+    }
+
+    if(lastState.intakeLocation != rbstate.intakeLocation)
+    {
+      rbActuator->sendIntakePosition(rbstate.intakeLocation);
+    }
+
+    rbActuator->sendCurrentQueue();
+    rbActuator->run();
+
+    lastState = rbstate;
 
   }
-  // RobotActuation * rbActuator = new RobotActuation("/dev/ttyACM1", 115200);
-
-  // rbActuator->sendDriveMotors(100, 0, 0, 0);
-
-  // while(true)
-  // {
-  //   rbActuator->sendCurrentQueue();
-  //   rbActuator->run();
-  // }
 
   return 0;
 }

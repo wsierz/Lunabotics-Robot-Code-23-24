@@ -74,28 +74,20 @@ int RobotActuation::sendCurrentQueue()
             sendBytesHandler(error, bytes_transferred);
          }
         );
-        byteQueueFull = false;
     }
-    if (!byteQueueFull && !outgoingQueue.empty())
+    if (!byteQueueFull && !serialTransmit && !outgoingQueue.empty())
     {
         SerialPacket * packet = &outgoingQueue.front();
         addChecksum(packet);
 
-            
+        std::cout << "sending: ";   
         for (int i = 0; i < 13; i++)
         {
             std::cout << +packet->packet[i] << " ";
         }
         std::cout << std::endl;
 
-
         std::copy(std::begin(packet->packet), std::end(packet->packet), outgoingBytes);
-
-        for (int i = 0; i < 13; i++)
-        {
-            std::cout << +outgoingBytes[i] << " ";
-        }
-        std::cout << std::endl;
 
         outgoingQueue.pop();
         byteQueueFull = true;
@@ -105,7 +97,8 @@ int RobotActuation::sendCurrentQueue()
 
 void RobotActuation::sendBytesHandler(const asio::error_code& error, std::size_t bytes_transferred)
 {
-    std::cout << "Sent" << std::endl;
+    std::cout << "Sent " << unsigned(bytes_transferred) << " bytes" << std::endl;
+    std::cout << "Error code: " << error.value() << std::endl;
     positonOfNextOutgoingByte += bytes_transferred;
     if (positonOfNextOutgoingByte >= SERIAL_MES_LEN)
     {
@@ -117,8 +110,16 @@ void RobotActuation::sendBytesHandler(const asio::error_code& error, std::size_t
 
 void RobotActuation::run()
 {
-    io.reset();
-    io.run();
+    std::cout << "Full? " << byteQueueFull << "  Serial Transmit? " << serialTransmit << std::endl;
+    // io.reset();
+    // std::cout << "ran"<<std::endl;
+    std::cout << "Stopped? " << io.stopped() << std::endl;
+    if (io.stopped())
+    {
+        io.reset();
+    //io.restart();
+    }
+    io.poll();
 }
 
 void RobotActuation::reciveMessageHandler()
