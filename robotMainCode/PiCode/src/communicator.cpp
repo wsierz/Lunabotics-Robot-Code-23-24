@@ -53,14 +53,14 @@ void Communicator::processControllerState(uint8_t* data)
     rbState.frMotor = data[3];
     rbState.brMotor = data[3];
 
-    int8_t intakeLocUp = (data[6]&0b00010000)>0*20;
-    int8_t intakeLocDown = (data[6]&0b00100000)>0*20;
+    int8_t intakeLocUp = ((data[6]&0b00010000)>0)*40;
+    int8_t intakeLocDown = ((data[6]&0b00100000)>0)*40;
 
     rbState.intakeLocation = intakeLocUp - intakeLocDown;
 
-    int8_t intake = (data[5]&0x40)>0*20;
+    int8_t intake = ((data[5]&0x40)>0)*20;
     rbState.intakeMotor = intake;
 
-    int8_t dump = (data[5]&0x80)>0*20;
+    int8_t dump = ((data[5]&0x80)>0)*20;
     rbState.dumpMotor = dump;
 }

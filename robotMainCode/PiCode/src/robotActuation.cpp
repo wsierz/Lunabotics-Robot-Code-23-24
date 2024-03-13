@@ -63,6 +63,15 @@ void RobotActuation::sendIntakePosition(int8_t angle)
     enqueueMessage(&packet);
 }
 
+void RobotActuation::sendHeartbeat()
+{
+    SerialPacket packet = {0xBE, 0xEF};
+
+    packet.portions.messageType = 0x01;
+
+    enqueueMessage(&packet);
+}
+
 int RobotActuation::sendCurrentQueue()
 {
     if (byteQueueFull && !serialTransmit)

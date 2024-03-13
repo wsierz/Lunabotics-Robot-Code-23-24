@@ -70,7 +70,7 @@ if __name__ == "__main__":
         pygame.init()
         
         joystick = pygame.joystick.Joystick(0)
-        TCP_IP = '127.0.0.1' 
+        TCP_IP = '192.168.0.10' 
         TCP_PORT = 2000
 
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

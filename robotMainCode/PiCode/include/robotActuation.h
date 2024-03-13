@@ -31,6 +31,7 @@ public:
     void sendIntakeMotor(int8_t intakeMotorSpeed);
     void sendDumpMotor(int8_t dumpMotorSpeed);
     void sendIntakePosition(int8_t angle);
+    void sendHeartbeat();
 
 
     int sendCurrentQueue();
