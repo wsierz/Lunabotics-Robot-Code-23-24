@@ -44,15 +44,20 @@ extern "C" {
 #define CAN_BAUDRATE (1000000)
 Adafruit_MCP2515 mcp(PIN_CAN_CS);
 
-const int FRONT_LEFT_MOTOR_PIN = 10;
-const int BACK_LEFT_MOTOR_PIN =  12;
-const int FRONT_RIGHT_MOTOR_PIN = 6;
-const int BACK_RIGHT_MOTOR_PIN = 13;
+const int FRONT_LEFT_MOTOR_PIN = 25;
+const int BACK_LEFT_MOTOR_PIN = 9;
+const int FRONT_RIGHT_MOTOR_PIN = 27;
+const int BACK_RIGHT_MOTOR_PIN = 29;
+// const int LIFT_MOTOR_PIN = 9;
+
+const int INTAKE_MOTOR_CAN_ID = 9;
+const int DUMP_MOTOR_CAN_ID = 10;
 
 Servo frontLeftMotor;
 Servo backLeftMotor;
 Servo frontRightMotor;
 Servo backRightMotor;
+// Servo liftMotor;
 
 const int PACKET_SIZE = 13;
 const int BUFFER_SIZE = 1;
@@ -83,66 +88,32 @@ void setup() {
   backLeftMotor.attach(BACK_LEFT_MOTOR_PIN);
   frontRightMotor.attach(FRONT_RIGHT_MOTOR_PIN);
   backRightMotor.attach(BACK_RIGHT_MOTOR_PIN);
+  // liftMotor.attach(LIFT_MOTOR_PIN);
 
   for(int i = 0; i < SPARK_MAX_ID_MAX; i++) {
     SetSparkMaxEnabled(i, false);
   }
-
   Serial.println("Setup complete");
 }
 
 void loop() {
   updateSerial();
 
-  int pins[6] = {15, 25, 9, 11, 27, 29};
-  for(int i = 0; i < 6; i++) {
-    int pin = pins[i];
-    Servo servo;
-    Serial.printf("Servo %d\n", pin);
-    if(servo.attach(pin)) {
-      servo.writeMicroseconds(1800);
-      delay(2500);
-      servo.writeMicroseconds(1500);
-    } else {
-      Serial.println("Attach failed!");
+  if(millis() - lastPacket > ROBOT_TIMEOUT_MS) {
+    intakeSpeed = 0.0;
+    SendSparkMaxSpeed(INTAKE_MOTOR_CAN_ID, 0.0);
+    delay(5);
+    SendSparkMaxSpeed(DUMP_MOTOR_CAN_ID, 0.0);
+    SetDriveMotors(1, 0, 0, 0);
+    SetLiftMotor(0);
+    
+    for(int i = 0; i < SPARK_MAX_ID_MAX; i++) {
+      SetSparkMaxEnabled(i, false);
     }
-
-    updateSerial();
   }
 
-  // Serial.println("Front left");
-  // setDriveMotors(50, 0, 0, 0);
-  // updateSerial();
-  // delay(1000);
-
-  // Serial.println("Front right");
-  // setDriveMotors(0, 50, 0, 0);
-  // updateSerial();
-  // delay(1000);
-
-  // Serial.println("back left");
-  // setDriveMotors(0, 0, 50, 0);
-  // updateSerial();
-  // delay(1000);
-
-  // Serial.println("back right");
-  // setDriveMotors(0, 0, 0, 50);
-  // updateSerial();
-  // delay(1000);
-
-
-  // if(millis() - lastPacket > ROBOT_TIMEOUT_MS) {
-  //   intakeSpeed = 0.0;
-  //   SendSparkMaxSpeed(9, 0.0);
-  //   setDriveMotors(1, 0, 0, 0);
-    
-  //   for(int i = 0; i < SPARK_MAX_ID_MAX; i++) {
-  //     SetSparkMaxEnabled(i, false);
-  //   }
-  // }
-
-  // delay(1); // Note: we need a delay in between CAN packets
-  // SendSparkMaxHeartbeat();
+  delay(10); // Note: we need a delay in between CAN packets
+  SendSparkMaxHeartbeat();
 }
 
 void updateSerial() {
@@ -197,6 +168,12 @@ void processPacket()
     case 0x83:
       handleSetIntakeSpeedPacket();
       break;
+    case 0x84: 
+      handleSetDumpSpeedPacket();
+      break;
+    case 0x82:
+      SetLiftMotor((int8_t) packet[3]);
+      break;
     case 0xA0:
       Serial.println("Enter bootloader Mode"); 
       reset_usb_boot(1 << LED_BUILTIN, 0);
@@ -204,25 +181,41 @@ void processPacket()
   }
 }
 
-void handleSetIntakeSpeedPacket() {
+void handleSetDumpSpeedPacket() {
   uint8_t speed = packet[3];
 
   intakeSpeed = ((float) speed) / 100.0;
+  Serial.println("Set dump speed");
+  SendSparkMaxSpeed(DUMP_MOTOR_CAN_ID, intakeSpeed);
+  delay(1);
+  SetSparkMaxEnabled(DUMP_MOTOR_CAN_ID, true);
+}
+
+void handleSetIntakeSpeedPacket() {
+  uint8_t speed = packet[3];
+
+  intakeSpeed = -((float) speed) / 100.0;
   Serial.println("Set intake speed");
-  SendSparkMaxSpeed(9, intakeSpeed);
-  SetSparkMaxEnabled(9, true);
+  SendSparkMaxSpeed(INTAKE_MOTOR_CAN_ID, intakeSpeed);
+  delay(1);
+  SetSparkMaxEnabled(INTAKE_MOTOR_CAN_ID, true);
 }
 
 void handleSetDriverMotorPacket()
 {
-  setDriveMotors((int8_t)packet[3], (int8_t)packet[4], (int8_t)packet[5], (int8_t)packet[6]);
+  SetDriveMotors((int8_t)packet[3], (int8_t)packet[4], (int8_t)packet[5], (int8_t)packet[6]);
 }
 
-void setDriveMotors(int8_t frontLeft, int8_t frontRight, int8_t backLeft, int8_t backRight) {
+void SetDriveMotors(int8_t frontLeft, int8_t frontRight, int8_t backLeft, int8_t backRight) {
+  Serial.printf("Set Drive Motors: FL=%d FR=%d BL=%d BR=%d\n", frontLeft, frontRight, backLeft, backRight);
   frontLeftMotor.writeMicroseconds(map(frontLeft, -100, 100, 1000, 2000));
-  frontRightMotor.writeMicroseconds(map(frontRight, -100, 100, 1000, 2000));
+  frontRightMotor.writeMicroseconds(map(-frontRight, -100, 100, 1000, 2000));
   backLeftMotor.writeMicroseconds(map(backLeft, -100, 100, 1000, 2000));
-  backRightMotor.writeMicroseconds(map(backRight, -100, 100, 1000, 2000));
+  backRightMotor.writeMicroseconds(map(-backRight, -100, 100, 1000, 2000));
+}
+
+void SetLiftMotor(int8_t speed) {
+  // liftMotor.writeMicroseconds(map(-speed, -100, 100, 1000, 2000));
 }
 
 inline bool verifyChecksum()

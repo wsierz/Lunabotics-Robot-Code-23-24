@@ -1,0 +1,35 @@
+ // int pins[6] = {15, 25, 9, 11, 27, 29};
+  // for(int i = 0; i < 6; i++) {
+  //   int pin = pins[i];
+  //   Servo servo;
+  //   Serial.printf("Servo %d\n", pin);
+  //   if(servo.attach(pin)) {
+  //     servo.writeMicroseconds(1800);
+  //     delay(2500);
+  //     servo.writeMicroseconds(1500);
+  //   } else {
+  //     Serial.println("Attach failed!");
+  //   }
+
+  //   updateSerial();
+  // }
+
+  // Serial.println("Front left");
+  // setDriveMotors(50, 0, 0, 0);
+  // updateSerial();
+  // delay(1000);
+
+  // Serial.println("Front right");
+  // setDriveMotors(0, 50, 0, 0);
+  // updateSerial();
+  // delay(1000);
+
+  // Serial.println("back left");
+  // setDriveMotors(0, 0, 50, 0);
+  // updateSerial();
+  // delay(1000);
+
+  // Serial.println("back right");
+  // setDriveMotors(0, 0, 0, 50);
+  // updateSerial();
+  // delay(1000);

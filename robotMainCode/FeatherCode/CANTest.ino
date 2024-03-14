@@ -22,7 +22,7 @@
 
 // bool SparkMaxEnabled[SPARK_MAX_ID_MAX];
 
-// void _setup() {
+// void setup() {
 //   delay(1000);
 //   Serial.begin(115200);
 //   while(!Serial) delay(10);
@@ -51,7 +51,7 @@
 //   uint8_t bytes[4];
 // } float_union_t;
 
-// void _loop() {
+// void loop() {
 //   float_union_t speed;
 //   speed.number = 0.1;
 
