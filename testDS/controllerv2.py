@@ -55,26 +55,32 @@ def encode_gamepad_state():
                     int(-joystick.get_axis(3)*100),
                     button_set_1,
                     button_set_2,
-                    0, 0, 0, 0xA  # Future usage placeholders
+                    int((joystick.get_axis(5)+1)*50),
+                    int((joystick.get_axis(2)+1)*50), 0, 0,  # Future usage placeholders
                 )
         print("Packet:", packet.hex(' '))
         if(time.time() > lastTime + .1):
             s.send(packet)
             lastTime = time.time()
-    
-        
-
 
 if __name__ == "__main__":
-    try:
+    try: 
         pygame.init()
         
         joystick = pygame.joystick.Joystick(0)
         TCP_IP = '192.168.0.10' 
         TCP_PORT = 2000
 
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect((TCP_IP, TCP_PORT))
+        while True:
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            try:
+                s.connect((TCP_IP, TCP_PORT))
+                break
+            except: 
+                print("Failed to connect. Sleep 1 second...")
+                time.sleep(1)
+
         encode_gamepad_state()
+
     except KeyboardInterrupt:
         print("\nStopped listening for gamepad events.")

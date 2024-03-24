@@ -48,7 +48,7 @@ const int FRONT_LEFT_MOTOR_PIN = 25;
 const int BACK_LEFT_MOTOR_PIN = 9;
 const int FRONT_RIGHT_MOTOR_PIN = 27;
 const int BACK_RIGHT_MOTOR_PIN = 29;
-// const int LIFT_MOTOR_PIN = 9;
+const int DEPLOY_MOTOR_PIN = 11;
 
 const int INTAKE_MOTOR_CAN_ID = 9;
 const int DUMP_MOTOR_CAN_ID = 10;
@@ -57,7 +57,7 @@ Servo frontLeftMotor;
 Servo backLeftMotor;
 Servo frontRightMotor;
 Servo backRightMotor;
-// Servo liftMotor;
+Servo deployMotor;
 
 const int PACKET_SIZE = 13;
 const int BUFFER_SIZE = 1;
@@ -88,7 +88,7 @@ void setup() {
   backLeftMotor.attach(BACK_LEFT_MOTOR_PIN);
   frontRightMotor.attach(FRONT_RIGHT_MOTOR_PIN);
   backRightMotor.attach(BACK_RIGHT_MOTOR_PIN);
-  // liftMotor.attach(LIFT_MOTOR_PIN);
+  deployMotor.attach(DEPLOY_MOTOR_PIN);
 
   for(int i = 0; i < SPARK_MAX_ID_MAX; i++) {
     SetSparkMaxEnabled(i, false);
@@ -104,8 +104,8 @@ void loop() {
     SendSparkMaxSpeed(INTAKE_MOTOR_CAN_ID, 0.0);
     delay(5);
     SendSparkMaxSpeed(DUMP_MOTOR_CAN_ID, 0.0);
-    SetDriveMotors(1, 0, 0, 0);
-    SetLiftMotor(0);
+    SetDriveMotors(0, 0, 0, 0);
+    SetDeployMotor(0);
     
     for(int i = 0; i < SPARK_MAX_ID_MAX; i++) {
       SetSparkMaxEnabled(i, false);
@@ -172,7 +172,7 @@ void processPacket()
       handleSetDumpSpeedPacket();
       break;
     case 0x82:
-      SetLiftMotor((int8_t) packet[3]);
+      SetDeployMotor((int8_t) packet[3]);
       break;
     case 0xA0:
       Serial.println("Enter bootloader Mode"); 
@@ -184,7 +184,7 @@ void processPacket()
 void handleSetDumpSpeedPacket() {
   uint8_t speed = packet[3];
 
-  intakeSpeed = ((float) speed) / 100.0;
+  intakeSpeed = -((float) speed) / 100.0;
   Serial.println("Set dump speed");
   SendSparkMaxSpeed(DUMP_MOTOR_CAN_ID, intakeSpeed);
   delay(1);
@@ -214,8 +214,9 @@ void SetDriveMotors(int8_t frontLeft, int8_t frontRight, int8_t backLeft, int8_t
   backRightMotor.writeMicroseconds(map(-backRight, -100, 100, 1000, 2000));
 }
 
-void SetLiftMotor(int8_t speed) {
-  // liftMotor.writeMicroseconds(map(-speed, -100, 100, 1000, 2000));
+void SetDeployMotor(int8_t speed) {
+  deployMotor.writeMicroseconds(map(-speed, -100, 100, 1000, 2000));
+  Serial.printf("Set Deploy Motor: %d\n", speed);
 }
 
 inline bool verifyChecksum()
