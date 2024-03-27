@@ -38,7 +38,9 @@ extern "C" {
 
 #define SPARK_MAX_ID_MAX 31
 
-#define ROBOT_TIMEOUT_MS (2 * 1000)
+#define ROBOT_TIMEOUT_MS 1000
+
+#define SPARK_MAX_HEARTBEAT_TIME_MS 5
 
 // Set CAN bus baud rate
 #define CAN_BAUDRATE (1000000)
@@ -72,6 +74,8 @@ float intakeSpeed = 0.0;
 float dumpSpeed = 0.0;
 
 unsigned long lastPacket;
+unsigned long lastSparkMaxPacket;
+int sparkMaxPacketCount = 0;
 
 void setup() {
   Serial.begin(115200);
@@ -98,8 +102,9 @@ void setup() {
 
 void loop() {
   updateSerial();
+  unsigned long currentTime = millis();
 
-  if(millis() - lastPacket > ROBOT_TIMEOUT_MS) {
+  if(currentTime - lastPacket > ROBOT_TIMEOUT_MS) {
     intakeSpeed = 0.0;
     SendSparkMaxSpeed(INTAKE_MOTOR_CAN_ID, 0.0);
     delay(5);
@@ -112,8 +117,23 @@ void loop() {
     }
   }
 
-  delay(10); // Note: we need a delay in between CAN packets
-  SendSparkMaxHeartbeat();
+  // delay(10); // Note: we need a delay in between CAN packets
+  if(currentTime - lastSparkMaxPacket > SPARK_MAX_HEARTBEAT_TIME_MS) {
+    if(sparkMaxPacketCount == 0) {
+      SendSparkMaxHeartbeat();
+    } else if (sparkMaxPacketCount == 1) {
+      SendSparkMaxSpeed(DUMP_MOTOR_CAN_ID, dumpSpeed);
+    } else if (sparkMaxPacketCount == 2) {
+      SendSparkMaxSpeed(INTAKE_MOTOR_CAN_ID, intakeSpeed);
+    }
+
+    sparkMaxPacketCount++;
+    if(sparkMaxPacketCount > 2) {
+      sparkMaxPacketCount = 0;
+    }
+
+    lastSparkMaxPacket = currentTime;
+  }
 }
 
 void updateSerial() {
@@ -184,10 +204,8 @@ void processPacket()
 void handleSetDumpSpeedPacket() {
   uint8_t speed = packet[3];
 
-  intakeSpeed = -((float) speed) / 100.0;
+  dumpSpeed = -((float) speed) / 100.0;
   Serial.println("Set dump speed");
-  SendSparkMaxSpeed(DUMP_MOTOR_CAN_ID, intakeSpeed);
-  delay(1);
   SetSparkMaxEnabled(DUMP_MOTOR_CAN_ID, true);
 }
 
@@ -196,8 +214,6 @@ void handleSetIntakeSpeedPacket() {
 
   intakeSpeed = -((float) speed) / 100.0;
   Serial.println("Set intake speed");
-  SendSparkMaxSpeed(INTAKE_MOTOR_CAN_ID, intakeSpeed);
-  delay(1);
   SetSparkMaxEnabled(INTAKE_MOTOR_CAN_ID, true);
 }
 

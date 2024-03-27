@@ -2,41 +2,69 @@
 
 #include <iostream>
 #include <string>
+#include <chrono>
+#include <thread>
 
 #include "communicator.h"
 
 int main() 
 {
-    Communicator * c = new Communicator();
-    RobotActuation * rbActuator = new RobotActuation("/dev/ttyACM0", 115200);
-    std::cout << "connection made" << std::endl;
+  std::cout << "Awaiting connection from DS" << std::endl;
+  Communicator * c = new Communicator();
+  RobotActuation * rbActuator = new RobotActuation("/dev/ttyACM0", 115200);
+  std::cout << "connection made" << std::endl;
 
-    rbActuator->sendDriveMotors(100, 0, 0, 0);
+  rbActuator->sendDriveMotors(0, 0, 0, 0);
+  rbActuator->sendCurrentQueue();
+  rbActuator->run();
 
+  RobotState lastState;
+
+  int lastTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
   while(true){
 
+    std::cout << std::endl;
     c->readIncomingPacket();
-    std::cout << "Packet read" << std::endl;
     RobotState rbstate = c->getRobotState();
 
-    std::cout << unsigned() << std::endl;
+     if (lastState.flMotor != rbstate.flMotor || lastState.frMotor != rbstate.frMotor)
+     {
+      rbActuator->sendDriveMotors(rbstate.flMotor, rbstate.frMotor, rbstate.blMotor, rbstate.brMotor);
+      lastTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+     }
 
-    rbActuator->sendDriveMotors(rbstate.flMotor, rbstate.blMotor, rbstate.frMotor, rbstate.brMotor);
+    if (lastState.dumpMotor != rbstate.dumpMotor)
+    {
+      rbActuator->sendDumpMotor(rbstate.dumpMotor);
+      lastTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+    }
+
+    if (lastState.intakeMotor != rbstate.intakeMotor)
+    {
+      rbActuator->sendIntakeMotor(rbstate.intakeMotor);
+      lastTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+    }
+
+    if(lastState.intakeLocation != rbstate.intakeLocation)
+    {
+      rbActuator->sendIntakePosition(rbstate.intakeLocation);
+      lastTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+    }
+
+    int thisTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+    if (thisTime > lastTime + 250)
+    {
+      rbActuator->sendHeartbeat();
+      lastTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+    }
+
     rbActuator->sendCurrentQueue();
     rbActuator->run();
+    std::this_thread::sleep_for(std::chrono::milliseconds(5));
 
-
+    lastState = rbstate;
 
   }
-  // RobotActuation * rbActuator = new RobotActuation("/dev/ttyACM1", 115200);
-
-  // rbActuator->sendDriveMotors(100, 0, 0, 0);
-
-  // while(true)
-  // {
-  //   rbActuator->sendCurrentQueue();
-  //   rbActuator->run();
-  // }
 
   return 0;
 }
